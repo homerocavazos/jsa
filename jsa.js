@@ -7,7 +7,7 @@
 __________________________________________
 
  Version: 1.0.0
-  Author: Homero Cavazos
+ Author: Homero Cavazos
  Website: https://jsa.homerocavazos.com/
 
  */
@@ -89,11 +89,13 @@ jsa.prototype.logic = function (e) {
 
     if (el.classList.value === "active") {
       el.classList.remove("active");
+      el.parentNode.classList.remove("active");
       def.classList.add("collapsed");
       def.classList.remove("show");
       el.blur();
     } else {
       el.classList.add("active");
+      el.parentNode.classList.add("active");
       def.classList.remove("collapsed");
       def.classList.add("show");
       el.blur();
