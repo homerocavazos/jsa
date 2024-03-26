@@ -15,6 +15,9 @@
   },
   "homepage": "https://github.com/homerocavazos/jsa#readme",
   "scripts": {
+    "start": "npm run watch:sass && npm run watch:js",
+    "watch:sass": "sass -w src/sass/:dist/css",
+    "watch:js": "rollup -c -w",
     "sass:core": "sass src/sass/jsa.core.scss:dist/css/jsa.core.css && sass src/sass/jsa.core.scss:dist/css/jsa.core.min.css --style=compressed",
     "sass:theme": "sass src/sass/jsa.theme.scss:dist/css/jsa.theme.css && sass src/sass/jsa.theme.scss:dist/css/jsa.theme.min.css --style=compressed",
     "build:css": "npm run sass:core && npm run sass:theme",
