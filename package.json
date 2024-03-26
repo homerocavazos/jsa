@@ -1,0 +1,30 @@
+{
+  "name": "@homiehomes/jsa",
+  "version": "1.0.0",
+  "description": "Javascript Accordion",
+  "main": "./jsa.js",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/homerocavazos/jsa.git"
+  },
+  "author": "Homero Cavazos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/homerocavazos/jsa/issues"
+  },
+  "homepage": "https://github.com/homerocavazos/jsa#readme",
+  "scripts": {
+    "sass": "sass src/sass/jsa.core.scss:dist/css/jsa.core.css && sass src/sass/jsa.core.scss:dist/css/jsa.core.min.css --style=compressed",
+    "build:css": "npm run sass",
+    "build:js": "rollup -c",
+    "build": "npm run build:css && npm run build:js"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.3",
+    "@babel/preset-env": "^7.24.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "rollup": "^4.13.0",
+    "sass": "^1.72.0"
+  }
+}

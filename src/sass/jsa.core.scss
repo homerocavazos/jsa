@@ -1,0 +1,21 @@
+$jsa-class: "jsa" !default;
+
+.#{$jsa-class} {
+  dt {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  dd {
+    max-height: 0;
+    overflow: hidden;
+    background-color: #ffffff;
+    padding: 0;
+    margin: 0;
+
+    &.show {
+      padding: 1em;
+      max-height: 100%;
+    }
+  }
+}
