@@ -62,5 +62,10 @@ By default the selector for opening each drawer is the anchor tag in the `<dt>` 
 
 ```
 // Custom question selector
-example.init( '#myAccordion', { dt: "dt a"} );
+example.init( '#myAccordion',
+  { dt: "dt a" // Trigger selector
+    openFirst: false, // Open first drawer on load
+    openAll: false, // Open all on load
+    toggle: false // Toggle open/close drawer
+  } );
 ```
