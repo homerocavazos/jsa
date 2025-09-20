@@ -1,9 +1,8 @@
 {
   "name": "@homiehomes/jsa",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Javascript Accordion",
-  "main": "./jsa.js",
-  "type": "module",
+  "main": "dist/jsa.min.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/homerocavazos/jsa.git"
@@ -15,21 +14,16 @@
   },
   "homepage": "https://github.com/homerocavazos/jsa#readme",
   "scripts": {
-    "start": "npm run watch:sass && npm run watch:js",
-    "watch:sass": "sass -w src/sass/:dist/css",
-    "watch:js": "rollup -c -w",
-    "sass:core": "sass src/sass/jsa.core.scss:dist/css/jsa.core.css && sass src/sass/jsa.core.scss:dist/css/jsa.core.min.css --style=compressed",
-    "sass:theme-basic": "sass src/sass/jsa.theme-basic.scss:dist/css/jsa.theme-basic.css && sass src/sass/jsa.theme-basic.scss:dist/css/jsa.theme-basic.min.css --style=compressed",
-    "sass:theme-round": "sass src/sass/jsa.theme-round.scss:dist/css/jsa.theme-round.css && sass src/sass/jsa.theme-round.scss:dist/css/jsa.theme-round.min.css --style=compressed",
-    "build:css": "npm run sass:core && npm run sass:theme-basic && npm run sass:theme-round",
-    "build:js": "rollup -c",
-    "build": "npm run build:css && npm run build:js"
+    "dev": "npx webpack --watch --mode development --config webpack.config.js",
+    "build": "npx webpack --mode production --config webpack.config.js",
+    "start": "npm run dev"
   },
   "devDependencies": {
-    "@babel/core": "^7.24.3",
-    "@babel/preset-env": "^7.24.3",
-    "@rollup/plugin-terser": "^0.4.4",
-    "rollup": "^4.13.0",
-    "sass": "^1.72.0"
+    "@babel/core": "^7.18.2",
+    "@babel/preset-env": "^7.18.2",
+    "babel-loader": "^8.2.5",
+    "clean-webpack-plugin": "^4.0.0",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.9.2"
   }
 }

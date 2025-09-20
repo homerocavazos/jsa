@@ -1,0 +1,52 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Accordion 2.0</title>
+</head>
+
+<body>
+
+    <dl class="jsa-demo" id="jsa">
+        <dt><a href="#">Title One</a></dt>
+        <dd>Lorem ipsum dolor sit.</dd>
+
+        <dt><a href="#">Title Two</a></dt>
+        <dd>Lorem ipsum dolor sit.</dd>
+
+        <dt><a href="#">Title Three</a></dt>
+        <dd>Lorem ipsum dolor sit.</dd>
+    </dl>
+    <dl class="jsa-demo" id="jsa2">
+        <dt>
+            <h2>Title One</h2>
+        </dt>
+        <dd>Lorem ipsum dolor sit.</dd>
+
+        <dt>
+            <h2>Title Two</h2>
+        </dt>
+        <dd>Lorem ipsum dolor sit.</dd>
+
+        <dt>
+            <h2>Title Three</h2>
+        </dt>
+        <dd>Lorem ipsum dolor sit.</dd>
+    </dl>
+
+    <script type="module">
+        import { jsa } from './dist/jsa.js';
+
+        new jsa({
+            dl: '#jsa',
+            openFirst: true,
+        });
+        new jsa({
+            dl: '#jsa2',
+            dt: 'h2',
+        });
+    </script>
+</body>
+
+</html>
