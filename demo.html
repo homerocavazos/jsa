@@ -9,31 +9,26 @@
 <body>
 
     <dl class="jsa-demo" id="jsa">
-        <dt><a href="#">Title One</a></dt>
-        <dd>Lorem ipsum dolor sit.</dd>
+        <dt><a href="#">What is the capital of France?</a></dt>
+        <dd>The capital of France is Paris.</dd>
 
-        <dt><a href="#">Title Two</a></dt>
-        <dd>Lorem ipsum dolor sit.</dd>
+        <dt><a href="#">What is the capital of Germany?</a></dt>
+        <dd>The capital of Germany is Berlin.</dd>
 
-        <dt><a href="#">Title Three</a></dt>
-        <dd>Lorem ipsum dolor sit.</dd>
+        <dt><a href="#">What is the capital of Italy?</a></dt>
+        <dd>The capital of Italy is Rome.</dd>
+
+        <dt><a href="#">How long will shipping take?</a></dt>
+        <dd>
+            <p>It depends on the shipping method you choose.</p>
+            <ul>
+                <li>Standard Shipping: 5-7 business days</li>
+                <li>Express Shipping: 2-3 business days</li>
+                <li>Overnight Shipping: 1 business day</li>
+            </ul>
+        </dd>
     </dl>
-    <dl class="jsa-demo" id="jsa2">
-        <dt>
-            <h2>Title One</h2>
-        </dt>
-        <dd>Lorem ipsum dolor sit.</dd>
 
-        <dt>
-            <h2>Title Two</h2>
-        </dt>
-        <dd>Lorem ipsum dolor sit.</dd>
-
-        <dt>
-            <h2>Title Three</h2>
-        </dt>
-        <dd>Lorem ipsum dolor sit.</dd>
-    </dl>
 
     <script type="module">
         import { jsa } from './dist/jsa.js';
@@ -41,12 +36,15 @@
         new jsa({
             dl: '#jsa',
             openFirst: true,
+            prefix: 'jsa-',
+            schema: true,
+            styled: 'basic',
         });
-        new jsa({
-            dl: '#jsa2',
-            dt: 'h2',
-        });
+
     </script>
+
+
+
 </body>
 
 </html>
