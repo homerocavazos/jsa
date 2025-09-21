@@ -15,15 +15,50 @@
 
 <body>
 
-    <dl class="jsa-demo" id="jsa">
+    <dl class="jsa">
         <dt><a href="#">What is the capital of France?</a></dt>
-        <dd>The capital of France is Paris.</dd>
+        <dd>
+            <div>
+
+                The capital of France is Paris.
+            </div>
+        </dd>
 
         <dt><a href="#">What is the capital of Germany?</a></dt>
-        <dd>The capital of Germany is Berlin.</dd>
+        <dd>
+            <div>The capital of Germany is Berlin.</div>
+        </dd>
 
         <dt><a href="#">What is the capital of Italy?</a></dt>
-        <dd>The capital of Italy is Rome.</dd>
+        <dd>
+            <div>The capital of Italy is Rome.</div>
+        </dd>
+
+        <dt><a href="#">How long will shipping take?</a></dt>
+        <dd>
+            <p>It depends on the shipping method you choose.</p>
+            <ul>
+                <li>Standard Shipping: 5-7 business days</li>
+                <li>Express Shipping: 2-3 business days</li>
+                <li>Overnight Shipping: 1 business day</li>
+            </ul>
+        </dd>
+    </dl>
+    <dl class="jsa2">
+        <dt><a href="#">What is the capital of France?</a></dt>
+        <dd>
+            <div>The capital of France is Paris.</div>
+        </dd>
+
+        <dt><a href="#">What is the capital of Germany?</a></dt>
+        <dd>
+            <div>The capital of Germany is Berlin.</div>
+        </dd>
+
+        <dt><a href="#">What is the capital of Italy?</a></dt>
+        <dd>
+            <div>The capital of Italy is Rome.</div>
+        </dd>
 
         <dt><a href="#">How long will shipping take?</a></dt>
         <dd>
@@ -40,10 +75,20 @@
     <script type="module">
         import { jsa } from './dist/jsa.js';
 
+
+        // Optional to define "dl" as long as you use '.jsa' as class name for the accordion container
         new jsa({
-            dl: '#jsa',
+            // openFirst: true,
+            prefix: 'jsa-', // use custom prefix for relationship identifiers e.g., data-target, aria-controls, aria-labelledby
+            schema: true,
+            icons: ['<svg width="18" height="11" viewBox="0 0 18 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L9 9L17 1" stroke="black" stroke-width="2"/><path d="M1 1L9 9L17 1" stroke="black" stroke-opacity="0.2" stroke-width="2"/></svg>', '<svg width="18" height="11" viewBox="0 0 18 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17 10L9 2L1 10" stroke="black" stroke-width="2"/><path d="M17 10L9 2L1 10" stroke="black" stroke-opacity="0.2" stroke-width="2"/></svg>'], // use custom icons for open and close states
+        });
+
+        // Requires to define "dl" for multiple accordions on the same page with unique class or id names
+        // prefix is optional here as it defaults to random name if not provided e.g., data-target="wr6id-definition2"
+        new jsa({
+            dl: '.jsa2',
             openFirst: true,
-            prefix: 'jsa-',
             schema: true,
         });
 

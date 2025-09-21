@@ -74,7 +74,7 @@ var jsa = /*#__PURE__*/function () {
     _classCallCheck(this, jsa);
     var _ = this;
     _.settings = Object.assign({
-      dl: "dl",
+      dl: ".jsa",
       dt: "dt a",
       dd: "dd",
       openFirst: false,
@@ -82,8 +82,8 @@ var jsa = /*#__PURE__*/function () {
       prefix: (_opts$prefix = opts.prefix) !== null && _opts$prefix !== void 0 ? _opts$prefix : "".concat(Math.random().toString(36).substring(2, 7), "-"),
       // Generate a random prefix if not provided
       inline: true,
-      styled: 'basic',
-      // options: 'basic', 'fancy', '' 
+      style: 'basic',
+      // options: 'basic', '' 
       icons: ['+', '-'],
       // options: ['+', '-'], ['arrow-down', 'arrow-up'], [] for no icons
       iconClass: 'jsa-icon',
@@ -102,11 +102,9 @@ var jsa = /*#__PURE__*/function () {
       e.preventDefault();
       _.toggle(e.target);
     });
-    console.log('Accordion Element = ', _.el);
 
     // Set the IDs and data-target attributes for terms
     _.terms.map(function (term, index) {
-      console.log('Trigger = ', term);
       term.setAttribute('tabindex', 0);
       term.setAttribute('id', "".concat(_.settings.prefix, "term").concat(index));
       term.setAttribute('data-target', "".concat(_.settings.prefix, "definition").concat(index));
@@ -115,22 +113,24 @@ var jsa = /*#__PURE__*/function () {
       term.setAttribute("aria-expanded", "false");
       term.setAttribute("role", "button");
       term.setAttribute("aria-label", !term.ariaLabel ? "Toggle definition for ".concat(term.textContent.trim()) : term.ariaLabel);
-      if (_.settings.styled === 'basic') {
+      if (_.settings.style === 'basic') {
         term.style.display = "flex";
         term.style.position = "relative";
         term.style.justifyContent = "space-between";
         term.style.alignItems = "center";
         term.style.textDecoration = "none";
+        term.style.paddingLeft = "0";
         term.style.paddingRight = "1em";
         term.style.paddingTop = ".5em";
         term.style.paddingBottom = ".5em";
         term.style.borderTop = "1px solid #eee";
         var icon = document.createElement('span');
-        icon.textContent = _.settings.icons[0];
+        icon.innerHTML = _.settings.icons[0];
         icon.classList.add(_.settings.iconClass);
+        icon.style.pointerEvents = "none";
 
         // If open first is true, set the icon to the "open" icon
-        if (_.settings.openFirst && index === 0) icon.textContent = _.settings.icons[1];
+        if (_.settings.openFirst && index === 0) icon.innerHTML = _.settings.icons[1];
         term.appendChild(icon);
       }
       ;
@@ -147,22 +147,21 @@ var jsa = /*#__PURE__*/function () {
 
     // Set the IDs for definitions
     _.definitions.map(function (definition, index) {
-      console.log('Definition = ', definition);
       definition.setAttribute('id', "".concat(_.settings.prefix, "definition").concat(index));
       definition.setAttribute("aria-labelledby", "".concat(_.settings.prefix, "term").concat(index));
       if (_.settings.inline) definition.style.maxHeight = "0";
       if (_.settings.inline) definition.style.overflow = "hidden";
       if (_.settings.openFirst === true && index === 0) definition.classList.add("show");
-      if (_.settings.openFirst === true && index === 0 && _.settings.inline) definition.style.maxHeight = "100%";
+      if (_.settings.openFirst === true && index === 0 && _.settings.inline) definition.style.maxHeight = definition.scrollHeight + "px";
       if (_.settings.openAll === true) definition.classList.add("show");
-      if (_.settings.openAll === true && _.settings.inline) definition.style.maxHeight = "100%";
-      if (_.settings.styled === 'basic') {
+      if (_.settings.openAll === true && _.settings.inline) definition.style.maxHeight = definition.scrollHeight + "px";
+      if (_.settings.style === 'basic') {
         definition.style.padding = "0";
         definition.style.margin = "0";
         definition.style.borderBottom = "1px solid #eee";
         definition.style.borderTop = "none";
-        definition.style.transition = "max-height 0.2s ease-out";
-        if (_.settings.openFirst === true && index === 0) definition.style.padding = "1em";
+        definition.style.transition = "max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s cubic-bezier(0.4, 0, 0.2, 1)";
+        if (_.settings.openFirst === true && index === 0) definition.style.padding = "1em 0";
       }
     });
     _.schema = [];
@@ -176,18 +175,27 @@ var jsa = /*#__PURE__*/function () {
 
       var target = term.dataset.target;
       var def = document.getElementById("".concat(target));
-      if (_.settings.styled === 'basic') {
-        def.style.padding = def.classList.contains("show") ? "0" : "1em";
+      var isOpen = def.classList.contains("show");
+      if (_.settings.style === 'basic') {
+        def.style.padding = isOpen ? "0" : "1em 0";
       }
       def.classList.toggle("show");
-      term.setAttribute("aria-expanded", def.classList.contains("show") ? "true" : "false");
+      term.setAttribute("aria-expanded", !isOpen ? "true" : "false");
 
       // Swap icon if applicable
       var icon = term.querySelector(".".concat(_.settings.iconClass));
       if (icon) {
-        icon.textContent = def.classList.contains("show") ? _.settings.icons[1] : _.settings.icons[0];
+        icon.innerHTML = !isOpen ? _.settings.icons[1] : _.settings.icons[0];
       }
-      if (_.settings.inline) def.style.maxHeight = def.style.maxHeight === "100%" ? "0" : "100%";
+
+      // Apply transition for inline elements for smooth open/close
+      if (_.settings.inline) {
+        if (!isOpen) {
+          def.style.maxHeight = def.scrollHeight + "px";
+        } else {
+          def.style.maxHeight = "0";
+        }
+      }
     }
   }, {
     key: "getObjs",
