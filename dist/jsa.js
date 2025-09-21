@@ -82,7 +82,7 @@ var jsa = /*#__PURE__*/function () {
       prefix: (_opts$prefix = opts.prefix) !== null && _opts$prefix !== void 0 ? _opts$prefix : "".concat(Math.random().toString(36).substring(2, 7), "-"),
       // Generate a random prefix if not provided
       inline: true,
-      styled: '',
+      styled: 'basic',
       // options: 'basic', 'fancy', '' 
       icons: ['+', '-'],
       // options: ['+', '-'], ['arrow-down', 'arrow-up'], [] for no icons

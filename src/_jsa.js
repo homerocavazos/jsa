@@ -33,7 +33,7 @@ class jsa {
 			openAll: false,
 			prefix: opts.prefix ?? `${Math.random().toString(36).substring(2, 7)}-`, // Generate a random prefix if not provided
 			inline: true,
-			styled: '', // options: 'basic', 'fancy', '' 
+			styled: 'basic', // options: 'basic', 'fancy', '' 
 			icons: ['+', '-'], // options: ['+', '-'], ['arrow-down', 'arrow-up'], [] for no icons
 			iconClass: 'jsa-icon', // Class for the icon span
 			schema: false,
