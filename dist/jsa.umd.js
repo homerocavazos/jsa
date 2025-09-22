@@ -91,11 +91,12 @@ var jsa = /*#__PURE__*/function () {
       dd: "dd",
       openFirst: false,
       openAll: false,
+      closeAll: null,
+      // Selector e.g. <a class="close-all">Close All</a>
       closeOthers: false,
       // Whether to close other items when one is opened
       prefix: (_opts$prefix = opts.prefix) !== null && _opts$prefix !== void 0 ? _opts$prefix : "".concat(Math.random().toString(36).substring(2, 7), "-"),
       // Generate a random prefix if not provided
-      inline: true,
       theme: '',
       // options: 'basic', '' 
       icons: ['+', '-'],
@@ -158,16 +159,16 @@ var jsa = /*#__PURE__*/function () {
       });
     });
 
-    // Set the IDs for definitions
+    // Set the http://127.0.0.1:5500/demo.html#IDs for definitions
     _.definitions.map(function (definition, index) {
       definition.setAttribute('id', "".concat(_.settings.prefix, "definition").concat(index));
       definition.setAttribute("aria-labelledby", "".concat(_.settings.prefix, "term").concat(index));
-      if (_.settings.inline) definition.style.maxHeight = "0";
-      if (_.settings.inline) definition.style.overflow = "hidden";
+      definition.style.maxHeight = "0";
+      definition.style.overflow = "hidden";
       if (_.settings.openFirst === true && index === 0) definition.classList.add("show");
-      if (_.settings.openFirst === true && index === 0 && _.settings.inline) definition.style.maxHeight = definition.scrollHeight + "px";
+      if (_.settings.openFirst === true && index === 0) definition.style.maxHeight = definition.scrollHeight + "px";
       if (_.settings.openAll === true) definition.classList.add("show");
-      if (_.settings.openAll === true && _.settings.inline) definition.style.maxHeight = definition.scrollHeight + "px";
+      if (_.settings.openAll === true) definition.style.maxHeight = definition.scrollHeight + "px";
       if (_.settings.theme === 'basic') {
         definition.style.padding = "0";
         definition.style.margin = "0";
@@ -179,6 +180,12 @@ var jsa = /*#__PURE__*/function () {
     });
     _.schema = [];
     _.buildSchema();
+    if (_.settings.closeAll) {
+      document.querySelector(_.settings.closeAll).addEventListener('click', function (e) {
+        return _.reset();
+      });
+    }
+    ;
   } // constructor
   return _createClass(jsa, [{
     key: "toggle",
@@ -205,12 +212,11 @@ var jsa = /*#__PURE__*/function () {
       }
 
       // Apply transition for inline elements for smooth open/close
-      if (_.settings.inline) {
-        if (!isOpen) {
-          def.style.maxHeight = def.scrollHeight + "px";
-        } else {
-          def.style.maxHeight = "0";
-        }
+
+      if (!isOpen) {
+        def.style.maxHeight = def.scrollHeight + "px";
+      } else {
+        def.style.maxHeight = "0";
       }
     }
   }, {
@@ -223,7 +229,7 @@ var jsa = /*#__PURE__*/function () {
       });
       _.definitions.map(function (definition, index) {
         definition.classList.remove("show");
-        if (_.settings.inline) definition.style.maxHeight = "0";
+        definition.style.maxHeight = "0";
         if (_.settings.theme === 'basic') definition.style.padding = "0";
       });
     }

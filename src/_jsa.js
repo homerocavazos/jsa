@@ -31,9 +31,9 @@ class jsa {
 			dd: "dd",
 			openFirst: false,
 			openAll: false,
+			closeAll: null, // Selector e.g. <a class="close-all">Close All</a>
 			closeOthers: false, // Whether to close other items when one is opened
 			prefix: opts.prefix ?? `${Math.random().toString(36).substring(2, 7)}-`, // Generate a random prefix if not provided
-			inline: true,
 			theme: '', // options: 'basic', '' 
 			icons: ['+', '-'], // options: ['+', '-'], ['arrow-down', 'arrow-up'], [] for no icons
 			iconClass: 'jsa-icon', // Class for the icon span
@@ -102,19 +102,20 @@ class jsa {
 
 		});
 
-		// Set the IDs for definitions
+		// Set the http://127.0.0.1:5500/demo.html#IDs for definitions
 		_.definitions.map((definition, index) => {
 
 			definition.setAttribute('id', `${_.settings.prefix}definition${index}`);
 			definition.setAttribute("aria-labelledby", `${_.settings.prefix}term${index}`);
 
-			if (_.settings.inline) definition.style.maxHeight = "0";
-			if (_.settings.inline) definition.style.overflow = "hidden";
+			definition.style.maxHeight = "0";
+			definition.style.overflow = "hidden";
+
 			if (_.settings.openFirst === true && index === 0) definition.classList.add("show");
-			if (_.settings.openFirst === true && index === 0 && _.settings.inline) definition.style.maxHeight = definition.scrollHeight + "px";
+			if (_.settings.openFirst === true && index === 0) definition.style.maxHeight = definition.scrollHeight + "px";
 
 			if (_.settings.openAll === true) definition.classList.add("show");
-			if (_.settings.openAll === true && _.settings.inline) definition.style.maxHeight = definition.scrollHeight + "px";
+			if (_.settings.openAll === true) definition.style.maxHeight = definition.scrollHeight + "px";
 
 			if (_.settings.theme === 'basic') {
 				definition.style.padding = "0";
@@ -128,6 +129,10 @@ class jsa {
 
 		_.schema = [];
 		_.buildSchema();
+
+		if (_.settings.closeAll) {
+			document.querySelector(_.settings.closeAll).addEventListener('click', e => _.reset());
+		};
 
 	}// constructor
 
@@ -159,15 +164,12 @@ class jsa {
 		}
 
 		// Apply transition for inline elements for smooth open/close
-		if (_.settings.inline) {
-			if (!isOpen) {
-				def.style.maxHeight = def.scrollHeight + "px";
-			} else {
-				def.style.maxHeight = "0";
-			}
+
+		if (!isOpen) {
+			def.style.maxHeight = def.scrollHeight + "px";
+		} else {
+			def.style.maxHeight = "0";
 		}
-
-
 
 	}
 
@@ -179,7 +181,7 @@ class jsa {
 		});
 		_.definitions.map((definition, index) => {
 			definition.classList.remove("show");
-			if (_.settings.inline) definition.style.maxHeight = "0";
+			definition.style.maxHeight = "0";
 			if (_.settings.theme === 'basic') definition.style.padding = "0";
 		});
 	}
