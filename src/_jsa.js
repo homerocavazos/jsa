@@ -8,7 +8,7 @@
  * Description: A simple JavaScript accordion component.
  * 
  * opts = {
- *  dl: "dl",               // Selector for the definition list
+ *  dl: ".jsa",            // Selector for the definition list
  *  dt: "dt a",            // Selector for the term elements
  *  dd: "dd",              // Selector for the definition elements
  *  openFirst: false,      // Whether to open the first item by default
@@ -31,21 +31,25 @@ class jsa {
 			dd: "dd",
 			openFirst: false,
 			openAll: false,
+			closeOthers: false, // Whether to close other items when one is opened
 			prefix: opts.prefix ?? `${Math.random().toString(36).substring(2, 7)}-`, // Generate a random prefix if not provided
 			inline: true,
-			style: 'basic', // options: 'basic', '' 
+			theme: '', // options: 'basic', '' 
 			icons: ['+', '-'], // options: ['+', '-'], ['arrow-down', 'arrow-up'], [] for no icons
 			iconClass: 'jsa-icon', // Class for the icon span
 			schema: false,
-			mobileOnly: false
+			schemaType: 'FAQPage',
+			termPadding: '0.5em 1em 0.5em 0', // Padding for dt elements when theme is 'basic'
 		}, opts);
 
 		console.log('--------------------------------');
 		console.log('jsa settings = ', _.settings);
 
-		_.el = document.getElementsByTagName(_.settings.dl)[0] || document.querySelector(_.settings.dl) || null;
+		_.el = document.querySelector(_.settings.dl) || null;
 		_.terms = _.getObjs(document.querySelectorAll(`${_.settings.dl} ${_.settings.dt}`));
 		_.definitions = _.getObjs(document.querySelectorAll(`${_.settings.dl} ${_.settings.dd}`));
+
+		if (_.settings.theme) _.el.classList.add(`jsa-theme-${_.settings.theme}`);
 
 		// Event Delegation for terms
 		_.el.addEventListener("click", e => {
@@ -65,16 +69,13 @@ class jsa {
 			term.setAttribute("role", "button");
 			term.setAttribute("aria-label", !term.ariaLabel ? `Toggle definition for ${term.textContent.trim()}` : term.ariaLabel);
 
-			if (_.settings.style === 'basic') {
+			if (_.settings.theme === 'basic') {
 				term.style.display = "flex";
 				term.style.position = "relative";
 				term.style.justifyContent = "space-between";
 				term.style.alignItems = "center";
 				term.style.textDecoration = "none";
-				term.style.paddingLeft = "0";
-				term.style.paddingRight = "1em";
-				term.style.paddingTop = ".5em";
-				term.style.paddingBottom = ".5em";
+				term.style.padding = _.settings.termPadding;
 				term.style.borderTop = "1px solid #eee";
 
 				let icon = document.createElement('span');
@@ -115,7 +116,7 @@ class jsa {
 			if (_.settings.openAll === true) definition.classList.add("show");
 			if (_.settings.openAll === true && _.settings.inline) definition.style.maxHeight = definition.scrollHeight + "px";
 
-			if (_.settings.style === 'basic') {
+			if (_.settings.theme === 'basic') {
 				definition.style.padding = "0";
 				definition.style.margin = "0";
 				definition.style.borderBottom = "1px solid #eee";
@@ -140,7 +141,11 @@ class jsa {
 
 		const isOpen = def.classList.contains("show");
 
-		if (_.settings.style === 'basic') {
+		if (_.settings.closeOthers && !isOpen) {
+			_.reset();
+		}
+
+		if (_.settings.theme === 'basic') {
 			def.style.padding = isOpen ? "0" : "1em 0";
 		}
 
@@ -162,6 +167,21 @@ class jsa {
 			}
 		}
 
+
+
+	}
+
+	reset() {
+		const _ = this;
+		_.terms.map((term, index) => {
+			term.classList.remove("active");
+			term.setAttribute("aria-expanded", "false");
+		});
+		_.definitions.map((definition, index) => {
+			definition.classList.remove("show");
+			if (_.settings.inline) definition.style.maxHeight = "0";
+			if (_.settings.theme === 'basic') definition.style.padding = "0";
+		});
 	}
 
 	getObjs(objs) {
@@ -177,7 +197,7 @@ class jsa {
 
 		let schema = {
 			"@context": "https://schema.org",
-			"@type": "FAQPage",
+			"@type": _.settings.schemaType,
 			"mainEntity": [
 
 			]

@@ -61,7 +61,7 @@ __webpack_require__.r(__webpack_exports__);
  * Description: A simple JavaScript accordion component.
  * 
  * opts = {
- *  dl: "dl",               // Selector for the definition list
+ *  dl: ".jsa",            // Selector for the definition list
  *  dt: "dt a",            // Selector for the term elements
  *  dd: "dd",              // Selector for the definition elements
  *  openFirst: false,      // Whether to open the first item by default
@@ -91,23 +91,27 @@ var jsa = /*#__PURE__*/function () {
       dd: "dd",
       openFirst: false,
       openAll: false,
+      closeOthers: false,
+      // Whether to close other items when one is opened
       prefix: (_opts$prefix = opts.prefix) !== null && _opts$prefix !== void 0 ? _opts$prefix : "".concat(Math.random().toString(36).substring(2, 7), "-"),
       // Generate a random prefix if not provided
       inline: true,
-      style: 'basic',
+      theme: '',
       // options: 'basic', '' 
       icons: ['+', '-'],
       // options: ['+', '-'], ['arrow-down', 'arrow-up'], [] for no icons
       iconClass: 'jsa-icon',
       // Class for the icon span
       schema: false,
-      mobileOnly: false
+      schemaType: 'FAQPage',
+      termPadding: '0.5em 1em 0.5em 0' // Padding for dt elements when theme is 'basic'
     }, opts);
     console.log('--------------------------------');
     console.log('jsa settings = ', _.settings);
-    _.el = document.getElementsByTagName(_.settings.dl)[0] || document.querySelector(_.settings.dl) || null;
+    _.el = document.querySelector(_.settings.dl) || null;
     _.terms = _.getObjs(document.querySelectorAll("".concat(_.settings.dl, " ").concat(_.settings.dt)));
     _.definitions = _.getObjs(document.querySelectorAll("".concat(_.settings.dl, " ").concat(_.settings.dd)));
+    if (_.settings.theme) _.el.classList.add("jsa-theme-".concat(_.settings.theme));
 
     // Event Delegation for terms
     _.el.addEventListener("click", function (e) {
@@ -125,16 +129,13 @@ var jsa = /*#__PURE__*/function () {
       term.setAttribute("aria-expanded", "false");
       term.setAttribute("role", "button");
       term.setAttribute("aria-label", !term.ariaLabel ? "Toggle definition for ".concat(term.textContent.trim()) : term.ariaLabel);
-      if (_.settings.style === 'basic') {
+      if (_.settings.theme === 'basic') {
         term.style.display = "flex";
         term.style.position = "relative";
         term.style.justifyContent = "space-between";
         term.style.alignItems = "center";
         term.style.textDecoration = "none";
-        term.style.paddingLeft = "0";
-        term.style.paddingRight = "1em";
-        term.style.paddingTop = ".5em";
-        term.style.paddingBottom = ".5em";
+        term.style.padding = _.settings.termPadding;
         term.style.borderTop = "1px solid #eee";
         var icon = document.createElement('span');
         icon.innerHTML = _.settings.icons[0];
@@ -167,7 +168,7 @@ var jsa = /*#__PURE__*/function () {
       if (_.settings.openFirst === true && index === 0 && _.settings.inline) definition.style.maxHeight = definition.scrollHeight + "px";
       if (_.settings.openAll === true) definition.classList.add("show");
       if (_.settings.openAll === true && _.settings.inline) definition.style.maxHeight = definition.scrollHeight + "px";
-      if (_.settings.style === 'basic') {
+      if (_.settings.theme === 'basic') {
         definition.style.padding = "0";
         definition.style.margin = "0";
         definition.style.borderBottom = "1px solid #eee";
@@ -188,7 +189,10 @@ var jsa = /*#__PURE__*/function () {
       var target = term.dataset.target;
       var def = document.getElementById("".concat(target));
       var isOpen = def.classList.contains("show");
-      if (_.settings.style === 'basic') {
+      if (_.settings.closeOthers && !isOpen) {
+        _.reset();
+      }
+      if (_.settings.theme === 'basic') {
         def.style.padding = isOpen ? "0" : "1em 0";
       }
       def.classList.toggle("show");
@@ -210,6 +214,20 @@ var jsa = /*#__PURE__*/function () {
       }
     }
   }, {
+    key: "reset",
+    value: function reset() {
+      var _ = this;
+      _.terms.map(function (term, index) {
+        term.classList.remove("active");
+        term.setAttribute("aria-expanded", "false");
+      });
+      _.definitions.map(function (definition, index) {
+        definition.classList.remove("show");
+        if (_.settings.inline) definition.style.maxHeight = "0";
+        if (_.settings.theme === 'basic') definition.style.padding = "0";
+      });
+    }
+  }, {
     key: "getObjs",
     value: function getObjs(objs) {
       return Object.keys(objs).map(function (e) {
@@ -223,7 +241,7 @@ var jsa = /*#__PURE__*/function () {
       if (!_.settings.schema) return;
       var schema = {
         "@context": "https://schema.org",
-        "@type": "FAQPage",
+        "@type": _.settings.schemaType,
         "mainEntity": []
       };
       _.terms.map(function (term, index) {
