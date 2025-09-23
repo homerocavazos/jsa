@@ -158,8 +158,6 @@ var jsa = /*#__PURE__*/function () {
         }
       });
     });
-
-    // Set the http://127.0.0.1:5500/demo.html#IDs for definitions
     _.definitions.map(function (definition, index) {
       definition.setAttribute('id', "".concat(_.settings.prefix, "definition").concat(index));
       definition.setAttribute("aria-labelledby", "".concat(_.settings.prefix, "term").concat(index));
@@ -178,6 +176,7 @@ var jsa = /*#__PURE__*/function () {
         if (_.settings.openFirst === true && index === 0) definition.style.padding = "1em 0";
       }
     });
+    _.init();
     _.schema = [];
     _.buildSchema();
     if (_.settings.closeAll) {
@@ -188,6 +187,14 @@ var jsa = /*#__PURE__*/function () {
     ;
   } // constructor
   return _createClass(jsa, [{
+    key: "init",
+    value: function init() {
+      var _ = this;
+      window.addEventListener('resize', _.debounce(function (e) {
+        _.updateDefinitionHeight();
+      }, 200));
+    }
+  }, {
     key: "toggle",
     value: function toggle(term) {
       var _ = this;
@@ -263,8 +270,32 @@ var jsa = /*#__PURE__*/function () {
       });
       _.el.insertAdjacentHTML("beforeend", "<script type=\"application/ld+json\">".concat(JSON.stringify(schema), "</script>"));
     }
+  }, {
+    key: "debounce",
+    value: function debounce(fn, time) {
+      var timeout;
+      return function () {
+        var _arguments = arguments,
+          _this = this;
+        var functionCall = function functionCall() {
+          return fn.apply(_this, _arguments);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(functionCall, time);
+      };
+    }
+  }, {
+    key: "updateDefinitionHeight",
+    value: function updateDefinitionHeight() {
+      var _ = this;
+      _.definitions.map(function (definition, index) {
+        if (definition.classList.contains("show")) {
+          definition.style.maxHeight = definition.scrollHeight + "px";
+        }
+      });
+    }
   }]);
-}();
+}(); // class jsa
 
 /******/ 	return __webpack_exports__;
 /******/ })()

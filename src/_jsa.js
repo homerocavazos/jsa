@@ -102,7 +102,7 @@ class jsa {
 
 		});
 
-		// Set the http://127.0.0.1:5500/demo.html#IDs for definitions
+
 		_.definitions.map((definition, index) => {
 
 			definition.setAttribute('id', `${_.settings.prefix}definition${index}`);
@@ -127,6 +127,7 @@ class jsa {
 			}
 		});
 
+		_.init();
 		_.schema = [];
 		_.buildSchema();
 
@@ -134,7 +135,17 @@ class jsa {
 			document.querySelector(_.settings.closeAll).addEventListener('click', e => _.reset());
 		};
 
+
+
+
 	}// constructor
+
+	init() {
+		const _ = this;
+		window.addEventListener('resize', _.debounce((e) => {
+			_.updateDefinitionHeight();
+		}, 200));
+	}
 
 	toggle(term) {
 		const _ = this;
@@ -219,7 +230,26 @@ class jsa {
 		_.el.insertAdjacentHTML("beforeend", `<script type="application/ld+json">${JSON.stringify(schema)}</script>`);
 	}
 
-}
+	debounce(fn, time) {
+		let timeout;
+		return function () {
+			const functionCall = () => fn.apply(this, arguments);
+			clearTimeout(timeout);
+			timeout = setTimeout(functionCall, time);
+		}
+	}
+
+	updateDefinitionHeight() {
+		const _ = this;
+		_.definitions.map((definition, index) => {
+			if (definition.classList.contains("show")) {
+				definition.style.maxHeight = definition.scrollHeight + "px";
+			}
+		});
+	}
+
+}// class jsa
+
 
 
 
