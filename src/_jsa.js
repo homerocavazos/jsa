@@ -102,7 +102,6 @@ class jsa {
 
 		});
 
-
 		_.definitions.map((definition, index) => {
 
 			definition.setAttribute('id', `${_.settings.prefix}definition${index}`);
@@ -189,6 +188,12 @@ class jsa {
 		_.terms.map((term, index) => {
 			term.classList.remove("active");
 			term.setAttribute("aria-expanded", "false");
+
+			let icon = term.querySelector(`.${_.settings.iconClass}`);
+			if (icon) {
+				icon.innerHTML = _.settings.icons[0];
+			}
+
 		});
 		_.definitions.map((definition, index) => {
 			definition.classList.remove("show");

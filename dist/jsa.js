@@ -221,6 +221,10 @@ var jsa = /*#__PURE__*/function () {
       _.terms.map(function (term, index) {
         term.classList.remove("active");
         term.setAttribute("aria-expanded", "false");
+        var icon = term.querySelector(".".concat(_.settings.iconClass));
+        if (icon) {
+          icon.innerHTML = _.settings.icons[0];
+        }
       });
       _.definitions.map(function (definition, index) {
         definition.classList.remove("show");
