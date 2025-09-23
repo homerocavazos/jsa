@@ -1,11 +1,10 @@
-$jsa-class: "jsa" !default;
-
-.#{$jsa-class} {
+.jsa-core {
   dt {
     display: flex;
     align-items: center;
     position: relative;
   }
+
   dd {
     max-height: 0;
     overflow: hidden;

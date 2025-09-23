@@ -7,8 +7,7 @@ const jsEntry = { jsa: "./src/_jsa.js" };
 
 // CSS-only entry
 const cssEntry = {
-	'jsa-theme-minimal': "./src/scss/jsa.theme-minimal.scss",
-	'jsa-theme-cabinet': "./src/scss/jsa.theme-cabinet.scss",
+	'jsa-themes': "./src/scss/jsa.themes.scss"
 };
 
 module.exports = (env, argv) => {

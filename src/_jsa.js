@@ -34,7 +34,7 @@ class jsa {
 			closeAll: null, // Selector e.g. <a class="close-all">Close All</a>
 			closeOthers: false, // Whether to close other items when one is opened
 			prefix: opts.prefix ?? `${Math.random().toString(36).substring(2, 7)}-`, // Generate a random prefix if not provided
-			theme: '', // options: 'custom', '' 
+			theme: 'core', // options: 'custom', 'minimal' 'cabinet', null for no theme
 			icons: ['+', '-'], // options: ['+', '-'], ['arrow-down', 'arrow-up'], [] for no icons
 			iconClass: 'jsa-icon', // Class for the icon span
 			schema: false,
@@ -70,7 +70,7 @@ class jsa {
 			term.setAttribute("role", "button");
 			term.setAttribute("aria-label", !term.ariaLabel ? `Toggle definition for ${term.textContent.trim()}` : term.ariaLabel);
 
-			if (_.settings.theme === 'custom') {
+			if (_.settings.theme === 'core') {
 				term.style.display = "flex";
 				term.style.position = "relative";
 				term.style.justifyContent = "space-between";
@@ -117,7 +117,7 @@ class jsa {
 			if (_.settings.openAll === true) definition.classList.add("show");
 			if (_.settings.openAll === true) definition.style.maxHeight = definition.scrollHeight + "px";
 
-			if (_.settings.theme === 'custom') {
+			if (_.settings.theme === 'core') {
 				definition.style.padding = "0";
 				definition.style.margin = "0";
 				definition.style.borderBottom = "1px solid #eee";
@@ -132,7 +132,10 @@ class jsa {
 		_.buildSchema();
 
 		if (_.settings.closeAll) {
-			document.querySelector(_.settings.closeAll).addEventListener('click', e => _.reset());
+			document.querySelector(_.settings.closeAll).addEventListener('click', e => {
+				e.preventDefault();
+				_.reset();
+			});
 		};
 
 
@@ -161,7 +164,7 @@ class jsa {
 			_.reset();
 		}
 
-		if (_.settings.theme === 'custom') {
+		if (_.settings.theme === 'core') {
 			def.style.padding = isOpen ? "0" : "1em 0";
 		}
 
@@ -200,7 +203,7 @@ class jsa {
 		_.definitions.map((definition, index) => {
 			definition.classList.remove("show");
 			definition.style.maxHeight = "0";
-			if (_.settings.theme === 'custom') definition.style.padding = "0";
+			if (_.settings.theme === 'core') definition.style.padding = "0";
 		});
 	}
 

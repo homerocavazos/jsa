@@ -1,10 +1,8 @@
-$jsa-class: "jsa" !default;
-
 :root {
   --color-grey: #cecece;
 }
 
-.#{$jsa-class}-theme-minimal {
+.jsa-theme-minimal {
   dt {
     display: flex;
     align-items: center;
