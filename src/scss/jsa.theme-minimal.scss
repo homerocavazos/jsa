@@ -1,15 +1,15 @@
 $jsa-class: "jsa" !default;
 
-.#{$jsa-class} {
+:root {
+  --color-grey: #cecece;
+}
+
+.#{$jsa-class}-theme-minimal {
   dt {
     display: flex;
     align-items: center;
     position: relative;
-    /* cursor: pointer; */
-    background-color: #fafafa;
-    border-bottom: 1px solid #e3e3e3;
-    border-left: 1px solid #e3e3e3;
-    border-right: 1px solid #e3e3e3;
+    border-top: 1px solid var(--color-grey);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
       Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
       sans-serif;
@@ -19,24 +19,14 @@ $jsa-class: "jsa" !default;
       border-bottom: none;
       border-top: none;
     }
-    &:first-of-type {
-      border-top: 1px solid #e3e3e3;
-      border-top-right-radius: 10px;
-      border-top-left-radius: 10px;
-    }
-    &:last-of-type {
-      border-bottom-right-radius: 10px;
-      border-bottom-left-radius: 10px;
-      border-bottom: 1px solid #e3e3e3;
 
+    &:first-of-type {
+      border-top: none;
+    }
+
+    &:last-of-type {
       &.active {
-        border-bottom-right-radius: 0;
-        border-bottom-left-radius: 0;
         border-bottom: none;
-        + dd {
-          border-bottom-right-radius: 10px;
-          border-bottom-left-radius: 10px;
-        }
       }
     }
 
@@ -44,6 +34,7 @@ $jsa-class: "jsa" !default;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
         sans-serif;
+
       color: rgba(0, 0, 0, 0.87);
       font-weight: 600;
       text-decoration: none;
@@ -64,7 +55,9 @@ $jsa-class: "jsa" !default;
         display: inline-block;
       }
     }
-  } // dt
+  }
+
+  // dt
 
   dd {
     max-height: 0;
@@ -74,8 +67,10 @@ $jsa-class: "jsa" !default;
     overflow: hidden;
     padding: 0;
     margin: 0;
-    &.show {
-      border: 1px solid #e3e3e3;
+
+    &.active {
+
+      border-bottom: 1px solid var(--color-grey);
       padding: 2em;
       max-height: 100%;
     }

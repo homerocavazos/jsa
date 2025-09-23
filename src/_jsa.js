@@ -34,12 +34,12 @@ class jsa {
 			closeAll: null, // Selector e.g. <a class="close-all">Close All</a>
 			closeOthers: false, // Whether to close other items when one is opened
 			prefix: opts.prefix ?? `${Math.random().toString(36).substring(2, 7)}-`, // Generate a random prefix if not provided
-			theme: '', // options: 'basic', '' 
+			theme: '', // options: 'custom', '' 
 			icons: ['+', '-'], // options: ['+', '-'], ['arrow-down', 'arrow-up'], [] for no icons
 			iconClass: 'jsa-icon', // Class for the icon span
 			schema: false,
 			schemaType: 'FAQPage',
-			termPadding: '0.5em 1em 0.5em 0', // Padding for dt elements when theme is 'basic'
+			termPadding: '0.5em 1em 0.5em 0', // Padding for dt elements when theme is 'custom'
 		}, opts);
 
 		console.log('--------------------------------');
@@ -66,10 +66,11 @@ class jsa {
 			term.style.cursor = "pointer";
 			term.setAttribute("aria-controls", `${_.settings.prefix}definition${index}`);
 			term.setAttribute("aria-expanded", "false");
+			if (_.settings.openFirst && index === 0) term.setAttribute("aria-expanded", "true");
 			term.setAttribute("role", "button");
 			term.setAttribute("aria-label", !term.ariaLabel ? `Toggle definition for ${term.textContent.trim()}` : term.ariaLabel);
 
-			if (_.settings.theme === 'basic') {
+			if (_.settings.theme === 'custom') {
 				term.style.display = "flex";
 				term.style.position = "relative";
 				term.style.justifyContent = "space-between";
@@ -90,7 +91,7 @@ class jsa {
 
 			};
 
-			if (_.settings.openFirst && index === 0) term.classList.add("active");
+			if (_.settings.openFirst && index === 0) term.parentNode.classList.add("active");
 
 			// This covers accessibility for keyboard users
 			term.addEventListener("keydown", e => {
@@ -116,7 +117,7 @@ class jsa {
 			if (_.settings.openAll === true) definition.classList.add("show");
 			if (_.settings.openAll === true) definition.style.maxHeight = definition.scrollHeight + "px";
 
-			if (_.settings.theme === 'basic') {
+			if (_.settings.theme === 'custom') {
 				definition.style.padding = "0";
 				definition.style.margin = "0";
 				definition.style.borderBottom = "1px solid #eee";
@@ -160,12 +161,13 @@ class jsa {
 			_.reset();
 		}
 
-		if (_.settings.theme === 'basic') {
+		if (_.settings.theme === 'custom') {
 			def.style.padding = isOpen ? "0" : "1em 0";
 		}
 
 		def.classList.toggle("show");
 		term.setAttribute("aria-expanded", !isOpen ? "true" : "false");
+		term.parentNode.classList.toggle("active");
 
 		// Swap icon if applicable
 		let icon = term.querySelector(`.${_.settings.iconClass}`);
@@ -186,7 +188,7 @@ class jsa {
 	reset() {
 		const _ = this;
 		_.terms.map((term, index) => {
-			term.classList.remove("active");
+			term.parentNode.classList.remove("active");
 			term.setAttribute("aria-expanded", "false");
 
 			let icon = term.querySelector(`.${_.settings.iconClass}`);
@@ -198,7 +200,7 @@ class jsa {
 		_.definitions.map((definition, index) => {
 			definition.classList.remove("show");
 			definition.style.maxHeight = "0";
-			if (_.settings.theme === 'basic') definition.style.padding = "0";
+			if (_.settings.theme === 'custom') definition.style.padding = "0";
 		});
 	}
 

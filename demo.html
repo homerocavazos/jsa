@@ -10,11 +10,8 @@
             font-size: 16px;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
-        /* dd div {
-            padding: 4rem;
-        } */
     </style>
+    <link rel="stylesheet" href="./dist/jsa-theme-cabinet.min.css">
 </head>
 
 <body>
@@ -67,7 +64,8 @@
     <hr>
     <h2>Multiple Accordions on the same page</h2>
     <p><strong>No Style</strong></p>
-    <dl class="jsa2">
+    <a href="#" class="jsa2-close-all">Toggle All</a>
+    <dl class="jsa2 jsa-theme-cabinet">
         <dt><a href="#">What is the capital of France?</a></dt>
         <dd>
             <div>
@@ -106,17 +104,17 @@
 
 
     <script type="module">
-        import { jsa } from './dist/jsa.js';
+        import { jsa } from './dist/jsa.min.js';
 
 
         // Optional to define "dl" as long as you use '.jsa' as class name for the accordion container
         new jsa({
-            theme: 'basic',
+            theme: 'custom',
             // icons: ['😅', '🥹'],
             icons: ['<svg width="18" height="11" viewBox="0 0 18 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L9 9L17 1" stroke="black" stroke-width="2"/><path d="M1 1L9 9L17 1" stroke="black" stroke-opacity="0.2" stroke-width="2"/></svg>', '<svg width="18" height="11" viewBox="0 0 18 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17 10L9 2L1 10" stroke="black" stroke-width="2"/><path d="M17 10L9 2L1 10" stroke="black" stroke-opacity="0.2" stroke-width="2"/></svg>'],
             termPadding: '.3rem',
             // closeOthers: true,
-            closeAll: '.jsa-close-all'
+            closeAll: '.jsa-close-all',
 
 
         });
@@ -129,6 +127,8 @@
             dl: '.jsa2',
             openFirst: true,
             schema: true,
+            closeAll: '.jsa2-close-all',
+            closeOthers: true,
         });
 
     </script>
