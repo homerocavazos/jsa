@@ -11,10 +11,13 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
     </style>
+    <link rel="stylesheet" href="./dist/jsa-theme-minimal.min.css">
     <link rel="stylesheet" href="./dist/jsa-theme-cabinet.min.css">
 </head>
 
 <body>
+    <h2>Theme Custom</h2>
+    <p>This theme is set in <code style="background-color:rgb(35, 189, 255); color: white;">theme: "custom"</code></p>
     <a href="#" class="jsa-close-all">Toggle All</a>
     <dl class="jsa">
         <dt><a href="#">What is the capital of France?</a></dt>
@@ -62,8 +65,47 @@
     </dl>
 
     <hr>
-    <h2>Multiple Accordions on the same page</h2>
-    <p><strong>No Style</strong></p>
+    <h2>Theme Minimal</h2>
+
+
+    <dl class="jsa-3 jsa-theme-minimal">
+        <dt><a href="#">What is the capital of France?</a></dt>
+        <dd>
+            <div>
+                <p>The capital of France is Paris.</p>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni, blanditiis quas ullam minima animi
+                    nostrum. Dolores rem deserunt quidem vitae! Perferendis quo praesentium magni vel alias deserunt
+                    consectetur quos quidem iste quia tempora, minus culpa placeat enim repellendus porro deleniti eius
+                    rerum! Non, repellendus? Beatae reprehenderit ad nobis natus ipsam molestiae nostrum blanditiis
+                    alias cum? Id ipsam eveniet minus accusamus neque eligendi! Soluta, ipsa corrupti nam enim nesciunt
+                    facilis obcaecati blanditiis est voluptas. Veniam, facere! Molestiae blanditiis dolores perspiciatis
+                    magnam a sint consequatur quo ratione minus dolorum nostrum, inventore soluta ipsa illo quas minima
+                    eveniet facilis. Nobis quae est tempora.</p>
+            </div>
+        </dd>
+
+        <dt><a href="#">What is the capital of Germany?</a></dt>
+        <dd>
+            <div>The capital of Germany is Berlin.</div>
+        </dd>
+
+        <dt><a href="#">What is the capital of Italy?</a></dt>
+        <dd>
+            <div>The capital of Italy is Rome.</div>
+        </dd>
+
+        <dt><a href="#">How long will shipping take?</a></dt>
+        <dd>
+            <p>It depends on the shipping method you choose.</p>
+            <ul>
+                <li>Standard Shipping: 5-7 business days</li>
+                <li>Express Shipping: 2-3 business days</li>
+                <li>Overnight Shipping: 1 business day</li>
+            </ul>
+        </dd>
+    </dl>
+    <hr>
+    <h2>Theme Cabinet</h2>
     <a href="#" class="jsa2-close-all">Toggle All</a>
     <dl class="jsa2 jsa-theme-cabinet">
         <dt><a href="#">What is the capital of France?</a></dt>
@@ -104,7 +146,7 @@
 
 
     <script type="module">
-        import { jsa } from './dist/jsa.min.js';
+        import { jsa } from './dist/jsa.js';
 
 
         // Optional to define "dl" as long as you use '.jsa' as class name for the accordion container
@@ -121,8 +163,12 @@
 
 
 
-        // Requires to define "dl" for multiple accordions on the same page with unique class or id names
-        // prefix is optional here as it defaults to random name if not provided e.g., data-target="wr6id-definition2"
+        new jsa({
+            dl: '.jsa-3',
+            closeOthers: true,
+        });
+
+
         new jsa({
             dl: '.jsa2',
             openFirst: true,

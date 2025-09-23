@@ -17,11 +17,11 @@ $jsa-class: "jsa" !default;
 
     &.active {
       border-bottom: none;
-      border-top: none;
+      border-top: 1px solid #e3e3e3;
     }
 
     &:first-of-type {
-      border-top: none;
+      border-top: 1px solid #e3e3e3;
     }
 
     &:last-of-type {
@@ -41,7 +41,7 @@ $jsa-class: "jsa" !default;
       width: 100%;
       padding: 15px 30px;
 
-      &.active::after {
+      &[aria-expanded="true"]::after {
         content: "-";
       }
 
@@ -73,6 +73,10 @@ $jsa-class: "jsa" !default;
       border-bottom: 1px solid var(--color-grey);
       padding: 2em;
       max-height: 100%;
+    }
+
+    div {
+      padding: 0 2rem 2rem 2rem;
     }
   }
 }
