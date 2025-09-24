@@ -18,20 +18,40 @@
 			line-height: 1.5;
 			font-size: .9rem;
 		}
+    .container {
+      max-width: 1200px;
+      margin: 2em auto;
+    }
+    hr {
+
+      border: 1px solid #e3e3e3;
+
+    }
+    dd {
+      margin:  0;
+      p {
+      padding: 1rem 0;
+    }
+  }
 	</style>
 	<link rel="stylesheet" href="./dist/jsa-themes.min.css">
 </head>
 
 <body>
+
+  <div class="container">
+
+
 	<h2>Theme None</h2>
 	<p>Setting theme to empty disables access to all styles options. This is a barebones
 		accordion.</p>
-	<p>Options set to
-	<pre><code>{
+
+
+<pre><code>{
   theme: ""
 }</code>
 </pre>
-	</p>
+
 	<a href="#" class="jsa-close-all">Toggle All</a>
 	<dl class="jsa">
 		<dt><a href="#">What is the capital of France?</a></dt>
@@ -194,8 +214,12 @@
 	</dl>
 	<hr>
 
-	<h2>Theme Cabinet</h2>
-	<p>Theme set to <code style="background-color:rgb(35, 189, 255); color: white;">theme: "accordion"</code></p>
+	<h2>Theme Accordion</h2>
+<pre><code>{
+  theme: "accordion",
+}</code>
+</pre>
+<p>To override the "Accordion" theme you would need to copy the <code>_jsa.theme-accordion.scss</code> file into your project and make your changes there.</p>
 	<a href="#" class="jsa2-close-all">Toggle All</a>
 	<dl class="jsa2">
 		<dt><a href="#">What is the capital of France?</a></dt>
@@ -234,6 +258,7 @@
 		</dd>
 	</dl>
 
+  </div>
 
 	<script type="module">
 		import { jsa } from './dist/jsa.js';
@@ -241,12 +266,12 @@
 
 		// Optional to define "dl" as long as you use '.jsa' as class name for the accordion container
 		new jsa({
-			theme: '', // 'minimal', 'cabinet', 'custom'
+			theme: '', // 'core', 'minimal', 'accordion', ''
 			closeAll: '.jsa-close-all',
 		});
 		new jsa({
 			dl: '.jsa-core',
-			theme: 'core', // 'minimal', 'cabinet', 'custom'
+			theme: 'core', // 'core', 'minimal', 'accordion', ''
 			icons: ['😅', '🥹'],
 			termPadding: '.3rem',
 			closeAll: '.jsa-close-all',
@@ -254,8 +279,8 @@
 
 		new jsa({
 			dl: '.jsa2',
+			theme: 'accordion', // 'core', 'minimal', 'accordion', ''
 			openFirst: true,
-			theme: 'accordion', // 'minimal', 'cabinet', 'custom'
 			schema: true,
 			closeAll: '.jsa2-close-all',
 			closeOthers: true,
@@ -264,8 +289,7 @@
 		new jsa({
 			dl: '.jsa-minimal',
 			closeOthers: true,
-			theme: 'minimal', // 'minimal', 'cabinet', 'custom'
-			icons: ['<svg width="18" height="11" viewBox="0 0 18 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L9 9L17 1" stroke="black" stroke-width="2"/><path d="M1 1L9 9L17 1" stroke="black" stroke-opacity="0.2" stroke-width="2"/></svg>', '<svg width="18" height="11" viewBox="0 0 18 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17 10L9 2L1 10" stroke="black" stroke-width="2"/><path d="M17 10L9 2L1 10" stroke="black" stroke-opacity="0.2" stroke-width="2"/></svg>'],
+			theme: 'minimal', // 'core', 'minimal', 'accordion', ''
 		});
 
 

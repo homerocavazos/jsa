@@ -74,7 +74,8 @@ class jsa {
 				term.style.display = "flex";
 				term.style.position = "relative";
 				term.style.justifyContent = "space-between";
-				term.style.alignItems = "center";
+				term.style.alignItems = "flex-start";
+        term.style.gap = "1em";
 				term.style.textDecoration = "none";
 				term.style.padding = _.settings.termPadding;
 				term.style.borderTop = "1px solid #eee";
@@ -124,7 +125,7 @@ class jsa {
 				definition.style.borderBottom = "1px solid #eee";
 				definition.style.borderTop = "none";
 				definition.style.transition = "max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s cubic-bezier(0.4, 0, 0.2, 1)";
-				if (_.settings.openFirst === true && index === 0) definition.style.padding = "1em 0";
+				// if (_.settings.openFirst === true && index === 0) definition.style.padding = "1em 0";
 			}
 		});
 
@@ -163,10 +164,6 @@ class jsa {
 
 		if (_.settings.closeOthers && !isOpen) {
 			_.reset();
-		}
-
-		if (_.settings.theme === 'core') {
-			def.style.padding = isOpen ? "0" : "1em 0";
 		}
 
 		def.classList.toggle("show");
@@ -260,8 +257,6 @@ class jsa {
 	}
 
 }// class jsa
-
-
 
 
 export { jsa };
