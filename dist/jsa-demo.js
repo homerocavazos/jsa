@@ -17,12 +17,12 @@
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-/*!**********************************!*\
-  !*** ./src/scss/jsa.themes.scss ***!
-  \**********************************/
+/*!********************************!*\
+  !*** ./src/scss/jsa.demo.scss ***!
+  \********************************/
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
 /******/ })()
 ;
-//# sourceMappingURL=jsa-themes.js.map
+//# sourceMappingURL=jsa-demo.js.map

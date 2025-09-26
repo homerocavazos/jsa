@@ -1,0 +1,40 @@
+.chips {
+
+    &-flex {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin-right: .5em;
+    }
+}
+
+%chip {
+    padding: 5px 10px;
+    margin: 0 1px;
+    display: inline-block;
+    background-color: antiquewhite;
+    color: #ffffff;
+    font-weight: 400;
+    border-radius: 5px;
+}
+
+.chip-coral {
+    @extend %chip;
+    background-color: coral;
+}
+
+.chip-yellow {
+    @extend %chip;
+    background-color: #eec13b;
+}
+
+.chip-blue {
+    @extend %chip;
+    background-color: #71b5f8;
+}
+
+.chip-orange {
+    @extend %chip;
+    background-color: #ffa042;
+}
