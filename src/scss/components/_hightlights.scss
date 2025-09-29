@@ -1,0 +1,51 @@
+ .h {
+     color: #98c379;
+
+     &-el {
+         color: #e06c75;
+     }
+
+     &-attr {
+         color: #d19a66;
+     }
+
+     &-string {
+         color: coral;
+
+         @media (prefers-color-scheme: dark) {
+             color: #98c379;
+         }
+     }
+
+     &-lime {
+         color: #98c379;
+
+     }
+
+     &-yellow {
+         color: #eec13b;
+     }
+
+     &-blue {
+         color: #71b5f8;
+     }
+
+     &-pink {
+         color: #ff6f91;
+     }
+
+     &-js-new {
+         color: #f24b3c;
+     }
+
+     &-js-var {
+         color: #e97f4d;
+         color: #9fae62;
+     }
+
+     &-js-comment {
+         color: #88786a;
+     }
+
+
+ }

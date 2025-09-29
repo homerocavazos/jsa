@@ -1,11 +1,115 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.2;
+    margin: 0 0 .5em 0;
+}
+
 h1 {
-    font-size: 1em;
+    // 16-18
+    font-size: clamp(1rem, 0.7917rem + 0.2778vw, 1.125rem);
     font-weight: bold;
-    margin: .5em 0 0 0;
+    color: #e97f4d;
+    color: #3b3b3b;
+}
+
+h2 {
+    // 16-18
+    font-size: clamp(1rem, 0.7917rem + 0.2778vw, 1.125rem);
+    font-weight: bold;
+    margin-bottom: 1rem;
+    // color: #e97f4d;
+    display: inline-flex;
+    align-items: center;
+
+
+    small {
+        font-size: small;
+        font-weight: 600;
+        letter-spacing: normal;
+        padding: 0 0 0 .5em;
+        border-radius: 0 5px 5px 5px;
+        color: white;
+        background-color: coral;
+        display: inline-flex;
+        align-items: center;
+        margin: 0 0 0 .5em;
+
+        small {
+            margin-left: 1em;
+            font-size: x-small;
+            padding: 1em .6em;
+            background-color: #232526;
+            background-color: #f64200;
+            border-radius: 0 5px 5px 5px;
+        }
+    }
 }
 
 p {
     margin: .3em 0;
     line-height: 1.4;
-    font-size: smaller;
+
+    // 14-16px
+    font-size: clamp(1rem, 0.7917rem + 0.2778vw, 1.125rem);
+
+    &:last-of-type {
+        margin-bottom: 2em;
+    }
+}
+
+
+code {
+    background-color: rgb(228, 230, 230);
+    color: rgb(88, 88, 88);
+    padding: .2rem;
+    line-height: 1.5;
+    font-size: .8rem;
+    overflow-wrap: break-word;
+    word-break: break-all;
+}
+
+
+@media (prefers-color-scheme: dark) {
+    code {
+        background-color: rgb(58, 60, 60);
+        color: rgb(200, 200, 200);
+    }
+
+    pre {
+        background: #282c34;
+        color: #bbb;
+    }
+}
+
+
+pre {
+    background-color: #232526;
+    border-radius: 5px;
+    margin: 0;
+    padding: 1em;
+    color: #ddd;
+    font-size: .875rem;
+    background: #2f3032;
+    border-radius: 0 20px 20px 20px;
+
+    overflow-x: auto;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+    font-size: .8rem;
+
+    @media screen and (min-width: 992px) {
+        padding: 2em;
+    }
+}
+
+:where(pre) {
+    font-size: inherit;
 }

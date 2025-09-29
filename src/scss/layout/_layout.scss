@@ -1,0 +1,66 @@
+aside {
+	margin: 1em;
+
+	p {
+		font-size: smaller;
+	}
+
+	@media screen and (min-width: 768px) {
+		align-self: flex-start;
+		position: sticky;
+		top: 78px;
+		flex: 1;
+	}
+}
+
+section {
+	flex: 3;
+}
+
+article {
+	margin-bottom: 1em;
+	margin: 1em 1em 1em 0;
+	padding: 1em;
+
+	border-radius: 0 20px 20px 20px;
+	background-color: white;
+
+	@media screen and (min-width: 992px) {
+		padding: 2em;
+	}
+
+	section {
+		display: flex;
+		flex-direction: column;
+
+		justify-content: space-between;
+		align-items: center;
+
+		margin-top: 2em;
+
+		&:first-of-type {
+			margin-top: 0;
+		}
+
+
+		@media screen and (min-width: 992px) {
+			flex-direction: row;
+			gap: 2em;
+		}
+
+		div {
+			flex: 1;
+			align-items: center;
+			width: 100%;
+		}
+	}
+
+
+
+
+
+	p {
+		font-size: 1rem;
+		margin: .8em 0;
+	}
+}
