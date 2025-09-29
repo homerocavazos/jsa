@@ -14,9 +14,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>JavaScript Accordion 2.0</title>
 
-	<style>
-
-	</style>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+		rel="stylesheet">
 	<link rel="stylesheet" href="./dist/jsa-demo.min.css">
 	<link rel="stylesheet" href="./dist/jsa-themes.min.css">
 
@@ -58,9 +59,11 @@
 		<section>
 
 			<article>
+				<h2>Usage</h2>
 				<section>
 					<div>
-						<h2>Usage <small>Bare Minimum <small>HTML</small></small></h2>
+
+						<small>Bare Minimum <small>HTML</small></small>
 
 						<p>
 							The accordion's markup is based on definition list. The goal is to
@@ -94,12 +97,12 @@
 				</section>
 				<section>
 					<div>
-						<h2>Instantiate <small>Bare Minimum <small>JavaScript</small></small></h2>
+						<small>Bare Minimum <small>JavaScript</small></small>
 
 						<p>To instantiate the accordion, you need to include the JavaScript file and create a new instance of the
 							accordion class.</p>
 
-
+						<p>The <code>&lt;dl&gt;</code> element should have the class <code>jsa</code> applied to it.</p>
 					</div>
 					<div>
 						<pre>
@@ -112,7 +115,147 @@
 
 			</article>
 
+			<article id="options">
+				<h2>Options</h2>
 
+				<section>
+					<div>
+						<small>JSA <small>2.0</small></small>
+						<p>By default the theme is set to <code>'core'</code>. <strong>Core</strong> is a minimalistic theme that
+							provides basic customization without any additional CSS.</p>
+
+
+						<p> The <code>&lt;a&gt;</code> tag is recommended
+							because it is semantically
+							appropriate for links that open and close content and is widely recognized by users and assistive
+							technologies.</p>
+						<p>However, if you prefer to use a different element (like a <code>&lt;button&gt;</code> or heading tags),
+							you can specify that using the <code>dt</code> option.
+							<code>&lt;dt&gt;&lt;h2&gt;Title&lt;/h2&gt;&lt;/dt&gt;</code> {<code>dt: 'dt h2'</code>}
+						</p>
+
+
+
+						<p>All options are optional. The defaults are shown below.</p>
+
+					</div>
+					<div>
+						<pre>
+<span class="h-string">new</span> <span class="h-lime">jsa</span><span class="h-yellow">(
+  <span class="h-yellow">{</span>
+   <span class="h-js-new">dl:</span> '.jsa',
+   <span class="h-js-new">dt:</span> 'dt a',
+   <span class="h-js-new">theme:</span> 'core',
+   <span class="h-js-new">openFirst:</span> false,
+   <span class="h-js-new">closeOthers:</span> false,
+   <span class="h-js-new">icons:</span> ['', ''],
+   <span class="h-js-new">iconClass:</span> 'jsa-icon',
+   <span class="h-js-new">termPadding:</span> '0.5em 1em',
+   <span class="h-js-new">closeAll:</span> null,
+   <span class="h-js-new">schema:</span> false,
+   <span class="h-js-new">schemaType:</span> 'FAQPage'
+  <span class="h-yellow">}</span>
+)</span>;
+</pre>
+					</div>
+
+
+				</section>
+				<table>
+					<thead>
+						<tr>
+							<th>Option</th>
+							<th>Type</th>
+							<th>Default</th>
+							<th>Availability</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><code>dl</code></td>
+							<td>string</td>
+							<td><code>'.jsa'</code></td>
+							<td>✓</td>
+							<td>The selector for the accordion container. This should be a <code>&lt;dl&gt;</code> element.</td>
+						</tr>
+						<tr>
+							<td><code>dt</code></td>
+							<td>string</td>
+							<td><code>'dt a'</code></td>
+							<td>✓</td>
+							<td>The trigger element for the accordion. This should be a <code>&lt;dt&gt;</code> element.</td>
+						</tr>
+						<tr>
+							<td><code>theme</code></td>
+							<td>string</td>
+							<td><code>'core'</code></td>
+							<td>✓</td>
+							<td>The theme to use for the accordion. Options are <code>'core'</code>, <code>'minimal'</code>,
+								<code>'accordion'</code>, or <code>''</code> (no theme).
+							</td>
+						</tr>
+						<tr>
+							<td><code>openFirst</code></td>
+							<td>boolean</td>
+							<td><code>false</code></td>
+							<td>✓</td>
+							<td>If true, the first item will be opened by default.</td>
+						</tr>
+						<tr>
+							<td><code>closeOthers</code></td>
+							<td>boolean</td>
+							<td><code>false</code></td>
+							<td>✓</td>
+							<td>If true, opening one item will close all others.</td>
+						</tr>
+						<tr>
+							<td><code>icons</code></td>
+							<td>array</td>
+							<td><code>[]</code></td>
+							<td>Core</td>
+							<td>An array of two strings representing the icons for the closed and open states. Can be
+								inline SVG,
+								an <code>&lt;img&gt;</code> element, or emojis.</td>
+						</tr>
+						<tr>
+							<td><code>iconClass</code></td>
+							<td>string</td>
+							<td><code>'jsa-icon'</code></td>
+							<td>Core</td>
+							<td>The class to apply to the icon element.</td>
+						</tr>
+						<tr>
+							<td><code>termPadding</code></td>
+							<td>string</td>
+							<td><code>'0.5em 1em'</code></td>
+							<td>✓</td>
+							<td>The padding to apply to the term element.</td>
+						</tr>
+						<tr>
+							<td><code>closeAll</code></td>
+							<td>string</td>
+							<td><code>null</code></td>
+							<td>✓</td>
+							<td>The selector for a button or link that will close all items when clicked.</td>
+						</tr>
+						<tr>
+							<td><code>schema</code></td>
+							<td>boolean</td>
+							<td><code>false</code></td>
+							<td>✓</td>
+							<td>If true, JSON-LD schema will be generated for SEO.</td>
+						</tr>
+						<tr>
+							<td><code>schemaType</code></td>
+							<td>string</td>
+							<td><code>'FAQPage'</code></td>
+							<td>✓</td>
+							<td>The type of schema to generate. Options are <code>'FAQPage'</code> or <code>'Article'</code>.</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
 			<div class="container">
 				<h2>Theme None</h2>
 				<p>Setting theme to empty disables access to all styles options. This is a barebones
