@@ -100,6 +100,10 @@ small {
     }
 }
 
+strong {
+    font-weight: 600;
+}
+
 p {
     // margin: .3em 0;
     line-height: 1.4;
@@ -120,7 +124,7 @@ code {
     line-height: 1.5;
     font-size: .8rem;
     overflow-wrap: break-word;
-    word-break: break-all;
+    // word-break: break-all;
 }
 
 

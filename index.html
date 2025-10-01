@@ -35,7 +35,6 @@
 			</div>
 			<div class="byline">
 				<span class="pill"><span class="ico-grafixmonkey"></span></span>
-				<!-- <span class="ico-grafixmonkey"></span> -->
 				<span>homiehomes</span>
 			</div>
 		</div>
@@ -52,8 +51,8 @@
 					generate
 					JSON-LD schema for SEO. Easy to style and customize.</p>
 
-				<pre><span class="h-lime">npm</span> i <span class="h-string">@homiehomes/jsa</span></pre>
 			</div>
+			<pre><span class="h-lime">npm</span> i <span class="h-string">@homiehomes/jsa</span></pre>
 
 		</aside>
 		<section>
@@ -99,7 +98,8 @@
 					<div>
 						<small>Bare Minimum <small>JavaScript</small></small>
 
-						<p>To instantiate the accordion, you need to include the JavaScript file and create a new instance of the
+						<p>To instantiate the accordion, you need to include the JavaScript file and create a new
+							instance of the
 							accordion class.</p>
 
 						<p>The <code>&lt;dl&gt;</code> element should have the class <code>jsa</code> applied to it.</p>
@@ -121,15 +121,18 @@
 				<section>
 					<div>
 						<small>JSA <small>2.0</small></small>
-						<p>By default the theme is set to <code>'core'</code>. <strong>Core</strong> is a minimalistic theme that
+						<p>By default the theme is set to <code>'core'</code>. <strong>Core</strong> is a minimalistic
+							theme that
 							provides basic customization without any additional CSS.</p>
 
 
 						<p> The <code>&lt;a&gt;</code> tag is recommended
 							because it is semantically
-							appropriate for links that open and close content and is widely recognized by users and assistive
+							appropriate for links that open and close content and is widely recognized by users and
+							assistive
 							technologies.</p>
-						<p>However, if you prefer to use a different element (like a <code>&lt;button&gt;</code> or heading tags),
+						<p>However, if you prefer to use a different element (like a <code>&lt;button&gt;</code> or
+							heading tags),
 							you can specify that using the <code>dt</code> option.
 							<code>&lt;dt&gt;&lt;h2&gt;Title&lt;/h2&gt;&lt;/dt&gt;</code> {<code>dt: 'dt h2'</code>}
 						</p>
@@ -161,397 +164,245 @@
 
 
 				</section>
-				<table>
-					<thead>
-						<tr>
-							<th>Option</th>
-							<th>Type</th>
-							<th>Default</th>
-							<th>Availability</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>dl</code></td>
-							<td>string</td>
-							<td><code>'.jsa'</code></td>
-							<td>✓</td>
-							<td>The selector for the accordion container. This should be a <code>&lt;dl&gt;</code> element.</td>
-						</tr>
-						<tr>
-							<td><code>dt</code></td>
-							<td>string</td>
-							<td><code>'dt a'</code></td>
-							<td>✓</td>
-							<td>The trigger element for the accordion. This should be a <code>&lt;dt&gt;</code> element.</td>
-						</tr>
-						<tr>
-							<td><code>theme</code></td>
-							<td>string</td>
-							<td><code>'core'</code></td>
-							<td>✓</td>
-							<td>The theme to use for the accordion. Options are <code>'core'</code>, <code>'minimal'</code>,
-								<code>'accordion'</code>, or <code>''</code> (no theme).
-							</td>
-						</tr>
-						<tr>
-							<td><code>openFirst</code></td>
-							<td>boolean</td>
-							<td><code>false</code></td>
-							<td>✓</td>
-							<td>If true, the first item will be opened by default.</td>
-						</tr>
-						<tr>
-							<td><code>closeOthers</code></td>
-							<td>boolean</td>
-							<td><code>false</code></td>
-							<td>✓</td>
-							<td>If true, opening one item will close all others.</td>
-						</tr>
-						<tr>
-							<td><code>icons</code></td>
-							<td>array</td>
-							<td><code>[]</code></td>
-							<td>Core</td>
-							<td>An array of two strings representing the icons for the closed and open states. Can be
-								inline SVG,
-								an <code>&lt;img&gt;</code> element, or emojis.</td>
-						</tr>
-						<tr>
-							<td><code>iconClass</code></td>
-							<td>string</td>
-							<td><code>'jsa-icon'</code></td>
-							<td>Core</td>
-							<td>The class to apply to the icon element.</td>
-						</tr>
-						<tr>
-							<td><code>termPadding</code></td>
-							<td>string</td>
-							<td><code>'0.5em 1em'</code></td>
-							<td>✓</td>
-							<td>The padding to apply to the term element.</td>
-						</tr>
-						<tr>
-							<td><code>closeAll</code></td>
-							<td>string</td>
-							<td><code>null</code></td>
-							<td>✓</td>
-							<td>The selector for a button or link that will close all items when clicked.</td>
-						</tr>
-						<tr>
-							<td><code>schema</code></td>
-							<td>boolean</td>
-							<td><code>false</code></td>
-							<td>✓</td>
-							<td>If true, JSON-LD schema will be generated for SEO.</td>
-						</tr>
-						<tr>
-							<td><code>schemaType</code></td>
-							<td>string</td>
-							<td><code>'FAQPage'</code></td>
-							<td>✓</td>
-							<td>The type of schema to generate. Options are <code>'FAQPage'</code> or <code>'Article'</code>.</td>
-						</tr>
-					</tbody>
-				</table>
+				<div class="table-container">
+					<table>
+						<thead>
+							<tr>
+								<th>Option</th>
+								<th>Type</th>
+								<th>Default</th>
+								<th>Availability</th>
+								<th>Description</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><code>dl</code></td>
+								<td>string</td>
+								<td><code>'.jsa'</code></td>
+								<td>✓</td>
+								<td>The selector for the accordion container. This should be a <code>&lt;dl&gt;</code>
+									element.</td>
+							</tr>
+							<tr>
+								<td><code>dt</code></td>
+								<td>string</td>
+								<td><code>'dt a'</code></td>
+								<td>✓</td>
+								<td>The trigger element for the accordion. This should be a <code>&lt;dt&gt;</code>
+									element.
+								</td>
+							</tr>
+							<tr>
+								<td><code>theme</code></td>
+								<td>string</td>
+								<td><code>'core'</code></td>
+								<td>✓</td>
+								<td>The theme to use for the accordion. Options are <code>'core'</code>,
+									<code>'minimal'</code>,
+									<code>'accordion'</code>, or <code>''</code> (no theme).
+								</td>
+							</tr>
+							<tr>
+								<td><code>openFirst</code></td>
+								<td>boolean</td>
+								<td><code>false</code></td>
+								<td>✓</td>
+								<td>If true, the first item will be opened by default.</td>
+							</tr>
+							<tr>
+								<td><code>closeOthers</code></td>
+								<td>boolean</td>
+								<td><code>false</code></td>
+								<td>✓</td>
+								<td>If true, opening one item will close all others.</td>
+							</tr>
+							<tr>
+								<td><code>icons</code></td>
+								<td>array</td>
+								<td><code>[]</code></td>
+								<td>Core</td>
+								<td>An array of two strings representing the icons for the closed and open states. Can
+									be
+									inline SVG,
+									an <code>&lt;img&gt;</code> element, or emojis.</td>
+							</tr>
+							<tr>
+								<td><code>iconClass</code></td>
+								<td>string</td>
+								<td><code>'jsa-icon'</code></td>
+								<td>Core</td>
+								<td>The class to apply to the icon element.</td>
+							</tr>
+							<tr>
+								<td><code>termPadding</code></td>
+								<td>string</td>
+								<td><code>'0.5em 1em'</code></td>
+								<td>✓</td>
+								<td>The padding to apply to the term element.</td>
+							</tr>
+							<tr>
+								<td><code>closeAll</code></td>
+								<td>string</td>
+								<td><code>null</code></td>
+								<td>✓</td>
+								<td>The selector for a button or link that will close all items when clicked.</td>
+							</tr>
+							<tr>
+								<td><code>schema</code></td>
+								<td>boolean</td>
+								<td><code>false</code></td>
+								<td>✓</td>
+								<td>If true, JSON-LD schema will be generated for SEO.</td>
+							</tr>
+							<tr>
+								<td><code>schemaType</code></td>
+								<td>string</td>
+								<td><code>'FAQPage'</code></td>
+								<td>✓</td>
+								<td>The type of schema to generate. Options are <code>'FAQPage'</code> or
+									<code>'Article'</code>.
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 			</article>
+
+			<article class="bg-ocean">
+				<h2>Themes</h2>
+				<p>JSA is set to <strong>core</strong> theme by default. There are four themes to choose from. Each
+					theme has its own set of styles that you may override.</p>
+
+				<ul>
+					<li><strong>Core</strong> - A minimalistic theme with inline styles only. No external CSS needed.
+					</li>
+					<li><strong>None</strong> - No styles applied. This is a barebones accordion.</li>
+
+					<li><strong>Minimal</strong> - A clean, lightweight starting point for custom styling. Requires
+						<code>jsa-themes.min.css</code> or
+						add <code>_jsa.theme-minimal.scss</code> to your project.
+					</li>
+					<li><strong>Accordion</strong> - A fully styled accordion. Requires <code>jsa-themes.min.css</code>
+						or add
+						<code>_jsa.theme-accordion.scss</code> to your project.
+					</li>
+				</ul>
+
+			</article>
+
+			<article id="theme-core">
+				<div class="theme">
+					<h2>Theme Core - Default </h2>
+
+					<p><strong>Core</strong> delivers the essential accordion layout with inline styles only—no external
+						CSS needed. Ideal for rapid prototypes or quick drop-ins, it works out of the box and can be
+						overridden if custom styling is required.
+					</p>
+					<p>By default, it doesn't include icons for the open/close states. You can add your own—using inline
+						SVG, an
+						<code>&lt;img&gt;</code>
+						element, or even emojis.
+					</p>
+
+					<div class="flex mt-md">
+						<div>
+							<dl class="jsa-core">
+								<dt><a href="#">What is the capital of France?</a></dt>
+								<dd>
+									<div>
+										<p>The capital of France is Paris.</p>
+										</p>
+									</div>
+								</dd>
+
+								<dt><a href="#">What is the capital of Germany?</a></dt>
+								<dd>
+									<div>
+										<p>The capital of Germany is Berlin.</p>
+									</div>
+								</dd>
+
+								<dt><a href="#">What is the capital of Italy?</a></dt>
+								<dd>
+									<div>
+										<p>The capital of Italy is Rome.</p>
+									</div>
+								</dd>
+
+
+							</dl>
+						</div>
+						<div>
+							<pre>
+<span class="h-string">new</span> <span class="h-lime">jsa</span><span class="h-yellow">(
+  <span class="h-yellow">{</span>
+   <span class="h-js-new">icons:</span> ['😅', '🥹'],
+  <span class="h-yellow">}</span>
+)</span>;
+</pre>
+						</div>
+					</div>
+
+				</div>
+			</article>
+			<article id="theme-none">
+				<div class="theme">
+					<h2>Theme None</h2>
+
+					<p>Setting theme to empty disables access to all styles options. Ideal for
+						when you want to apply your own styles from scratch.
+					</p>
+
+					<div class="flex mt-md">
+						<div>
+							<dl class="jsa-none">
+								<dt><a href="#">What is the capital of France?</a></dt>
+								<dd>
+									<div>
+										<p>The capital of France is Paris.</p>
+										</p>
+									</div>
+								</dd>
+
+								<dt><a href="#">What is the capital of Germany?</a></dt>
+								<dd>
+									<div>
+										<p>The capital of Germany is Berlin.</p>
+									</div>
+								</dd>
+
+								<dt><a href="#">What is the capital of Italy?</a></dt>
+								<dd>
+									<div>
+										<p>The capital of Italy is Rome.</p>
+									</div>
+								</dd>
+
+
+							</dl>
+						</div>
+						<div>
+							<pre>
+<span class="h-string">new</span> <span class="h-lime">jsa</span><span class="h-yellow">(
+  <span class="h-yellow">{</span>
+   <span class="h-js-new">theme:</span> &quot;&quot;,
+  <span class="h-yellow">}</span>
+)</span>;
+</pre>
+						</div>
+					</div>
+
+				</div>
+			</article>
+
+
 			<div class="container">
-				<h2>Theme None</h2>
-				<p>Setting theme to empty disables access to all styles options. This is a barebones
-					accordion.</p>
 
 
-				<pre><code>{
-  theme: ""
-}</code>
-</pre>
-
-				<a href="#" class="jsa-close-all">Toggle All</a>
-				<dl class="jsa">
-					<dt><a href="#">What is the capital of France?</a></dt>
-					<dd>
-						<div>
-							<p>The capital of France is Paris.</p>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis voluptate et numquam?
-								Non
-								praesentium cum porro sequi saepe deserunt, expedita molestias impedit error mollitia
-								odit
-								quisquam
-								unde tempore eaque ea, voluptate, placeat delectus rerum enim! Quasi eveniet non
-								praesentium,
-								error
-								assumenda repellendus adipisci dignissimos tempore officiis ipsum illum beatae illo rem
-								facere
-								unde
-								ducimus eius, dolorum quod aliquid! Laboriosam voluptatum ipsa necessitatibus unde esse
-								enim
-								soluta
-								voluptates ad, nihil impedit quo suscipit itaque. Aliquid molestiae quibusdam ipsam
-								velit, quia
-								corrupti, hic, soluta inventore quaerat adipisci nemo harum deleniti laboriosam
-								mollitia! Quasi,
-								aliquid? Velit recusandae ipsum, quam id illo fugiat nobis. Soluta veritatis impedit,
-								facere
-								dolorem
-								sapiente vero eos cum ipsam delectus eius voluptate fugiat quisquam vitae mollitia
-								facilis
-								tenetur
-								minima ad nihil quis laborum corrupti tempore nostrum deleniti. Officiis cumque facilis
-								incidunt
-								quisquam officia esse similique sequi harum repellat at minima aliquid, repellendus illo
-								corrupti,
-								modi veritatis enim ex aspernatur commodi rerum? Obcaecati voluptas, soluta dicta error
-								ipsa
-								fugit
-								autem sunt enim nesciunt mollitia eius consectetur quod laboriosam, ab suscipit omnis
-								repellat
-								vitae! Expedita voluptates amet officiis cupiditate doloribus veritatis, architecto
-								fugiat
-								doloremque aliquam in id accusantium dolores est sint error consectetur. Aliquam
-								corrupti
-								cupiditate
-								ea praesentium consequuntur, laudantium ratione.</p>
-						</div>
-					</dd>
-
-					<dt><a href="#">What is the capital of Germany?</a></dt>
-					<dd>
-						<div>The capital of Germany is Berlin.</div>
-					</dd>
-
-					<dt><a href="#">What is the capital of Italy?</a></dt>
-					<dd>
-						<div>The capital of Italy is Rome.</div>
-					</dd>
-
-					<dt><a href="#">How long will shipping take?</a></dt>
-					<dd>
-						<p>It depends on the shipping method you choose.</p>
-						<ul>
-							<li>Standard Shipping: 5-7 business days</li>
-							<li>Express Shipping: 2-3 business days</li>
-							<li>Overnight Shipping: 1 business day</li>
-						</ul>
-					</dd>
-				</dl>
-
-				<hr>
-				<h2>Theme Core</h2>
-				<p><strong>Core</strong> delivers the essential accordion layout with inline styles only—no external CSS
-					needed.
-					Ideal
-					for rapid prototypes or quick drop-ins, it works out of the box and can be overridden if custom
-					styling is
-					required.
-				</p>
-				<p>By default, it doesn't include icons for the open/close states. You can add your own—using inline
-					SVG, an
-					<code>&lt;img&gt;</code>
-					element, or even emojis.
-				</p>
-
-				<pre><code>{
-  theme: "core",
-  icons: ['&lt;svg&gt;...&lt;/svg&gt;', '&lt;svg&gt;...&lt;/svg&gt;'],
-  iconClass: 'jsa-icon',
-  termPadding: '0.5em 1em 0.5em 0'
-}</code>
-</pre>
-
-				<dl class="jsa-core">
-					<dt><a href="#">What is the capital of France?</a></dt>
-					<dd>
-						<div>
-							<p>The capital of France is Paris.</p>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis voluptate et numquam?
-								Non
-								praesentium cum porro sequi saepe deserunt, expedita molestias impedit error mollitia
-								odit
-								quisquam
-								unde tempore eaque ea, voluptate, placeat delectus rerum enim! Quasi eveniet non
-								praesentium,
-								error
-								assumenda repellendus adipisci dignissimos tempore officiis ipsum illum beatae illo rem
-								facere
-								unde
-								ducimus eius, dolorum quod aliquid! Laboriosam voluptatum ipsa necessitatibus unde esse
-								enim
-								soluta
-								voluptates ad, nihil impedit quo suscipit itaque. Aliquid molestiae quibusdam ipsam
-								velit, quia
-								corrupti, hic, soluta inventore quaerat adipisci nemo harum deleniti laboriosam
-								mollitia! Quasi,
-								aliquid? Velit recusandae ipsum, quam id illo fugiat nobis. Soluta veritatis impedit,
-								facere
-								dolorem
-								sapiente vero eos cum ipsam delectus eius voluptate fugiat quisquam vitae mollitia
-								facilis
-								tenetur
-								minima ad nihil quis laborum corrupti tempore nostrum deleniti. Officiis cumque facilis
-								incidunt
-								quisquam officia esse similique sequi harum repellat at minima aliquid, repellendus illo
-								corrupti,
-								modi veritatis enim ex aspernatur commodi rerum? Obcaecati voluptas, soluta dicta error
-								ipsa
-								fugit
-								autem sunt enim nesciunt mollitia eius consectetur quod laboriosam, ab suscipit omnis
-								repellat
-								vitae! Expedita voluptates amet officiis cupiditate doloribus veritatis, architecto
-								fugiat
-								doloremque aliquam in id accusantium dolores est sint error consectetur. Aliquam
-								corrupti
-								cupiditate
-								ea praesentium consequuntur, laudantium ratione.</p>
-						</div>
-					</dd>
-
-					<dt><a href="#">What is the capital of Germany?</a></dt>
-					<dd>
-						<div>The capital of Germany is Berlin.</div>
-					</dd>
-
-					<dt><a href="#">What is the capital of Italy?</a></dt>
-					<dd>
-						<div>The capital of Italy is Rome.</div>
-					</dd>
-
-					<dt><a href="#">How long will shipping take?</a></dt>
-					<dd>
-						<p>It depends on the shipping method you choose.</p>
-						<ul>
-							<li>Standard Shipping: 5-7 business days</li>
-							<li>Express Shipping: 2-3 business days</li>
-							<li>Overnight Shipping: 1 business day</li>
-						</ul>
-					</dd>
-				</dl>
-
-				<hr>
-				<h2>Theme Minimal</h2>
-
-				<p><strong>Minimal</strong> provides a clean, lightweight starting point for custom styling. It applies
-					only
-					essential
-					base styles and is meant to be extended or overridden for your project's unique look.</p>
-				<p><strong>Requires:</strong> <code>jsa-themes.min.css</code> or add
-					<code>_jsa.theme-minimal.scss</code> to
-					your
-					project.
-				</p>
 
 
-				<pre><code>{
-  theme: "minimal",
-}</code>
-</pre>
 
-
-				<dl class="jsa-minimal">
-					<dt><a href="#">What is the capital of France?</a></dt>
-					<dd>
-						<div>
-							<p>The capital of France is Paris.</p>
-							<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni, blanditiis quas ullam
-								minima
-								animi
-								nostrum. Dolores rem deserunt quidem vitae! Perferendis quo praesentium magni vel alias
-								deserunt
-								consectetur quos quidem iste quia tempora, minus culpa placeat enim repellendus porro
-								deleniti
-								eius
-								rerum! Non, repellendus? Beatae reprehenderit ad nobis natus ipsam molestiae nostrum
-								blanditiis
-								alias cum? Id ipsam eveniet minus accusamus neque eligendi! Soluta, ipsa corrupti nam
-								enim
-								nesciunt
-								facilis obcaecati blanditiis est voluptas. Veniam, facere! Molestiae blanditiis dolores
-								perspiciatis
-								magnam a sint consequatur quo ratione minus dolorum nostrum, inventore soluta ipsa illo
-								quas
-								minima
-								eveniet facilis. Nobis quae est tempora.</p>
-						</div>
-					</dd>
-
-					<dt><a href="#">What is the capital of Germany?</a></dt>
-					<dd>
-						<div>The capital of Germany is Berlin.</div>
-					</dd>
-
-					<dt><a href="#">What is the capital of Italy?</a></dt>
-					<dd>
-						<div>The capital of Italy is Rome.</div>
-					</dd>
-
-					<dt><a href="#">How long will shipping take?</a></dt>
-					<dd>
-						<p>It depends on the shipping method you choose.</p>
-						<ul>
-							<li>Standard Shipping: 5-7 business days</li>
-							<li>Express Shipping: 2-3 business days</li>
-							<li>Overnight Shipping: 1 business day</li>
-						</ul>
-					</dd>
-				</dl>
-				<hr>
-
-				<h2>Theme Accordion</h2>
-				<pre><code>{
-  theme: "accordion",
-}</code>
-</pre>
-				<p>To override the "Accordion" theme you would need to copy the <code>_jsa.theme-accordion.scss</code>
-					file into
-					your project and make your changes there.</p>
-				<a href="#" class="jsa2-close-all">Toggle All</a>
-				<dl class="jsa2">
-					<dt><a href="#">What is the capital of France?</a></dt>
-					<dd>
-						<div>
-							<p>The capital of France is Paris.</p>
-							<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni, blanditiis quas ullam
-								minima
-								animi
-								nostrum. Dolores rem deserunt quidem vitae! Perferendis quo praesentium magni vel alias
-								deserunt
-								consectetur quos quidem iste quia tempora, minus culpa placeat enim repellendus porro
-								deleniti
-								eius
-								rerum! Non, repellendus? Beatae reprehenderit ad nobis natus ipsam molestiae nostrum
-								blanditiis
-								alias cum? Id ipsam eveniet minus accusamus neque eligendi! Soluta, ipsa corrupti nam
-								enim
-								nesciunt
-								facilis obcaecati blanditiis est voluptas. Veniam, facere! Molestiae blanditiis dolores
-								perspiciatis
-								magnam a sint consequatur quo ratione minus dolorum nostrum, inventore soluta ipsa illo
-								quas
-								minima
-								eveniet facilis. Nobis quae est tempora.</p>
-						</div>
-					</dd>
-
-					<dt><a href="#">What is the capital of Germany?</a></dt>
-					<dd>
-						<div>The capital of Germany is Berlin.</div>
-					</dd>
-
-					<dt><a href="#">What is the capital of Italy?</a></dt>
-					<dd>
-						<div>The capital of Italy is Rome.</div>
-					</dd>
-
-					<dt><a href="#">How long will shipping take?</a></dt>
-					<dd>
-						<p>It depends on the shipping method you choose.</p>
-						<ul>
-							<li>Standard Shipping: 5-7 business days</li>
-							<li>Express Shipping: 2-3 business days</li>
-							<li>Overnight Shipping: 1 business day</li>
-						</ul>
-					</dd>
-				</dl>
 
 			</div>
 		</section>
@@ -559,35 +410,18 @@
 
 
 	<script type="module">
-		import { jsa } from '/dist/jsa.min.js';
+		import { jsa } from '/dist/jsa.js';
 
 
 		// Optional to define "dl" as long as you use '.jsa' as class name for the accordion container
 		new jsa({
+			dl: '.jsa-none',
 			theme: '', // 'core', 'minimal', 'accordion', ''
-			closeAll: '.jsa-close-all',
 		});
 		new jsa({
 			dl: '.jsa-core',
-			theme: 'core', // 'core', 'minimal', 'accordion', ''
 			icons: ['😅', '🥹'],
-			termPadding: '.3rem',
-			closeAll: '.jsa-close-all',
-		});
-
-		new jsa({
-			dl: '.jsa2',
-			theme: 'accordion', // 'core', 'minimal', 'accordion', ''
-			openFirst: true,
-			schema: true,
-			closeAll: '.jsa2-close-all',
-			closeOthers: true,
-		});
-
-		new jsa({
-			dl: '.jsa-minimal',
-			closeOthers: true,
-			theme: 'minimal', // 'core', 'minimal', 'accordion', ''
+			// termPadding: '1rem',
 		});
 
 
