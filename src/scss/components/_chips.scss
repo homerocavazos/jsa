@@ -13,10 +13,12 @@
     padding: 5px 10px;
     margin: 0 1px;
     display: inline-block;
-    background-color: antiquewhite;
-    color: #ffffff;
-    font-weight: 400;
+    font-weight: 600;
     border-radius: 5px;
+}
+
+.chip {
+    @extend %chip;
 }
 
 .chip-coral {
@@ -26,15 +28,21 @@
 
 .chip-yellow {
     @extend %chip;
-    background-color: #eec13b;
+    background-color: var(--color-secondary, #eec13b);
 }
 
 .chip-blue {
     @extend %chip;
-    background-color: #71b5f8;
+    background-color: var(--color-primary, #71b5f8);
 }
 
 .chip-orange {
     @extend %chip;
-    background-color: #ffa042;
+    background-color: var(--color-accent, #ffa042);
+}
+
+.chip-ocean {
+    @extend %chip;
+
+    background-color: #cfe3e2;
 }

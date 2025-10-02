@@ -27,6 +27,7 @@ h6 {
     font-weight: 700;
     line-height: 1.2;
     margin: 0 0 .5em 0;
+    color: var(--color-text);
 }
 
 h1 {
@@ -38,8 +39,6 @@ h1 {
     // 20-28
     font-size: clamp(1.25rem, 0.4167rem + 1.1111vw, 1.75rem);
     font-weight: bold;
-    color: #e97f4d;
-    color: #3b3b3b;
     letter-spacing: -.02em;
 }
 
@@ -50,52 +49,28 @@ h2 {
     font-size: clamp(1.25rem, 0.8333rem + 0.5556vw, 1.5rem);
     font-weight: bold;
     margin-bottom: 1rem;
-    // color: #e97f4d;
-    // display: inline-flex;
     align-items: center;
-
-
-    small {
-        font-size: small;
-        font-weight: 600;
-        letter-spacing: normal;
-        padding: 0 0 0 .5em;
-        border-radius: 0 5px 5px 5px;
-        color: white;
-        background-color: coral;
-        display: inline-flex;
-        align-items: center;
-        margin: 0 0 0 .5em;
-
-        small {
-            margin-left: 1em;
-            font-size: x-small;
-            padding: 1em .6em;
-            background-color: #232526;
-            background-color: #f64200;
-            border-radius: 0 5px 5px 5px;
-        }
-    }
 }
 
 small {
     font-size: small;
     font-weight: 600;
     letter-spacing: normal;
-    padding: 0 0 0 .5em;
+    padding: 0 0 0 1em;
     border-radius: 0 5px 5px 5px;
-    color: white;
-    background-color: coral;
+    // color: white;
+    // background-color: coral;
     display: inline-flex;
     align-items: center;
-    // margin: 0 0 0 .5em;
+
 
     small {
-        margin-left: 1em;
-        font-size: x-small;
+        margin-left: 1.5em;
+        font-size: smaller;
+        letter-spacing: 1px;
         padding: 1em .6em;
-        background-color: #232526;
-        background-color: #f64200;
+        // background-color: #232526;
+        // background-color: #f64200;
         border-radius: 0 5px 5px 5px;
     }
 }
@@ -116,6 +91,27 @@ p {
     }
 }
 
+a {
+    color: var(--color-black, #1b1b1b);
+    text-decoration: none;
+    font-weight: 400;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+ul.default {
+    list-style: disc;
+    margin-left: 1.5em;
+    margin-bottom: 1em;
+}
 
 code {
     background-color: rgb(228, 230, 230);
@@ -168,4 +164,26 @@ pre {
 
 :where(pre) {
     font-size: 1rem;
+}
+
+.text {
+    &-regular {
+        font-weight: 400;
+    }
+
+    &-semi {
+        font-weight: 600;
+    }
+
+    &-bold {
+        font-weight: 700;
+    }
+
+    &-xbold {
+        font-weight: 800;
+    }
+
+    &-xxbold {
+        font-weight: 900;
+    }
 }

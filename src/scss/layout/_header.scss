@@ -35,12 +35,18 @@ header {
         border-radius: 40px 0 40px 40px;
         font-weight: 400;
         padding: 0 1em 0 0;
-        // letter-spacing: -.02em;
         color: rgb(85, 85, 85);
 
         background-color: rgb(229, 229, 229);
         background-color: rgb(241, 241, 241);
+
         // background-color: rgb(225, 242, 255);
+        span {
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+            font-weight: 600;
+        }
     }
 }
 
@@ -49,6 +55,7 @@ header {
     flex-direction: column;
     // margin-top: 1em;
     background-color: white;
+    // background: linear-gradient(to top, #f5f9fd, #ffffff);
     padding: 1em;
     border-radius: 10px 0 0 0;
 }

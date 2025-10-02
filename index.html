@@ -28,14 +28,19 @@
 	<header>
 		<div class="header__intro">
 			<div class="chips-flex">
-				<span class="chip-yellow">J</span>
-				<span class="chip-orange">S</span>
-				<span class="chip-blue">A</span>
-				<code>2.0</code>
+				<span class="chip bg-primary text-white">J</span>
+				<span class="chip bg-secondary text-white">S</span>
+				<span class="chip bg-accent text-white">A</span>
+				<span class="chip bg text-black">2.0</span>
+				<!-- <code>2.0</code> -->
 			</div>
 			<div class="byline">
-				<span class="pill"><span class="ico-grafixmonkey"></span></span>
-				<span>homiehomes</span>
+
+				<!-- <a href="mailto:homerocavazos@gmail.com"><span>HOMiE <span
+							class="icon-bear"><strong>ʕ´•ᴥ•`ʔ</strong></span>
+						HOMES</span></a> -->
+				<a href="mailto:homerocavazos@gmail.com"><span><span class="pill"><span
+								class="ico-grafixmonkey"></span></span> HOMiE HOMES</span></a>
 			</div>
 		</div>
 
@@ -54,15 +59,39 @@
 			</div>
 			<pre><span class="h-lime">npm</span> i <span class="h-string">@homiehomes/jsa</span></pre>
 
+
+			<article class="bg-ocean">
+				<h2>Themes at a glance</h2>
+				<p>JSA is set to <strong>core</strong> theme by default. There are four themes to choose from. Each
+					theme has its own set of styles that you may override.</p>
+
+				<ul>
+					<li><strong>Core</strong> - No external CSS needed.
+					</li>
+					<li><strong>None</strong> - No styles applied.</li>
+
+					<li><strong>Minimal</strong> - Requires
+						<code>jsa-themes.min.css</code> or
+						<code>_jsa.theme-minimal.scss</code>.
+					</li>
+					<li><strong>Accordion</strong> - Requires <code>jsa-themes.min.css</code>
+						or
+						<code>_jsa.theme-accordion.scss</code>.
+					</li>
+				</ul>
+
+			</article>
 		</aside>
+
 		<section>
 
-			<article>
+			<article id="usage">
 				<h2>Usage</h2>
 				<section>
 					<div>
 
-						<small>Bare Minimum <small>HTML</small></small>
+						<small class="bg-accent text-white text-xxbold">Bare Minimum <small
+								class="bg-secondary text-alert text-xxbold">HTML</small></small>
 
 						<p>
 							The accordion's markup is based on definition list. The goal is to
@@ -96,7 +125,8 @@
 				</section>
 				<section>
 					<div>
-						<small>Bare Minimum <small>JavaScript</small></small>
+						<small class="bg-accent text-white text-xxbold">Bare Minimum <small
+								class="bg-secondary text-alert text-xxbold">JavaScript</small></small>
 
 						<p>To instantiate the accordion, you need to include the JavaScript file and create a new
 							instance of the
@@ -120,7 +150,8 @@
 
 				<section>
 					<div>
-						<small>JSA <small>2.0</small></small>
+						<small class="bg-primary text-white text-xxbold">JSA <small
+								class="bg-secondary text-black text-xxbold">2.0</small></small>
 						<p>By default the theme is set to <code>'core'</code>. <strong>Core</strong> is a minimalistic
 							theme that
 							provides basic customization without any additional CSS.</p>
@@ -269,27 +300,6 @@
 				</div>
 			</article>
 
-			<article class="bg-ocean">
-				<h2>Themes</h2>
-				<p>JSA is set to <strong>core</strong> theme by default. There are four themes to choose from. Each
-					theme has its own set of styles that you may override.</p>
-
-				<ul>
-					<li><strong>Core</strong> - A minimalistic theme with inline styles only. No external CSS needed.
-					</li>
-					<li><strong>None</strong> - No styles applied. This is a barebones accordion.</li>
-
-					<li><strong>Minimal</strong> - A clean, lightweight starting point for custom styling. Requires
-						<code>jsa-themes.min.css</code> or
-						add <code>_jsa.theme-minimal.scss</code> to your project.
-					</li>
-					<li><strong>Accordion</strong> - A fully styled accordion. Requires <code>jsa-themes.min.css</code>
-						or add
-						<code>_jsa.theme-accordion.scss</code> to your project.
-					</li>
-				</ul>
-
-			</article>
 
 			<article id="theme-core">
 				<div class="theme">
@@ -396,15 +406,108 @@
 				</div>
 			</article>
 
+			<article id="theme-minimal">
+				<div class="theme">
+					<h2>Theme Minimal</h2>
 
-			<div class="container">
+					<p>Setting theme to minimal provides a basic styling for the accordion. It requires
+						<code>jsa-themes.min.css</code> or adding <code>_jsa.theme-minimal.scss</code> to your project.
+						This theme is a great starting point for custom styling.
+					</p>
+
+					<div class="flex mt-md">
+						<div>
+							<dl class="jsa-minimal">
+								<dt><a href="#">What is the capital of France?</a></dt>
+								<dd>
+									<div>
+										<p>The capital of France is Paris.</p>
+										</p>
+									</div>
+								</dd>
+
+								<dt><a href="#">What is the capital of Germany?</a></dt>
+								<dd>
+									<div>
+										<p>The capital of Germany is Berlin.</p>
+									</div>
+								</dd>
+
+								<dt><a href="#">What is the capital of Italy?</a></dt>
+								<dd>
+									<div>
+										<p>The capital of Italy is Rome.</p>
+									</div>
+								</dd>
 
 
+							</dl>
+						</div>
+						<div>
+							<pre>
+<span class="h-string">new</span> <span class="h-lime">jsa</span><span class="h-yellow">(
+  <span class="h-yellow">{</span>
+   <span class="h-js-new">theme:</span> &quot;minimal&quot;,
+  <span class="h-yellow">}</span>
+)</span>;
+</pre>
+						</div>
+					</div>
+
+				</div>
+			</article>
+
+			<article id="theme-accordion">
+				<div class="theme">
+					<h2>Theme Accordion</h2>
+
+					<p>Setting theme to accordion provides a fully styled accordion. It requires
+						<code>jsa-themes.min.css</code> or adding <code>_jsa.theme-accordion.scss</code> to your
+						project. This theme mimics Bootstrap's accordion component.
+					</p>
+
+					<div class="flex mt-md">
+						<div>
+							<dl class="jsa-accordion">
+								<dt><a href="#">What is the capital of France?</a></dt>
+								<dd>
+									<div>
+										<p>The capital of France is Paris.</p>
+										</p>
+									</div>
+								</dd>
+
+								<dt><a href="#">What is the capital of Germany?</a></dt>
+								<dd>
+									<div>
+										<p>The capital of Germany is Berlin.</p>
+									</div>
+								</dd>
+
+								<dt><a href="#">What is the capital of Italy?</a></dt>
+								<dd>
+									<div>
+										<p>The capital of Italy is Rome.</p>
+									</div>
+								</dd>
 
 
+							</dl>
+						</div>
+						<div>
+							<pre>
+<span class="h-string">new</span> <span class="h-lime">jsa</span><span class="h-yellow">(
+  <span class="h-yellow">{</span>
+   <span class="h-js-new">theme:</span> &quot;accordion&quot;,
+  <span class="h-yellow">}</span>
+)</span>;
+</pre>
+						</div>
+					</div>
 
+				</div>
+			</article>
 
-			</div>
 		</section>
 	</main>
 
@@ -421,7 +524,14 @@
 		new jsa({
 			dl: '.jsa-core',
 			icons: ['😅', '🥹'],
-			// termPadding: '1rem',
+		});
+		new jsa({
+			dl: '.jsa-minimal',
+			theme: 'minimal',
+		});
+		new jsa({
+			dl: '.jsa-accordion',
+			theme: 'accordion',
 		});
 
 

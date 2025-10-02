@@ -2,6 +2,18 @@
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./src/scss/jsa.demo.scss ***!
   \*********************************************************************************************************************************************/
 @charset "UTF-8";
+:root {
+  --color-primary: #71b5f8;
+  --color-secondary: #ffd350;
+  --color-accent: #ffa042;
+  --color-accent-text: #cf8234;
+  --color-coral: coral;
+  --color-alert: #f64200;
+  --color-background: #ffffff;
+  --color-text: #3b3b3b;
+  --color-black: #1b1b1b;
+}
+
 /***
     The new CSS reset - version 1.8.5 (last updated 14.6.2023)
     GitHub page: https://github.com/elad2412/the-new-css-reset
@@ -11,11 +23,6 @@
     - The "symbol *" part is to solve Firefox SVG sprite bug
     - The "html" attribute is exclud, because otherwise a bug in Chrome breaks the CSS hyphens property (https://github.com/elad2412/the-new-css-reset/issues/36)
  */
-*:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)) {
-  all: unset;
-  display: revert;
-}
-
 /* Preferred box-sizing value */
 *,
 *::before,
@@ -137,7 +144,7 @@ body {
   body {
     background-color: #121212;
     /* Dark mode background */
-    color: #E0E0E0;
+    color: #ed2a2a;
     /* Dark mode text (light gray for readability) */
   }
 }
@@ -145,20 +152,57 @@ body {
 .bg {
   background-color: white;
 }
-.bg-yellow {
-  background-color: #eec13b;
+.bg-primary {
+  background-color: var(--color-primary, #71b5f8);
 }
-.bg-blue {
-  background-color: #71b5f8;
+.bg-secondary {
+  background-color: var(--color-secondary, #ffd350);
 }
-.bg-orange {
-  background-color: #ffa042;
+.bg-accent {
+  background-color: var(--color-accent, #ffa042);
+}
+.bg-alert {
+  background-color: var(--color-alert, #f64200);
+}
+.bg-coral {
+  background-color: var(--color-coral, coral);
 }
 .bg-ocean {
   background-color: #cfe3e2;
 }
 .bg-ocean code {
   background-color: #b0d4d3;
+}
+
+.text {
+  color: var(--color-text, #3b3b3b);
+}
+.text-white {
+  color: white;
+}
+.text-black {
+  color: var(--color-black, #1b1b1b);
+}
+.text-primary {
+  color: var(--color-primary, #71b5f8);
+}
+.text-secondary {
+  color: var(--color-secondary, #eec13b);
+}
+.text-accent {
+  color: var(--color-accent, #ffa042);
+}
+.text-accent-text {
+  color: var(--color-accent-text, #cf8234);
+}
+.text-alert {
+  color: var(--color-alert, #f64200);
+}
+.text-coral {
+  color: var(--color-coral, coral);
+}
+.text-ocean {
+  color: #cfe3e2;
 }
 
 .libre-baskerville-regular {
@@ -189,6 +233,7 @@ h6 {
   font-weight: 700;
   line-height: 1.2;
   margin: 0 0 0.5em 0;
+  color: var(--color-text);
 }
 
 h1 {
@@ -196,8 +241,6 @@ h1 {
   font-size: clamp(1.125rem, 0.7083rem + 0.5556vw, 1.375rem);
   font-size: clamp(1.25rem, 0.4167rem + 1.1111vw, 1.75rem);
   font-weight: bold;
-  color: #e97f4d;
-  color: #3b3b3b;
   letter-spacing: -0.02em;
 }
 
@@ -208,44 +251,21 @@ h2 {
   margin-bottom: 1rem;
   align-items: center;
 }
-h2 small {
-  font-size: small;
-  font-weight: 600;
-  letter-spacing: normal;
-  padding: 0 0 0 0.5em;
-  border-radius: 0 5px 5px 5px;
-  color: white;
-  background-color: coral;
-  display: inline-flex;
-  align-items: center;
-  margin: 0 0 0 0.5em;
-}
-h2 small small {
-  margin-left: 1em;
-  font-size: x-small;
-  padding: 1em 0.6em;
-  background-color: #232526;
-  background-color: #f64200;
-  border-radius: 0 5px 5px 5px;
-}
 
 small {
   font-size: small;
   font-weight: 600;
   letter-spacing: normal;
-  padding: 0 0 0 0.5em;
+  padding: 0 0 0 1em;
   border-radius: 0 5px 5px 5px;
-  color: white;
-  background-color: coral;
   display: inline-flex;
   align-items: center;
 }
 small small {
-  margin-left: 1em;
-  font-size: x-small;
+  margin-left: 1.5em;
+  font-size: smaller;
+  letter-spacing: 1px;
   padding: 1em 0.6em;
-  background-color: #232526;
-  background-color: #f64200;
   border-radius: 0 5px 5px 5px;
 }
 
@@ -258,6 +278,27 @@ p {
   font-size: clamp(1rem, 0.7917rem + 0.2778vw, 1.125rem);
 }
 p:last-of-type {
+  margin-bottom: 1em;
+}
+
+a {
+  color: var(--color-black, #1b1b1b);
+  text-decoration: none;
+  font-weight: 400;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+ul.default {
+  list-style: disc;
+  margin-left: 1.5em;
   margin-bottom: 1em;
 }
 
@@ -309,6 +350,22 @@ pre {
   font-size: 1rem;
 }
 
+.text-regular {
+  font-weight: 400;
+}
+.text-semi {
+  font-weight: 600;
+}
+.text-bold {
+  font-weight: 700;
+}
+.text-xbold {
+  font-weight: 800;
+}
+.text-xxbold {
+  font-weight: 900;
+}
+
 .chips-flex {
   display: flex;
   align-items: center;
@@ -317,13 +374,11 @@ pre {
   margin-right: 0.5em;
 }
 
-.chip-orange, .chip-blue, .chip-yellow, .chip-coral {
+.chip-ocean, .chip-orange, .chip-blue, .chip-yellow, .chip-coral, .chip {
   padding: 5px 10px;
   margin: 0 1px;
   display: inline-block;
-  background-color: antiquewhite;
-  color: #ffffff;
-  font-weight: 400;
+  font-weight: 600;
   border-radius: 5px;
 }
 
@@ -332,15 +387,19 @@ pre {
 }
 
 .chip-yellow {
-  background-color: #eec13b;
+  background-color: var(--color-secondary, #eec13b);
 }
 
 .chip-blue {
-  background-color: #71b5f8;
+  background-color: var(--color-primary, #71b5f8);
 }
 
 .chip-orange {
-  background-color: #ffa042;
+  background-color: var(--color-accent, #ffa042);
+}
+
+.chip-ocean {
+  background-color: #cfe3e2;
 }
 
 .ico-grafixmonkey {
@@ -444,6 +503,12 @@ header {
   background-color: rgb(229, 229, 229);
   background-color: rgb(241, 241, 241);
 }
+.header__intro .byline span {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  font-weight: 600;
+}
 
 .header__body {
   display: flex;
@@ -478,6 +543,9 @@ aside p {
     top: 78px;
     flex: 1;
   }
+}
+aside article {
+  margin: 1em 0;
 }
 
 section {
@@ -569,12 +637,12 @@ table tr:hover {
 .flex {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 1rem;
   flex-wrap: wrap;
 }
 @media screen and (min-width: 992px) {
   .flex {
+    align-items: center;
     flex-direction: row;
   }
 }
@@ -588,6 +656,11 @@ table tr:hover {
 
 .mt-md {
   margin-top: 2rem;
+}
+
+dt a,
+dt h2 {
+  font-weight: 500;
 }
 
 /*# sourceMappingURL=jsa-demo.min.css.map*/

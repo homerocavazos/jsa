@@ -1,16 +1,24 @@
 .bg {
     background-color: white;
 
-    &-yellow {
-        background-color: #eec13b;
+    &-primary {
+        background-color: var(--color-primary, #71b5f8);
     }
 
-    &-blue {
-        background-color: #71b5f8;
+    &-secondary {
+        background-color: var(--color-secondary, #ffd350);
     }
 
-    &-orange {
-        background-color: #ffa042;
+    &-accent {
+        background-color: var(--color-accent, #ffa042);
+    }
+
+    &-alert {
+        background-color: var(--color-alert, #f64200);
+    }
+
+    &-coral {
+        background-color: var(--color-coral, coral);
     }
 
     &-ocean {
@@ -19,5 +27,45 @@
         code {
             background-color: #b0d4d3;
         }
+    }
+}
+
+.text {
+    color: var(--color-text, #3b3b3b);
+
+    &-white {
+        color: white;
+    }
+
+    &-black {
+        color: var(--color-black, #1b1b1b);
+    }
+
+    &-primary {
+        color: var(--color-primary, #71b5f8);
+    }
+
+    &-secondary {
+        color: var(--color-secondary, #eec13b);
+    }
+
+    &-accent {
+        color: var(--color-accent, #ffa042);
+    }
+
+    &-accent-text {
+        color: var(--color-accent-text, #cf8234);
+    }
+
+    &-alert {
+        color: var(--color-alert, #f64200);
+    }
+
+    &-coral {
+        color: var(--color-coral, coral);
+    }
+
+    &-ocean {
+        color: #cfe3e2;
     }
 }
