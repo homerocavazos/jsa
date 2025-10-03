@@ -115,6 +115,11 @@ table {
 
 		@media (prefers-color-scheme: dark) {
 			border-bottom: 1px solid #0d483b;
+
+			&::selection {
+				color: rgb(88, 141, 48);
+				background-color: #043a26;
+			}
 		}
 	}
 

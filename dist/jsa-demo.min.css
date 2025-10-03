@@ -292,6 +292,15 @@ h6 {
     font-weight: 400;
     font-style: normal;
   }
+  h1::selection,
+  h2::selection,
+  h3::selection,
+  h4::selection,
+  h5::selection,
+  h6::selection {
+    color: rgb(88, 141, 48);
+    background-color: #043a26;
+  }
 }
 
 h1 {
@@ -341,6 +350,10 @@ p {
 p:last-of-type {
   margin-bottom: 1em;
 }
+p::selection {
+  color: rgb(88, 141, 48);
+  background-color: #043a26;
+}
 
 a {
   color: var(--color-black, #1b1b1b);
@@ -349,6 +362,10 @@ a {
 }
 a:hover {
   text-decoration: underline;
+}
+a::selection {
+  color: rgb(88, 141, 48);
+  background-color: #043a26;
 }
 
 ul {
@@ -364,6 +381,10 @@ ul li {
 @media (prefers-color-scheme: dark) {
   ul li {
     font-family: monospace;
+  }
+  ul li::selection {
+    color: rgb(88, 141, 48);
+    background-color: #043a26;
   }
 }
 
@@ -416,6 +437,10 @@ pre {
     background-color: #03271f;
     color: #98c379;
     font-size: 0.9rem;
+  }
+  pre::selection {
+    color: rgb(88, 141, 48);
+    background-color: #043a26;
   }
 }
 
@@ -735,6 +760,11 @@ table td {
   table th,
   table td {
     border-bottom: 1px solid #0d483b;
+  }
+  table th::selection,
+  table td::selection {
+    color: rgb(88, 141, 48);
+    background-color: #043a26;
   }
 }
 table th {

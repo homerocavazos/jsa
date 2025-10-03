@@ -34,6 +34,11 @@ h6 {
 		font-optical-sizing: auto;
 		font-weight: 400;
 		font-style: normal;
+
+		&::selection {
+			color: rgb(88, 141, 48);
+			background-color: #043a26;
+		}
 	}
 
 }
@@ -86,6 +91,11 @@ p {
 	&:last-of-type {
 		margin-bottom: 1em;
 	}
+
+	&::selection {
+		color: rgb(88, 141, 48);
+		background-color: #043a26;
+	}
 }
 
 a {
@@ -95,6 +105,11 @@ a {
 
 	&:hover {
 		text-decoration: underline;
+	}
+
+	&::selection {
+		color: rgb(88, 141, 48);
+		background-color: #043a26;
 	}
 }
 
@@ -108,8 +123,14 @@ ul {
 		padding: .2em 0;
 		line-height: 1.4;
 
+
 		@media (prefers-color-scheme: dark) {
 			font-family: monospace;
+
+			&::selection {
+				color: rgb(88, 141, 48);
+				background-color: #043a26;
+			}
 		}
 	}
 }
@@ -160,6 +181,11 @@ pre {
 		background-color: #03271f;
 		color: #98c379;
 		font-size: .9rem;
+
+		&::selection {
+			color: rgb(88, 141, 48);
+			background-color: #043a26;
+		}
 	}
 }
 
