@@ -92,9 +92,11 @@ p {
 		margin-bottom: 1em;
 	}
 
-	&::selection {
-		color: rgb(88, 141, 48);
-		background-color: #043a26;
+	@media (prefers-color-scheme: dark) {
+		&::selection {
+			color: rgb(88, 141, 48);
+			background-color: #043a26;
+		}
 	}
 }
 
@@ -107,9 +109,11 @@ a {
 		text-decoration: underline;
 	}
 
-	&::selection {
-		color: rgb(88, 141, 48);
-		background-color: #043a26;
+	@media (prefers-color-scheme: dark) {
+		&::selection {
+			color: rgb(88, 141, 48);
+			background-color: #043a26;
+		}
 	}
 }
 

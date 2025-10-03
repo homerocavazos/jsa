@@ -350,9 +350,11 @@ p {
 p:last-of-type {
   margin-bottom: 1em;
 }
-p::selection {
-  color: rgb(88, 141, 48);
-  background-color: #043a26;
+@media (prefers-color-scheme: dark) {
+  p::selection {
+    color: rgb(88, 141, 48);
+    background-color: #043a26;
+  }
 }
 
 a {
@@ -363,9 +365,11 @@ a {
 a:hover {
   text-decoration: underline;
 }
-a::selection {
-  color: rgb(88, 141, 48);
-  background-color: #043a26;
+@media (prefers-color-scheme: dark) {
+  a::selection {
+    color: rgb(88, 141, 48);
+    background-color: #043a26;
+  }
 }
 
 ul {
