@@ -1,7 +1,82 @@
+.jsa-theme-accordion dt {
+	@media (prefers-color-scheme: dark) {
+		color: #719456 !important;
+		background-color: #03271f !important;
+	}
+}
+
+.jsa-theme-minimal dt,
 dt {
 
-    a,
-    h2 {
-        font-weight: 500;
-    }
+	a,
+	h2 {
+		font-weight: 500;
+
+		@media (prefers-color-scheme: dark) {
+			color: #719456 !important;
+			background-color: transparent;
+		}
+	}
+}
+
+.jsa-theme-accordion {
+	dt {
+		@media (prefers-color-scheme: dark) {
+			border-top: 1px solid transparent !important;
+			border-bottom: 1px solid #011611 !important;
+			border-left: 1px solid #011611 !important;
+			border-right: 1px solid #011611 !important;
+		}
+	}
+
+	dt a {
+		@media (prefers-color-scheme: dark) {
+			border-top: 1px solid transparent !important;
+		}
+	}
+
+	dd.show {
+		@media (prefers-color-scheme: dark) {
+			border: 1px solid #2aa3a5 !important;
+		}
+	}
+}
+
+.jsa-theme-minimal,
+.jsa-core {
+	dt {
+		@media (prefers-color-scheme: dark) {
+			border-top: 1px solid #719456 !important;
+		}
+	}
+
+	dt a {
+		@media (prefers-color-scheme: dark) {
+			border-top: 1px solid #719456 !important;
+		}
+	}
+}
+
+.jsa-theme-accordion dt a dt:first-of-type,
+.jsa-theme-minimal dt:first-of-type {
+	@media (prefers-color-scheme: dark) {
+		border-top: 1px solid #719456 !important;
+	}
+}
+
+.jsa-none {
+	dt a {
+		@media (prefers-color-scheme: dark) {
+			border: none;
+		}
+	}
+}
+
+.darkmode {
+	display: none;
+	filter: blur(0.03em);
+
+	@media (prefers-color-scheme: dark) {
+		display: block;
+	}
 }

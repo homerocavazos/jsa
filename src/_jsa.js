@@ -1,6 +1,6 @@
 /*!
  * jsa.js – JavaScript Accordion Utility
- * Version: 2.0.0
+ * Version: 2.0.1
  * Author: Homero Cavazos
  * GitHub: https://github.com/homiehomes
  * License: MIT
@@ -122,7 +122,7 @@ class jsa {
 			if (_.settings.theme === 'core') {
 				definition.style.padding = "0";
 				definition.style.margin = "0";
-				definition.style.borderBottom = "1px solid #eee";
+				definition.style.borderBottom = definition.classList.contains("show") ? "1px solid #eee" : "none";
 				definition.style.borderTop = "none";
 				definition.style.transition = "max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s cubic-bezier(0.4, 0, 0.2, 1)";
 				// if (_.settings.openFirst === true && index === 0) definition.style.padding = "1em 0";

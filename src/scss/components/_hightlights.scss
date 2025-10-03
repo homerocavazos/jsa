@@ -1,51 +1,57 @@
  .h {
-     color: #98c379;
+ 	color: #98c379;
 
-     &-el {
-         color: #e06c75;
-     }
+ 	&-el {
+ 		color: #e06c75;
 
-     &-attr {
-         color: #d19a66;
-     }
+ 		@media (prefers-color-scheme: dark) {
+ 			color: #2aa3a5;
+ 		}
+ 	}
 
-     &-string {
-         color: coral;
+ 	&-attr {
+ 		color: #d19a66;
+ 	}
 
-         @media (prefers-color-scheme: dark) {
-             color: #98c379;
-         }
-     }
+ 	&-string {
+ 		color: coral;
 
-     &-lime {
-         color: #98c379;
+ 		@media (prefers-color-scheme: dark) {
+ 			color: #e97f4d;
+ 		}
+ 	}
 
-     }
+ 	&-lime {
+ 		color: #98c379;
 
-     &-yellow {
-         color: #eec13b;
-     }
+ 		@media (prefers-color-scheme: dark) {
+ 			color: #e97f4d;
+ 		}
+ 	}
 
-     &-blue {
-         color: #71b5f8;
-     }
+ 	&-yellow {
+ 		color: #eec13b;
+ 	}
 
-     &-pink {
-         color: #ff6f91;
-     }
+ 	&-blue {
+ 		color: #71b5f8;
+ 	}
 
-     &-js-new {
-         color: #f24b3c;
-     }
+ 	&-pink {
+ 		color: #ff6f91;
+ 	}
 
-     &-js-var {
-         color: #e97f4d;
-         color: #9fae62;
-     }
+ 	&-js-new {
+ 		color: #f24b3c;
+ 	}
 
-     &-js-comment {
-         color: #88786a;
-     }
+ 	&-js-var {
+ 		color: #e97f4d;
+ 		color: #9fae62;
+ 	}
 
+ 	&-js-comment {
+ 		color: #88786a;
+ 	}
 
  }

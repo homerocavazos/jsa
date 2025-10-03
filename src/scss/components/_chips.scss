@@ -20,29 +20,3 @@
 .chip {
     @extend %chip;
 }
-
-.chip-coral {
-    @extend %chip;
-    background-color: coral;
-}
-
-.chip-yellow {
-    @extend %chip;
-    background-color: var(--color-secondary, #eec13b);
-}
-
-.chip-blue {
-    @extend %chip;
-    background-color: var(--color-primary, #71b5f8);
-}
-
-.chip-orange {
-    @extend %chip;
-    background-color: var(--color-accent, #ffa042);
-}
-
-.chip-ocean {
-    @extend %chip;
-
-    background-color: #cfe3e2;
-}

@@ -1,5 +1,4 @@
 body {
-    font-family: "Helvetica Neue", sans-serif;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
         sans-serif;
@@ -12,11 +11,7 @@ body {
     color: #3b3b3b;
 
     @media (prefers-color-scheme: dark) {
-
-        background-color: #121212;
-        /* Dark mode background */
-        color: #ed2a2a;
-        /* Dark mode text (light gray for readability) */
-
+        color: var(--darkmode-color-text, #719456);
+        background-color: #00201a;
     }
 }

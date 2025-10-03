@@ -1,6 +1,6 @@
 {
   "name": "@homiehomes/jsa",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Javascript Accordion",
   "main": "dist/jsa.min.js",
   "repository": {

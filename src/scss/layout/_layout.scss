@@ -3,6 +3,7 @@ aside {
 
 	p {
 		font-size: smaller;
+		font-size: 0.9rem;
 	}
 
 	@media screen and (min-width: 768px) {
@@ -22,22 +23,33 @@ section {
 }
 
 article {
-
+	display: flex;
+	flex-direction: column;
 	margin: 1em;
 	padding: 1em;
-
 	border-radius: 20px;
 	background-color: white;
+
+	@media (prefers-color-scheme: dark) {
+		background-color: #011611;
+		filter: blur(.03em);
+		border: 1px solid #0e2e29;
+	}
+
 
 	@media screen and (min-width: 992px) {
 		padding: 2em;
 		margin: 1em 1em 1em 0;
+
+		@media (prefers-color-scheme: dark) {
+			padding: 1.5em 1em;
+
+		}
 	}
 
 	section {
 		display: flex;
 		flex-direction: column;
-
 		justify-content: space-between;
 		align-items: flex-start;
 
@@ -67,28 +79,62 @@ article {
 	p {
 		font-size: 1rem;
 		margin: .8em 0;
+
+		@media (prefers-color-scheme: dark) {
+			font-family: monospace;
+			font-weight: 400;
+			font-style: normal;
+			font-size: .9rem;
+			color: #3ed3d5;
+			color: var(--darkmode-color-text, #719456);
+
+		}
 	}
 }
 
 table {
 	width: 100%;
 	border-collapse: collapse;
-	margin: 1em 0;
+	margin: 2em 0;
+
+	tr {
+		@media (prefers-color-scheme: dark) {
+
+			border-left: 1px solid #09342b;
+			border-right: 1px solid #09342b;
+
+		}
+	}
+
 
 	th,
 	td {
 		text-align: left;
 		padding: 0.5em;
 		border-bottom: 1px solid #ddd;
+
+		@media (prefers-color-scheme: dark) {
+			border-bottom: 1px solid #0d483b;
+		}
 	}
 
 	th {
 		font-weight: bold;
 		background-color: #f2f2f2;
+
+		@media (prefers-color-scheme: dark) {
+			color: #3ed3d5;
+			background-color: #03271f;
+		}
 	}
 
 	tr:hover {
 		background-color: #f5f5f5;
+
+		@media (prefers-color-scheme: dark) {
+			color: #3ed3d5;
+			background-color: #03271f;
+		}
 	}
 }
 

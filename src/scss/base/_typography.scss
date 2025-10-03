@@ -1,21 +1,20 @@
 .libre-baskerville-regular {
-    font-family: "Libre Baskerville", serif;
-    font-weight: 400;
-    font-style: normal;
+	font-family: "Libre Baskerville", serif;
+	font-weight: 400;
+	font-style: normal;
 }
 
 .libre-baskerville-bold {
-    font-family: "Libre Baskerville", serif;
-    font-weight: 700;
-    font-style: normal;
+	font-family: "Libre Baskerville", serif;
+	font-weight: 700;
+	font-style: normal;
 }
 
 .libre-baskerville-regular-italic {
-    font-family: "Libre Baskerville", serif;
-    font-weight: 400;
-    font-style: italic;
+	font-family: "Libre Baskerville", serif;
+	font-weight: 400;
+	font-style: italic;
 }
-
 
 h1,
 h2,
@@ -23,167 +22,169 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Libre Baskerville", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-weight: 700;
-    line-height: 1.2;
-    margin: 0 0 .5em 0;
-    color: var(--color-text);
+	font-family: "Libre Baskerville", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-weight: 700;
+	line-height: 1.2;
+	margin: 0 0 .5em 0;
+	color: var(--color-text);
+
+	@media (prefers-color-scheme: dark) {
+		color: #2aa3a5;
+		font-family: monospace;
+		font-optical-sizing: auto;
+		font-weight: 400;
+		font-style: normal;
+	}
+
 }
 
 h1 {
+	font-size: clamp(1.25rem, 0.4167rem + 1.1111vw, 1.75rem); // 20-28
+	font-weight: bold;
+	letter-spacing: -.02em;
 
-    // 16-18
-    font-size: clamp(1rem, 0.7917rem + 0.2778vw, 1.125rem);
-    // 18-22
-    font-size: clamp(1.125rem, 0.7083rem + 0.5556vw, 1.375rem);
-    // 20-28
-    font-size: clamp(1.25rem, 0.4167rem + 1.1111vw, 1.75rem);
-    font-weight: bold;
-    letter-spacing: -.02em;
+	@media (prefers-color-scheme: dark) {
+		font-size: clamp(1.125rem, 0.7083rem + 0.5556vw, 1.375rem); // 18-22
+		line-height: 1.5;
+	}
 }
 
 h2 {
-    // 16-18
-    font-size: clamp(1rem, 0.7917rem + 0.2778vw, 1.125rem);
-    // 20-24
-    font-size: clamp(1.25rem, 0.8333rem + 0.5556vw, 1.5rem);
-    font-weight: bold;
-    margin-bottom: 1rem;
-    align-items: center;
+	font-size: clamp(1.25rem, 0.8333rem + 0.5556vw, 1.5rem); // 20-24
+	font-weight: bold;
+	margin-bottom: 1rem;
+	align-items: center;
 }
 
 small {
-    font-size: small;
-    font-weight: 600;
-    letter-spacing: normal;
-    padding: 0 0 0 1em;
-    border-radius: 0 5px 5px 5px;
-    // color: white;
-    // background-color: coral;
-    display: inline-flex;
-    align-items: center;
+	font-size: small;
+	font-weight: 600;
+	letter-spacing: normal;
+	padding: 0 0 0 1em;
+	border-radius: 0 5px 5px 5px;
+	display: inline-flex;
+	align-items: center;
 
 
-    small {
-        margin-left: 1.5em;
-        font-size: smaller;
-        letter-spacing: 1px;
-        padding: 1em .6em;
-        // background-color: #232526;
-        // background-color: #f64200;
-        border-radius: 0 5px 5px 5px;
-    }
+	small {
+		margin-left: 1.5em;
+		font-size: smaller;
+		letter-spacing: 1px;
+		padding: 1em .6em;
+		border-radius: 0 5px 5px 5px;
+	}
 }
 
 strong {
-    font-weight: 600;
+	font-weight: 600;
 }
 
 p {
-    // margin: .3em 0;
-    line-height: 1.4;
+	line-height: 1.4;
+	font-size: clamp(1rem, 0.7917rem + 0.2778vw, 1.125rem); // 14-16px
 
-    // 14-16px
-    font-size: clamp(1rem, 0.7917rem + 0.2778vw, 1.125rem);
-
-    &:last-of-type {
-        margin-bottom: 1em;
-    }
+	&:last-of-type {
+		margin-bottom: 1em;
+	}
 }
 
 a {
-    color: var(--color-black, #1b1b1b);
-    text-decoration: none;
-    font-weight: 400;
+	color: var(--color-black, #1b1b1b);
+	text-decoration: none;
+	font-weight: 400;
 
-    &:hover {
-        text-decoration: underline;
-    }
+	&:hover {
+		text-decoration: underline;
+	}
 }
 
 ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	font-size: 0.9rem;
+
+	li {
+		padding: .2em 0;
+		line-height: 1.4;
+
+		@media (prefers-color-scheme: dark) {
+			font-family: monospace;
+		}
+	}
 }
 
 ul.default {
-    list-style: disc;
-    margin-left: 1.5em;
-    margin-bottom: 1em;
+	list-style: disc;
+	margin-left: 1.5em;
+	margin-bottom: 1em;
 }
 
 code {
-    background-color: rgb(228, 230, 230);
-    color: rgb(88, 88, 88);
-    padding: .2rem;
-    line-height: 1.5;
-    font-size: .8rem;
-    overflow-wrap: break-word;
-    // word-break: break-all;
+	background-color: rgb(228, 230, 230);
+	color: rgb(88, 88, 88);
+	padding: .2rem;
+	line-height: 1.5;
+	font-size: .8rem;
+	overflow-wrap: break-word;
+
+	@media (prefers-color-scheme: dark) {
+		color: #3ed3d5;
+		background-color: #03271f;
+	}
 }
-
-
-@media (prefers-color-scheme: dark) {
-    code {
-        background-color: rgb(58, 60, 60);
-        color: rgb(200, 200, 200);
-    }
-
-    pre {
-        background: #282c34;
-        color: #bbb;
-    }
-}
-
 
 pre {
-    background-color: #232526;
-    border-radius: 5px;
-    margin: 0;
-    padding: 1em;
-    color: #ddd;
-    font-size: .875rem;
-    font-size: 1rem;
-    background: #2f3032;
-    border-radius: 0 20px 20px 20px;
+	background-color: #232526;
+	border-radius: 5px;
+	margin: 0;
+	padding: 1em;
+	color: #ddd;
+	background: #2f3032;
+	border-radius: 0 20px 20px 20px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -pre-wrap;
+	white-space: -o-pre-wrap;
+	word-wrap: break-word;
+	font-size: .8rem;
 
-    overflow-x: auto;
-    white-space: pre-wrap;
-    white-space: -moz-pre-wrap;
-    white-space: -pre-wrap;
-    white-space: -o-pre-wrap;
-    word-wrap: break-word;
-    font-size: .8rem;
+	@media screen and (min-width: 992px) {
+		font-size: 1rem;
+		padding: 2em;
+	}
 
-    @media screen and (min-width: 992px) {
-        font-size: 1rem;
-        padding: 2em;
-    }
+	@media (prefers-color-scheme: dark) {
+		font-family: monospace;
+		background-color: #03271f;
+		color: #98c379;
+		font-size: .9rem;
+	}
 }
 
 :where(pre) {
-    font-size: 1rem;
+	font-size: 1rem;
 }
 
 .text {
-    &-regular {
-        font-weight: 400;
-    }
+	&-regular {
+		font-weight: 400;
+	}
 
-    &-semi {
-        font-weight: 600;
-    }
+	&-semi {
+		font-weight: 600;
+	}
 
-    &-bold {
-        font-weight: 700;
-    }
+	&-bold {
+		font-weight: 700;
+	}
 
-    &-xbold {
-        font-weight: 800;
-    }
+	&-xbold {
+		font-weight: 800;
+	}
 
-    &-xxbold {
-        font-weight: 900;
-    }
+	&-xxbold {
+		font-weight: 900;
+	}
 }
