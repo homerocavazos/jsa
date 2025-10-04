@@ -61,6 +61,13 @@ h2 {
 	align-items: center;
 }
 
+h3 {
+	font-size: 1rem;
+	font-weight: bold;
+	margin: 1rem 0;
+	align-items: center;
+}
+
 small {
 	font-size: small;
 	font-weight: 600;
@@ -97,6 +104,14 @@ p {
 			color: rgb(88, 141, 48);
 			background-color: #043a26;
 		}
+	}
+
+	small {
+		display: inline;
+		font-size: smaller;
+		font-weight: inherit;
+		padding: 0;
+		letter-spacing: normal;
 	}
 }
 
@@ -176,7 +191,7 @@ pre {
 	font-size: .8rem;
 
 	@media screen and (min-width: 992px) {
-		font-size: 1rem;
+		// font-size: 1rem;
 		padding: 2em;
 	}
 

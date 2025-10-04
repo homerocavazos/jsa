@@ -322,6 +322,13 @@ h2 {
   align-items: center;
 }
 
+h3 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 1rem 0;
+  align-items: center;
+}
+
 small {
   font-size: small;
   font-weight: 600;
@@ -355,6 +362,13 @@ p:last-of-type {
     color: rgb(88, 141, 48);
     background-color: #043a26;
   }
+}
+p small {
+  display: inline;
+  font-size: smaller;
+  font-weight: inherit;
+  padding: 0;
+  letter-spacing: normal;
 }
 
 a {
@@ -431,7 +445,6 @@ pre {
 }
 @media screen and (min-width: 992px) {
   pre {
-    font-size: 1rem;
     padding: 2em;
   }
 }
@@ -828,6 +841,9 @@ table tr:hover {
     flex-direction: row;
   }
 }
+.flex-align-start {
+  align-items: flex-start;
+}
 .flex > * {
   flex: 1;
 }
@@ -840,72 +856,13 @@ table tr:hover {
   margin-top: 2rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  .jsa-theme-accordion dt {
-    color: #719456 !important;
-    background-color: #03271f !important;
-  }
+dl dd div {
+  padding: 0 2rem 0 1rem;
 }
 
 .jsa-theme-minimal dt a,
-.jsa-theme-minimal dt h2,
-dt a,
-dt h2 {
+.jsa-theme-minimal dt h2 {
   font-weight: 500;
-}
-@media (prefers-color-scheme: dark) {
-  .jsa-theme-minimal dt a,
-  .jsa-theme-minimal dt h2,
-  dt a,
-  dt h2 {
-    color: #719456 !important;
-    background-color: transparent;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .jsa-theme-accordion dt {
-    border-top: 1px solid transparent !important;
-    border-bottom: 1px solid #011611 !important;
-    border-left: 1px solid #011611 !important;
-    border-right: 1px solid #011611 !important;
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .jsa-theme-accordion dt a {
-    border-top: 1px solid transparent !important;
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .jsa-theme-accordion dd.show {
-    border: 1px solid #2aa3a5 !important;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .jsa-theme-minimal dt,
-  .jsa-core dt {
-    border-top: 1px solid #719456 !important;
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .jsa-theme-minimal dt a,
-  .jsa-core dt a {
-    border-top: 1px solid #719456 !important;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .jsa-theme-accordion dt a dt:first-of-type,
-  .jsa-theme-minimal dt:first-of-type {
-    border-top: 1px solid #719456 !important;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .jsa-none dt a {
-    border: none;
-  }
 }
 
 .darkmode {

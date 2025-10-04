@@ -181,6 +181,10 @@ table {
 		flex-direction: row;
 	}
 
+	&-align-start {
+		align-items: flex-start;
+	}
+
 	>* {
 		flex: 1;
 	}
@@ -189,6 +193,10 @@ table {
 .justify-space-between {
 	justify-content: space-between;
 }
+
+// .flex-align-start {
+// 	align-items: flex-start;
+// }
 
 .mt-md {
 	margin-top: 2rem;

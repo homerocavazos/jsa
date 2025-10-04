@@ -1,25 +1,50 @@
-:root {
-  --color-grey: #cecece;
-}
+@use 'variables';
+
 
 .jsa-theme-minimal {
+  background-color: var(--jsa-min-dl-bg, #{variables.$jsa-min-dl-bg});
+
+  @media (prefers-color-scheme: dark) {
+    background-color: var(--jsa-min-dl-bg-darkmode, #{variables.$jsa-min-dl-bg-darkmode});
+  }
+
   dt {
     display: flex;
     align-items: center;
     position: relative;
-    border-top: 1px solid #cecece;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-      sans-serif;
-    font-weight: 700;
+    font-family: var(--jsa-min-font-family, #{variables.$jsa-min-font-family});
+    border-top: 1px solid var(--jsa-min-dt-border-top-color, #{variables.$jsa-min-dt-border-top-color});
+
+    @media (prefers-color-scheme: dark) {
+      font-family: var(--jsa-min-font-family-darkmode, #{variables.$jsa-min-font-family-darkmode});
+      border-top: 1px solid var(--jsa-min-dt-border-top-color-darkmode, #{variables.$jsa-min-dt-border-top-color-darkmode});
+    }
 
     &.active {
       border-bottom: none;
-      border-top: 1px solid #e3e3e3;
+      border-top: 1px solid var(--jsa-min-dt-border-top-color, #{variables.$jsa-min-dt-border-top-color});
+      background-color: var(--jsa-min-dt-active-bgcolor, #{variables.$jsa-min-dt-active-bgcolor});
+
+      @media (prefers-color-scheme: dark) {
+        border-top: 1px solid var(--jsa-min-dt-border-top-color-darkmode, #{variables.$jsa-min-dt-border-top-color-darkmode});
+        background-color: var(--jsa-min-dt-active-bgcolor-darkmode, #{variables.$jsa-min-dt-active-bgcolor-darkmode});
+      }
+
+      a {
+        color: var(--jsa-min-dt-anchor-active-color, #{variables.$jsa-min-dt-anchor-active-color});
+
+        @media (prefers-color-scheme: dark) {
+          color: var(--jsa-min-dt-anchor-active-color-darkmode, #{variables.$jsa-min-dt-anchor-active-color-darkmode});
+        }
+      }
     }
 
     &:first-of-type {
-      border-top: 1px solid #e3e3e3;
+      border-top: 1px solid var(--jsa-min-dt-border-top-color, #{variables.$jsa-min-dt-border-top-color});
+
+      @media (prefers-color-scheme: dark) {
+        border-top: 1px solid var(--jsa-min-dt-border-top-color-darkmode, #{variables.$jsa-min-dt-border-top-color-darkmode});
+      }
     }
 
     &:last-of-type {
@@ -29,15 +54,28 @@
     }
 
     a {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-        sans-serif;
-
-      color: rgba(0, 0, 0, 0.87);
-      font-weight: 600;
-      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--jsa-min-font-family, #{variables.$jsa-min-font-family});
+      font-weight: var(--jsa-min-dt-font-weight, #{variables.$jsa-min-dt-font-weight});
+      color: var(--jsa-min-dt-anchor-color, #{variables.$jsa-min-dt-anchor-color});
+      text-decoration: var(--jsa-min-dt-anchor-decoration, #{variables.$jsa-min-dt-anchor-decoration});
       width: 100%;
-      padding: 15px 30px;
+      padding: var(--jsa-min-dt-padding, #{variables.$jsa-min-dt-padding});
+
+      @media (prefers-color-scheme: dark) {
+        color: var(--jsa-min-dt-anchor-color-darkmode, #{variables.$jsa-min-dt-anchor-color-darkmode});
+      }
+
+      &:hover {
+        color: var(--jsa-min-dt-anchor-hover-color, #{variables.$jsa-min-dt-anchor-hover-color});
+        text-decoration: var(--jsa-min-dt-anchor-decoration-hover, #{variables.$jsa-min-dt-anchor-decoration-hover});
+
+        @media (prefers-color-scheme: dark) {
+          color: var(--jsa-min-dt-anchor-hover-color-darkmode, #{variables.$jsa-min-dt-anchor-hover-color-darkmode});
+        }
+      }
 
       &[aria-expanded="true"]::after {
         content: "-";
@@ -45,31 +83,33 @@
 
       &::after {
         content: "+";
-        height: 18px;
-        width: 18px;
-        position: absolute;
-        right: 30px;
-        vertical-align: middle;
         display: inline-block;
+        position: absolute;
+        top: calc(50% * (var(--jsa-min-dt-expand-icon-size, #{variables.$jsa-min-dt-expand-icon-size})));
+        right: var(--jsa-min-dt-expand-icon-right, #{variables.$jsa-min-dt-expand-icon-right});
+        font-size: var(--jsa-min-dt-expand-icon-size, #{variables.$jsa-min-dt-expand-icon-size});
+        color: currentColor;
       }
     }
   }
 
-  // dt
 
   dd {
     max-height: 0;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-      sans-serif;
+    font-family: var(--jsa-min-font-family, #{variables.$jsa-min-font-family});
     overflow: hidden;
     padding: 0;
     margin: 0;
-     transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
 
-    div {
-      padding: 0 2rem 2rem 2rem;
+    @media (prefers-color-scheme: dark) {
+      background-color: var(--jsa-min-dd-bgcolor-darkmode, #{variables.$jsa-min-dd-bgcolor-darkmode});
+
+      >* {
+        color: var(--jsa-min-dd-text-color-darkmode, #{variables.$jsa-min-dd-text-color-darkmode});
+      }
     }
+
   }
 }
