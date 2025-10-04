@@ -41,6 +41,15 @@ h6 {
 		}
 	}
 
+	small {
+		font-size: smaller;
+		font-weight: 400;
+		letter-spacing: normal;
+		padding: 0;
+		border-radius: 0;
+		display: inline;
+	}
+
 }
 
 h1 {
@@ -129,6 +138,18 @@ a {
 			color: rgb(88, 141, 48);
 			background-color: #043a26;
 		}
+	}
+}
+
+ol {
+	border-top: 1px solid #ddd;
+	list-style: decimal;
+	padding: 1em;
+	margin-left: 0;
+
+	li {
+		margin: 0;
+		padding: 0;
 	}
 }
 

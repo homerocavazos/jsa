@@ -25,25 +25,39 @@ class jsa {
 	constructor(opts = {}) {
 		const _ = this;
 
+		_.darkmode = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? true : false;
+
+
 		_.settings = Object.assign({
 			dl: ".jsa",
 			dt: "dt a",
 			dd: "dd",
+			theme: 'core', // options: 'custom', 'minimal' 'cabinet', null for no theme
 			openFirst: false,
 			openAll: false,
 			closeAll: null, // Selector e.g. <a class="close-all">Close All</a>
 			closeOthers: false, // Whether to close other items when one is opened
 			prefix: opts.prefix ?? `${Math.random().toString(36).substring(2, 7)}-`, // Generate a random prefix if not provided
-			theme: 'core', // options: 'custom', 'minimal' 'cabinet', null for no theme
 			icons: ['', ''], // options: ['+', '-'], ['arrow-down', 'arrow-up'], [] for no icons
 			iconClass: 'jsa-icon', // Class for the icon span
 			termPadding: '0.5em 1em 0.5em 0', // Padding for dt elements when theme is 'custom'
 			schema: false,
 			schemaType: 'FAQPage',
+			termBg: _.darkmode ? 'transparent' : '',
+			termBgActive: _.darkmode ? 'black' : '',
+			termColor: _.darkmode ? '#719456' : '',
+			termColorActive: _.darkmode ? '#fff' : '',
+			borderColor: _.darkmode ? '#719456' : '',
+			darkmode: false,
+			debug: false,
 		}, opts);
 
-		console.log('--------------------------------');
-		console.log('jsa settings = ', _.settings);
+
+
+
+		if (_.settings.debug) {
+			console.log('jsa settings = ', _.settings);
+		}
 
 		_.el = document.querySelector(_.settings.dl) || null;
 		_.terms = _.getObjs(document.querySelectorAll(`${_.settings.dl} ${_.settings.dt}`));
@@ -78,7 +92,8 @@ class jsa {
 				term.style.gap = "1em";
 				term.style.textDecoration = "none";
 				term.style.padding = _.settings.termPadding;
-				term.style.borderTop = "1px solid #eee";
+				term.style.borderTop = "1px solid " + (_.settings.darkmode ? _.settings.borderColor : "");
+				term.style.color = (_.settings.darkmode ? _.settings.termColor : "");
 
 				let icon = document.createElement('span');
 				icon.innerHTML = _.settings.icons[0];
@@ -122,10 +137,10 @@ class jsa {
 			if (_.settings.theme === 'core') {
 				definition.style.padding = "0";
 				definition.style.margin = "0";
-				definition.style.borderBottom = definition.classList.contains("show") ? "1px solid #eee" : "none";
+				definition.style.borderBottom = definition.classList.contains("show") ? `1px solid ${_.settings.borderColor}` : "none";
 				definition.style.borderTop = "none";
 				definition.style.transition = "max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s cubic-bezier(0.4, 0, 0.2, 1)";
-				// if (_.settings.openFirst === true && index === 0) definition.style.padding = "1em 0";
+
 			}
 		});
 
@@ -169,6 +184,17 @@ class jsa {
 		def.classList.toggle("show");
 		term.setAttribute("aria-expanded", !isOpen ? "true" : "false");
 		term.parentNode.classList.toggle("active");
+
+		if (_.settings.theme === 'core') {
+			if (term.parentNode.classList.contains("active") && _.settings.darkmode === true) {
+				term.style.color = (_.settings.darkmode ? _.settings.termColorActive : _settings.termColor);
+				term.parentNode.style.backgroundColor = (_.settings.darkmode ? _.settings.termBgActive : "");
+			} else {
+				term.style.color = (_.settings.darkmode ? _.settings.termColor : '');
+				term.parentNode.style.backgroundColor = (_.settings.darkmode ? _.settings.termBg : '');
+			}
+		}
+
 
 		// Swap icon if applicable
 		let icon = term.querySelector(`.${_.settings.iconClass}`);

@@ -45,7 +45,6 @@
 				<span class="chip bg-primary text-white">J</span>
 				<span class="chip bg-secondary text-white">S</span>
 				<span class="chip bg-accent text-white">A</span>
-				<!-- <span class="chip bg text-primary">2.0</span> -->
 				<code>2.0</code>
 			</div>
 			<div class="byline">
@@ -111,8 +110,7 @@
 
 			<article class="bg-ocean">
 				<h2>Themes at a glance</h2>
-				<p>JSA is set to <strong>core</strong> theme by default. There are four themes to choose from. Each
-					theme has its own set of styles that you may override.</p>
+				<p>JSA is set to <strong>core</strong> theme by default. Here are the available themes:</p>
 
 				<ul>
 					<li><strong>Core</strong> - No external CSS needed.
@@ -130,9 +128,7 @@
 				</ul>
 
 			</article>
-			<p class="darkmode">You are in darkmode and the accordions are <strong>styled</strong> with
-				<code>jsa-demo.min.css</code> which overrides the default styles.
-			</p>
+
 		</aside>
 
 		<section>
@@ -304,6 +300,20 @@
 								<td>If true, the first item will be opened by default.</td>
 							</tr>
 							<tr>
+								<td><code>openAll</code></td>
+								<td>boolean</td>
+								<td><code>false</code></td>
+								<td>✓</td>
+								<td>If true, all items will be opened by default.</td>
+							</tr>
+							<tr>
+								<td><code>closeAll</code></td>
+								<td>string</td>
+								<td><code>null</code></td>
+								<td>✓</td>
+								<td>The selector for a button or link that will close all items when clicked.</td>
+							</tr>
+							<tr>
 								<td><code>closeOthers</code></td>
 								<td>boolean</td>
 								<td><code>false</code></td>
@@ -334,13 +344,7 @@
 								<td>✓</td>
 								<td>The padding to apply to the term element.</td>
 							</tr>
-							<tr>
-								<td><code>closeAll</code></td>
-								<td>string</td>
-								<td><code>null</code></td>
-								<td>✓</td>
-								<td>The selector for a button or link that will close all items when clicked.</td>
-							</tr>
+
 							<tr>
 								<td><code>schema</code></td>
 								<td>boolean</td>
@@ -357,6 +361,55 @@
 									<code>'Article'</code>.
 								</td>
 							</tr>
+							<tr>
+								<td><code>termBg</code></td>
+								<td>string</td>
+								<td><code>'transparent'</code></td>
+								<td><code>darkmode: true</code></td>
+								<td>The background color for the term element. Can be a color name, hex, or rgba value.</td>
+							</tr>
+							<tr>
+								<td><code>termBgActive</code></td>
+								<td>string</td>
+								<td><code>'black'</code></td>
+								<td><code>darkmode: true</code></td>
+								<td>The background color for the "Active" term element. Can be a color name, hex, or rgba value.</td>
+							</tr>
+							<tr>
+								<td><code>termColor</code></td>
+								<td>string</td>
+								<td><code>'#719456'</code></td>
+								<td><code>darkmode: true</code></td>
+								<td>The text color for the term element. Can be a color name, hex, or rgba value.</td>
+							</tr>
+							<tr>
+								<td><code>termColorActive</code></td>
+								<td>string</td>
+								<td><code>'#fff'</code></td>
+								<td><code>darkmode: true</code></td>
+								<td>The text color for the "Active" term element. Can be a color name, hex, or rgba value.</td>
+							</tr>
+							<tr>
+								<td><code>borderColor</code></td>
+								<td>string</td>
+								<td><code>'#719456'</code></td>
+								<td><code>darkmode: true</code></td>
+								<td>The border color between terms. Can be a color name, hex, or rgba value.</td>
+							</tr>
+							<tr>
+								<td><code>darkmode</code></td>
+								<td>boolean</td>
+								<td><code>false</code></td>
+								<td><code>darkmode: true</code></td>
+								<td>If true, dark mode styles will be applied.</td>
+							</tr>
+							<tr>
+								<td><code>debug</code></td>
+								<td>boolean</td>
+								<td><code>false</code></td>
+								<td>✓</td>
+								<td>If true, logs the accordion configuration.</td>
+							</tr>
 						</tbody>
 					</table>
 				</div>
@@ -365,7 +418,8 @@
 
 			<article id="theme-core">
 				<div class="theme">
-					<h2>Theme Core - Default </h2>
+					<h2>Theme Core - <span class="h-pink"><sup>1</sup>Dark mode included</span></h2>
+					</h2>
 
 					<p><strong>Core</strong> delivers the essential accordion layout with inline styles only—no external
 						CSS needed. Ideal for rapid prototypes or quick drop-ins, it works out of the box and can be
@@ -417,6 +471,9 @@
 					</div>
 
 				</div>
+				<ol>
+					<li>Dark mode support but must activate <code>darkmode: true</code> in options.</li>
+				</ol>
 			</article>
 			<article id="theme-none">
 				<div class="theme">
@@ -470,13 +527,14 @@
 
 			<article id="theme-minimal">
 				<div class="theme">
-					<h2>Theme Minimal</h2>
+					<h2>Theme Minimal - <small><span class="h-js-comment"><sup>*</sup>Dark mode included</span></small></h2>
 
 					<p>Setting theme to minimal provides a basic styling for the accordion. It requires
 						<code>jsa-themes.min.css</code> or adding <code>_jsa.theme-minimal.scss</code> to your project.
 						This theme is a great starting point for custom styling.
 					</p>
-
+					<p> <code>This example is using :root variables for dark mode customization.</code>
+					</p>
 					<div class="flex mt-md">
 						<div>
 							<dl class="jsa-minimal">
@@ -521,8 +579,7 @@
 						<div>
 							<h3>Basic Control ( <span class="h-js-new"><strong><code>:root</code> Variables</strong></span> )</h3>
 							<p>These variables allow you to customize the appearance without diving into the SCSS code or writing
-								custom styles. <small><em>( The minimal demo above is using a few of these variables.
-										)</em></small></p>
+								custom styles.</p>
 							<ul>
 								<li><code>--jsa-min-font-family</code></li>
 								<li><code>--jsa-min-font-family-darkmode</code></li>
@@ -641,6 +698,7 @@
 		new jsa({
 			dl: '.jsa-core',
 			icons: ['😅', '🥹'],
+			darkmode: true,
 		});
 		new jsa({
 			dl: '.jsa-minimal',

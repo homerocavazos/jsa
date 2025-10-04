@@ -17,14 +17,3 @@ dl {
 		font-weight: 500;
 	}
 }
-
-
-
-.darkmode {
-	display: none;
-	filter: blur(0.03em);
-
-	@media (prefers-color-scheme: dark) {
-		display: block;
-	}
-}
