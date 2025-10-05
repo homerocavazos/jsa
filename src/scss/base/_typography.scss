@@ -151,6 +151,10 @@ ol {
 		margin: 0;
 		padding: 0;
 	}
+
+	@media (prefers-color-scheme: dark) {
+		border-top: 1px solid #0d483b;
+	}
 }
 
 ul {

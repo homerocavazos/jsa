@@ -1,19 +1,22 @@
-dl {
-
-	dd {
-		div {
-			padding: 0 2rem 0 1rem;
+.jsa-none {
+	dt {
+		a {
+			@media (prefers-color-scheme: dark) {
+				background-color: transparent;
+				color: var(--darkmode-color-text, #719456);
+			}
 		}
 	}
 }
 
 
 
-.jsa-theme-minimal dt {
+.jsa-theme-core,
+.jsa-theme-minimal {
 
-
-	a,
-	h2 {
-		font-weight: 500;
+	dd {
+		div {
+			padding: 0 2rem 0 1rem;
+		}
 	}
 }

@@ -26,13 +26,16 @@
 		:root {
 			--jsa-min-font-family-darkmode: monospace;
 			--jsa-min-dl-bg-darkmode: transparent;
-			--jsa-min-dt-border-top-color-darkmode: #283321;
+			--jsa-min-dt-border-color-darkmode: #283321;
 			--jsa-min-dt-anchor-color-darkmode: #719456;
 			--jsa-min-dt-expand-icon-size: 2em;
 			--jsa-min-dt-expand-icon-right: .3em;
 			--jsa-min-dt-padding: 1em;
 			--jsa-min-dt-active-bgcolor-darkmode: #1a1a1a;
 			--jsa-min-dt-anchor-hover-color-darkmode: rgba(74, 209, 205, 0.87);
+
+			--jsa-acc-dt-expand-icon-right: 1em;
+			--jsa-acc-dt-border-color: #719456;
 		}
 	</style>
 
@@ -110,21 +113,20 @@
 
 			<article class="bg-ocean">
 				<h2>Themes at a glance</h2>
-				<p>JSA is set to <strong>core</strong> theme by default. Here are the available themes:</p>
 
 				<ul>
+					<li><strong>Default</strong> - No styles applied.</li>
 					<li><strong>Core</strong> - No external CSS needed.
 					</li>
-					<li><strong>None</strong> - No styles applied.</li>
 
 					<li><strong>Minimal</strong> - Requires
 						<code>jsa-themes.min.css</code> or
 						<code>_jsa.theme-minimal.scss</code>.
 					</li>
-					<li><strong>Accordion</strong> - Requires <code>jsa-themes.min.css</code>
+					<!-- <li><strong>Accordion</strong> - Requires <code>jsa-themes.min.css</code>
 						or
 						<code>_jsa.theme-accordion.scss</code>.
-					</li>
+					</li> -->
 				</ul>
 
 			</article>
@@ -235,17 +237,28 @@
 						<pre>
 <span class="h-string">new</span> <span class="h-lime">jsa</span><span class="h-yellow">(
   <span class="h-yellow">{</span>
-   <span class="h-js-new">dl:</span> '.jsa',
-   <span class="h-js-new">dt:</span> 'dt a',
-   <span class="h-js-new">theme:</span> 'core',
+   <span class="h-js-new">dl:</span> ".jsa",
+   <span class="h-js-new">dt:</span> "dt a",
+   <span class="h-js-new">dd:</span> "dd",
+   <span class="h-js-new">theme:</span> '', 
    <span class="h-js-new">openFirst:</span> false,
+   <span class="h-js-new">openAll:</span> false,
+   <span class="h-js-new">closeAll:</span> null, 
    <span class="h-js-new">closeOthers:</span> false,
-   <span class="h-js-new">icons:</span> ['', ''],
-   <span class="h-js-new">iconClass:</span> 'jsa-icon',
-   <span class="h-js-new">termPadding:</span> '0.5em 1em',
-   <span class="h-js-new">closeAll:</span> null,
+   <span class="h-js-new">animate:</span> false,
+   <span class="h-js-new">prefix:</span> "" 
+   <span class="h-js-new">icons:</span> ['', ''], 
+   <span class="h-js-new">iconClass:</span> 'jsa-icon', 
+   <span class="h-js-new">termPadding:</span> '0.5em 1em 0.5em 0', 
    <span class="h-js-new">schema:</span> false,
-   <span class="h-js-new">schemaType:</span> 'FAQPage'
+   <span class="h-js-new">schemaType:</span> 'FAQPage',
+   <span class="h-js-new">termBg:</span> 'transparent' : '',
+   <span class="h-js-new">termBgActive:</span> 'black',
+   <span class="h-js-new">termColor:</span> '#719456',
+   <span class="h-js-new">termColorActive:</span> '#fff',
+   <span class="h-js-new">borderColor:</span> '#719456',
+   <span class="h-js-new">darkmode:</span> false,
+   <span class="h-js-new">debug:</span> false,
   <span class="h-yellow">}</span>
 )</span>;
 </pre>
@@ -321,10 +334,17 @@
 								<td>If true, opening one item will close all others.</td>
 							</tr>
 							<tr>
+								<td><code>animate</code></td>
+								<td>boolean</td>
+								<td><code>false</code></td>
+								<td>✓</td>
+								<td>If true, animate the opening and closing of items.</td>
+							</tr>
+							<tr>
 								<td><code>icons</code></td>
 								<td>array</td>
 								<td><code>[]</code></td>
-								<td>Core</td>
+								<td><strong><small>Core</small></strong></td>
 								<td>An array of two strings representing the icons for the closed and open states. Can
 									be
 									inline SVG,
@@ -334,14 +354,14 @@
 								<td><code>iconClass</code></td>
 								<td>string</td>
 								<td><code>'jsa-icon'</code></td>
-								<td>Core</td>
+								<td><strong><small>Core</small></strong></td>
 								<td>The class to apply to the icon element.</td>
 							</tr>
 							<tr>
 								<td><code>termPadding</code></td>
 								<td>string</td>
 								<td><code>'0.5em 1em'</code></td>
-								<td>✓</td>
+								<td><strong><small>Core</small></strong></td>
 								<td>The padding to apply to the term element.</td>
 							</tr>
 
@@ -365,42 +385,42 @@
 								<td><code>termBg</code></td>
 								<td>string</td>
 								<td><code>'transparent'</code></td>
-								<td><code>darkmode: true</code></td>
+								<td><strong><small>Core</small></strong><br><code>darkmode: true</code></td>
 								<td>The background color for the term element. Can be a color name, hex, or rgba value.</td>
 							</tr>
 							<tr>
 								<td><code>termBgActive</code></td>
 								<td>string</td>
 								<td><code>'black'</code></td>
-								<td><code>darkmode: true</code></td>
+								<td><strong><small>Core</small></strong><br><code>darkmode: true</code></td>
 								<td>The background color for the "Active" term element. Can be a color name, hex, or rgba value.</td>
 							</tr>
 							<tr>
 								<td><code>termColor</code></td>
 								<td>string</td>
 								<td><code>'#719456'</code></td>
-								<td><code>darkmode: true</code></td>
+								<td><strong><small>Core</small></strong><br><code>darkmode: true</code></td>
 								<td>The text color for the term element. Can be a color name, hex, or rgba value.</td>
 							</tr>
 							<tr>
 								<td><code>termColorActive</code></td>
 								<td>string</td>
 								<td><code>'#fff'</code></td>
-								<td><code>darkmode: true</code></td>
+								<td><strong><small>Core</small></strong><br><code>darkmode: true</code></td>
 								<td>The text color for the "Active" term element. Can be a color name, hex, or rgba value.</td>
 							</tr>
 							<tr>
 								<td><code>borderColor</code></td>
 								<td>string</td>
 								<td><code>'#719456'</code></td>
-								<td><code>darkmode: true</code></td>
+								<td><strong><small>Core</small></strong><br><code>darkmode: true</code></td>
 								<td>The border color between terms. Can be a color name, hex, or rgba value.</td>
 							</tr>
 							<tr>
 								<td><code>darkmode</code></td>
 								<td>boolean</td>
 								<td><code>false</code></td>
-								<td><code>darkmode: true</code></td>
+								<td><strong><small>Core</small></strong><br> <code>darkmode: true</code></td>
 								<td>If true, dark mode styles will be applied.</td>
 							</tr>
 							<tr>
@@ -415,7 +435,52 @@
 				</div>
 			</article>
 
+			<article id="theme-none">
+				<div class="theme">
+					<h2>Default</h2>
 
+					<p>JSA by default applies no styles. This is ideal if you want to
+						apply your own custom styles from scratch. The collapse functionality is handled within the instance.
+					</p>
+
+					<div class="flex mt-md">
+						<div>
+							<dl class="jsa-none">
+								<dt><a href="#">What is the capital of France?</a></dt>
+								<dd>
+									<div>
+										<p>The capital of France is Paris.</p>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe voluptatem rerum et temporibus.
+											Ullam, vero tenetur quasi laudantium aut illum.</p>
+									</div>
+								</dd>
+
+								<dt><a href="#">What is the capital of Germany?</a></dt>
+								<dd>
+									<div>
+										<p>The capital of Germany is Berlin.</p>
+									</div>
+								</dd>
+
+								<dt><a href="#">What is the capital of Italy?</a></dt>
+								<dd>
+									<div>
+										<p>The capital of Italy is Rome.</p>
+									</div>
+								</dd>
+
+
+							</dl>
+						</div>
+						<div>
+							<pre>
+<span class="h-string">new</span> <span class="h-lime">jsa</span><span class="h-yellow">()</span>;
+</pre>
+						</div>
+					</div>
+
+				</div>
+			</article>
 			<article id="theme-core">
 				<div class="theme">
 					<h2>Theme Core - <span class="h-pink"><sup>1</sup>Dark mode included</span></h2>
@@ -472,62 +537,14 @@
 
 				</div>
 				<ol>
-					<li>Dark mode support but must activate <code>darkmode: true</code> in options.</li>
+					<li>Dark mode support but must activate <Core code>darkmode: true</Core> in options.</li>
 				</ol>
 			</article>
-			<article id="theme-none">
-				<div class="theme">
-					<h2>Theme None</h2>
 
-					<p>Setting theme to empty disables access to all styles options. Ideal for
-						when you want to apply your own styles from scratch.
-					</p>
-
-					<div class="flex mt-md">
-						<div>
-							<dl class="jsa-none">
-								<dt><a href="#">What is the capital of France?</a></dt>
-								<dd>
-									<div>
-										<p>The capital of France is Paris.</p>
-										</p>
-									</div>
-								</dd>
-
-								<dt><a href="#">What is the capital of Germany?</a></dt>
-								<dd>
-									<div>
-										<p>The capital of Germany is Berlin.</p>
-									</div>
-								</dd>
-
-								<dt><a href="#">What is the capital of Italy?</a></dt>
-								<dd>
-									<div>
-										<p>The capital of Italy is Rome.</p>
-									</div>
-								</dd>
-
-
-							</dl>
-						</div>
-						<div>
-							<pre>
-<span class="h-string">new</span> <span class="h-lime">jsa</span><span class="h-yellow">(
-  <span class="h-yellow">{</span>
-   <span class="h-js-new">theme:</span> &quot;&quot;,
-  <span class="h-yellow">}</span>
-)</span>;
-</pre>
-						</div>
-					</div>
-
-				</div>
-			</article>
 
 			<article id="theme-minimal">
 				<div class="theme">
-					<h2>Theme Minimal - <small><span class="h-js-comment"><sup>*</sup>Dark mode included</span></small></h2>
+					<h2>Theme Minimal - <span class="h-pink"><sup>1</sup>Dark mode included</span></h2>
 
 					<p>Setting theme to minimal provides a basic styling for the accordion. It requires
 						<code>jsa-themes.min.css</code> or adding <code>_jsa.theme-minimal.scss</code> to your project.
@@ -584,8 +601,8 @@
 								<li><code>--jsa-min-font-family</code></li>
 								<li><code>--jsa-min-font-family-darkmode</code></li>
 								<li><code>--jsa-min-dt-font-weight</code></li>
-								<li><code>--jsa-min-dt-border-top-color</code></li>
-								<li><code>--jsa-min-dt-border-top-color-darkmode</code></li>
+								<li><code>--jsa-min-dt-border-color</code></li>
+								<li><code>--jsa-min-dt-border-color-darkmode</code></li>
 								<li><code>--jsa-min-dt-anchor-color</code></li>
 								<li><code>--jsa-min-dt-anchor-color-darkmode</code></li>
 								<li><code>--jsa-min-dt-anchor-active-color</code></li>
@@ -613,7 +630,7 @@
 @<span class="h-pink">use</span> <span class="h-lime">../themes/variables</span> <span class="h-js-new">with</span> <span class="h-yellow">(</span>
 
  <span class="h-js-comment">// See variables.scss for more variables</span>
- <span class="h-attr">$jsa-min-dt-border-top-color:</span> #121212,
+ <span class="h-attr">$jsa-dt-border-color:</span> #121212,
 
 <span class="h-yellow">)</span>;
 
@@ -622,13 +639,18 @@
 
 <span class="h-js-new">.jsa-theme-minimal</span> <span class="h-pink">dt</span> <span class="h-yellow">{</span>
 
-<span class="h-js-var">border-top:</span> 1px solid <span class="h-blue">#{variables.$jsa-min-dt-border-top-color}</span> <span class="h-js-new">!important</span>;
+<span class="h-js-var">border-top:</span> 1px solid <span class="h-blue">#{variables.$jsa-dt-border-color}</span> <span class="h-js-new">!important</span>;
 
 								
 </pre>
 						</div>
 					</div>
 				</div>
+				<ol>
+					<li>Dark mode is part of the theme and you may override the styles with <code>:root</code> variables or
+						<code>scss</code> variables.
+					</li>
+				</ol>
 			</article>
 
 			<article id="theme-accordion">
@@ -693,10 +715,11 @@
 		// Optional to define "dl" as long as you use '.jsa' as class name for the accordion container
 		new jsa({
 			dl: '.jsa-none',
-			theme: '', // 'core', 'minimal', 'accordion', ''
+			animate: true,
 		});
 		new jsa({
 			dl: '.jsa-core',
+			theme: 'core',
 			icons: ['😅', '🥹'],
 			darkmode: true,
 		});

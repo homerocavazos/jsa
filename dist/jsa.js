@@ -52,11 +52,25 @@ __webpack_require__.r(__webpack_exports__);
  *  dl: ".jsa",            // Selector for the definition list
  *  dt: "dt a",            // Selector for the term elements
  *  dd: "dd",              // Selector for the definition elements
- *  openFirst: false,      // Whether to open the first item by default
- *  openAll: false,        // Whether to open all items by default
- *  prefix: "jsa",         // Prefix for IDs and classes to avoid conflicts
- *  inline: true           // Whether to use inline styles for maxHeight and overflow. Set to false to manage styles via CSS.
- * 
+ *  theme: '',             // options: '', 'minimal' 'core'
+ *  openFirst: false,      // Whether to open the first item on load
+ *  openAll: false,        // Whether to open all items on load
+ *  closeAll: null,        // Selector e.g. <a class="close-all">Close All</a>
+ *  closeOthers: false,    // Whether to close other items when one is opened
+ *  animate: false,        // Whether to animate the opening and closing of items
+ *  prefix: '',            // Prefix for IDs and data attributes (optional)
+ *  icons: ['', ''],       // options: ['+', '-'], [] for no icons
+ *  iconClass: 'jsa-icon', // Class for the icon span
+ *  termPadding: '1em', 	 // Padding for dt elements when theme is 'custom'
+ *  schema: false,         // Whether to include FAQ schema
+ *  schemaType: 'FAQPage', // Schema type, default is 'FAQPage'
+ *  termBg: '',            // Background color for term elements ('core' theme)
+ *  termBgActive: '',      // Background color for active term elements ('core' theme)
+ *  termColor: '',        // Text color for term elements ('core' theme)
+ *  termColorActive: '',  // Text color for active term elements ('core' theme)
+ *  borderColor: '',      // Border color for term elements ('core' theme)
+ *  darkmode: false,
+ *  debug: false,
  * */
 
 
@@ -68,20 +82,20 @@ class jsa {
 
 		_.darkmode = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? true : false;
 
-
 		_.settings = Object.assign({
 			dl: ".jsa",
 			dt: "dt a",
 			dd: "dd",
-			theme: 'core', // options: 'custom', 'minimal' 'cabinet', null for no theme
+			theme: '',
 			openFirst: false,
 			openAll: false,
-			closeAll: null, // Selector e.g. <a class="close-all">Close All</a>
-			closeOthers: false, // Whether to close other items when one is opened
-			prefix: opts.prefix ?? `${Math.random().toString(36).substring(2, 7)}-`, // Generate a random prefix if not provided
-			icons: ['', ''], // options: ['+', '-'], ['arrow-down', 'arrow-up'], [] for no icons
-			iconClass: 'jsa-icon', // Class for the icon span
-			termPadding: '0.5em 1em 0.5em 0', // Padding for dt elements when theme is 'custom'
+			closeAll: null,
+			closeOthers: false,
+			animate: false,
+			prefix: opts.prefix ?? `${Math.random().toString(36).substring(2, 7)}-`,
+			icons: ['', ''],
+			iconClass: 'jsa-icon',
+			termPadding: '0.5em 1em 0.5em 0',
 			schema: false,
 			schemaType: 'FAQPage',
 			termBg: _.darkmode ? 'transparent' : '',
@@ -92,8 +106,6 @@ class jsa {
 			darkmode: false,
 			debug: false,
 		}, opts);
-
-
 
 
 		if (_.settings.debug) {
@@ -168,6 +180,8 @@ class jsa {
 
 			definition.style.maxHeight = "0";
 			definition.style.overflow = "hidden";
+			definition.style.margin = "0";
+			if (_.settings.animate === true) definition.style.transition = "max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s cubic-bezier(0.4, 0, 0.2, 1)";
 
 			if (_.settings.openFirst === true && index === 0) definition.classList.add("show");
 			if (_.settings.openFirst === true && index === 0) definition.style.maxHeight = definition.scrollHeight + "px";
@@ -279,6 +293,7 @@ class jsa {
 	};
 
 	buildSchema() {
+
 		const _ = this;
 
 		if (!_.settings.schema) return;

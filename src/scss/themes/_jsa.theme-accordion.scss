@@ -1,33 +1,61 @@
+@use 'variables.scss';
+
 .jsa-theme-accordion {
+  background-color: var(--jsa-acc-dl-bg, #{variables.$jsa-dl-bg});
+
+  @media (prefers-color-scheme: dark) {
+    background-color: var(--jsa-acc-dl-bg-darkmode, #{variables.$jsa-dl-bg-darkmode});
+  }
+
   dt {
     display: flex;
     align-items: center;
     position: relative;
     cursor: pointer;
-    background-color: #fafafa;
-    border-bottom: 1px solid #e3e3e3;
-    border-left: 1px solid #e3e3e3;
-    border-right: 1px solid #e3e3e3;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-      sans-serif;
-    font-weight: 700;
+    font-family: var(--jsa-acc-font-family, #{variables.$jsa-font-family});
+    border-bottom: 1px solid var(--jsa-acc-dt-border-color, #{variables.$jsa-dt-border-color});
+    border-left: 1px solid var(--jsa-acc-dt-border-color, #{variables.$jsa-dt-border-color});
+    border-right: 1px solid var(--jsa-acc-dt-border-color, #{variables.$jsa-dt-border-color});
+
+    @media (prefers-color-scheme: dark) {
+      font-family: var(--jsa-acc-font-family-darkmode, #{variables.$jsa-font-family-darkmode});
+      border-bottom: 1px solid var(--jsa-acc-dt-border-color-darkmode, #{variables.$jsa-dt-border-color-darkmode});
+      border-left: 1px solid var(--jsa-acc-dt-border-color-darkmode, #{variables.$jsa-dt-border-color-darkmode});
+      border-right: 1px solid var(--jsa-acc-dt-border-color-darkmode, #{variables.$jsa-dt-border-color-darkmode});
+    }
+
 
     &.active {
       border-bottom: none;
       border-top: none;
+
+      a {
+        color: var(--jsa-acc-dt-anchor-active-color, #{variables.$jsa-dt-anchor-active-color});
+
+        @media (prefers-color-scheme: dark) {
+          color: var(--jsa-acc-dt-anchor-active-color-darkmode, #{variables.$jsa-dt-anchor-active-color-darkmode});
+        }
+      }
     }
 
     &:first-of-type {
-      border-top: 1px solid #e3e3e3;
+      border-top: 1px solid var(--jsa-acc-dt-border-color, #{variables.$jsa-dt-border-color});
       border-top-right-radius: 10px;
       border-top-left-radius: 10px;
+
+      @media (prefers-color-scheme: dark) {
+        border-top: 1px solid var(--jsa-acc-dt-border-color-darkmode, #{variables.$jsa-dt-border-color-darkmode});
+      }
     }
 
     &:last-of-type {
       border-bottom-right-radius: 10px;
       border-bottom-left-radius: 10px;
-      border-bottom: 1px solid #e3e3e3;
+      border-bottom: 1px solid var(--jsa-acc-dt-border-color, #{variables.$jsa-dt-border-color});
+
+      @media (prefers-color-scheme: dark) {
+        border-bottom: 1px solid var(--jsa-acc-dt-border-color-darkmode, #{variables.$jsa-dt-border-color-darkmode});
+      }
 
       &.active {
         border-bottom-right-radius: 0;
@@ -42,14 +70,28 @@
     }
 
     a {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-        sans-serif;
-      color: rgba(0, 0, 0, 0.87);
-      font-weight: 600;
-      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--jsa-acc-font-family, #{variables.$jsa-font-family});
+      font-weight: var(--jsa-acc-dt-font-weight, #{variables.$jsa-dt-font-weight});
+      color: var(--jsa-acc-dt-anchor-color, #{variables.$jsa-dt-anchor-color});
+      text-decoration: var(--jsa-acc-dt-anchor-decoration, #{variables.$jsa-dt-anchor-decoration});
       width: 100%;
-      padding: 15px 30px;
+      padding: var(--jsa-acc-dt-padding, #{variables.$jsa-dt-padding});
+
+      @media (prefers-color-scheme: dark) {
+        color: var(--jsa-acc-dt-anchor-color-darkmode, #{variables.$jsa-dt-anchor-color-darkmode});
+      }
+
+      &:hover {
+        color: var(--jsa-acc-dt-anchor-hover-color, #{variables.$jsa-dt-anchor-hover-color});
+        text-decoration: var(--jsa-acc-dt-anchor-decoration-hover, #{variables.$jsa-dt-anchor-decoration-hover});
+
+        @media (prefers-color-scheme: dark) {
+          color: var(--jsa-acc-dt-anchor-hover-color-darkmode, #{variables.$jsa-dt-anchor-hover-color-darkmode});
+        }
+      }
 
       &[aria-expanded="true"]::after {
         content: "-";
@@ -57,12 +99,12 @@
 
       &::after {
         content: "+";
-        height: 18px;
-        width: 18px;
-        position: absolute;
-        right: 30px;
-        vertical-align: middle;
         display: inline-block;
+        position: absolute;
+        top: calc(50% * (var(--jsa-acc-dt-expand-icon-size, #{variables.$jsa-dt-expand-icon-size})));
+        right: var(--jsa-acc-dt-expand-icon-right, 1em);
+        font-size: var(--jsa-acc-dt-expand-icon-size, #{variables.$jsa-dt-expand-icon-size});
+        color: currentColor;
       }
     }
   }
@@ -71,16 +113,22 @@
 
   dd {
     max-height: 0;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-      sans-serif;
+    font-family: var(--jsa-acc-font-family, #{variables.$jsa-font-family});
     overflow: hidden;
     padding: 0;
     margin: 0;
     transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
+    @media (prefers-color-scheme: dark) {
+      background-color: var(--jsa-acc-dd-bgcolor-darkmode, #{variables.$jsa-dd-bgcolor-darkmode});
+
+      >* {
+        color: var(--jsa-acc-dd-text-color-darkmode, #{variables.$jsa-dd-text-color-darkmode});
+      }
+    }
+
     &.show {
-      border: 1px solid #e3e3e3;
+      border: 1px solid var(--jsa-acc-dt-border-color, #{variables.$jsa-dt-border-color});
     }
 
     div {

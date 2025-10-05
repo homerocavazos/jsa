@@ -2,48 +2,48 @@
 
 
 .jsa-theme-minimal {
-  background-color: var(--jsa-min-dl-bg, #{variables.$jsa-min-dl-bg});
+  background-color: var(--jsa-min-dl-bg, #{variables.$jsa-dl-bg});
 
   @media (prefers-color-scheme: dark) {
-    background-color: var(--jsa-min-dl-bg-darkmode, #{variables.$jsa-min-dl-bg-darkmode});
+    background-color: var(--jsa-min-dl-bg-darkmode, #{variables.$jsa-dl-bg-darkmode});
   }
 
   dt {
     display: flex;
     align-items: center;
     position: relative;
-    font-family: var(--jsa-min-font-family, #{variables.$jsa-min-font-family});
-    border-top: 1px solid var(--jsa-min-dt-border-top-color, #{variables.$jsa-min-dt-border-top-color});
+    font-family: var(--jsa-min-font-family, #{variables.$jsa-font-family});
+    border-top: 1px solid var(--jsa-min-dt-border-color, #{variables.$jsa-dt-border-color});
 
     @media (prefers-color-scheme: dark) {
-      font-family: var(--jsa-min-font-family-darkmode, #{variables.$jsa-min-font-family-darkmode});
-      border-top: 1px solid var(--jsa-min-dt-border-top-color-darkmode, #{variables.$jsa-min-dt-border-top-color-darkmode});
+      font-family: var(--jsa-min-font-family-darkmode, #{variables.$jsa-font-family-darkmode});
+      border-top: 1px solid var(--jsa-min-dt-border-color-darkmode, #{variables.$jsa-dt-border-color-darkmode});
     }
 
     &.active {
       border-bottom: none;
-      border-top: 1px solid var(--jsa-min-dt-border-top-color, #{variables.$jsa-min-dt-border-top-color});
-      background-color: var(--jsa-min-dt-active-bgcolor, #{variables.$jsa-min-dt-active-bgcolor});
+      border-top: 1px solid var(--jsa-min-dt-border-color, #{variables.$jsa-dt-border-color});
+      background-color: var(--jsa-min-dt-active-bgcolor, #{variables.$jsa-dt-active-bgcolor});
 
       @media (prefers-color-scheme: dark) {
-        border-top: 1px solid var(--jsa-min-dt-border-top-color-darkmode, #{variables.$jsa-min-dt-border-top-color-darkmode});
-        background-color: var(--jsa-min-dt-active-bgcolor-darkmode, #{variables.$jsa-min-dt-active-bgcolor-darkmode});
+        border-top: 1px solid var(--jsa-min-dt-border-color-darkmode, #{variables.$jsa-dt-border-color-darkmode});
+        background-color: var(--jsa-min-dt-active-bgcolor-darkmode, #{variables.$jsa-dt-active-bgcolor-darkmode});
       }
 
       a {
-        color: var(--jsa-min-dt-anchor-active-color, #{variables.$jsa-min-dt-anchor-active-color});
+        color: var(--jsa-min-dt-anchor-active-color, #{variables.$jsa-dt-anchor-active-color});
 
         @media (prefers-color-scheme: dark) {
-          color: var(--jsa-min-dt-anchor-active-color-darkmode, #{variables.$jsa-min-dt-anchor-active-color-darkmode});
+          color: var(--jsa-min-dt-anchor-active-color-darkmode, #{variables.$jsa-dt-anchor-active-color-darkmode});
         }
       }
     }
 
     &:first-of-type {
-      border-top: 1px solid var(--jsa-min-dt-border-top-color, #{variables.$jsa-min-dt-border-top-color});
+      border-top: 1px solid var(--jsa-min-dt-border-color, #{variables.$jsa-dt-border-color});
 
       @media (prefers-color-scheme: dark) {
-        border-top: 1px solid var(--jsa-min-dt-border-top-color-darkmode, #{variables.$jsa-min-dt-border-top-color-darkmode});
+        border-top: 1px solid var(--jsa-min-dt-border-color-darkmode, #{variables.$jsa-dt-border-color-darkmode});
       }
     }
 
@@ -57,23 +57,23 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-family: var(--jsa-min-font-family, #{variables.$jsa-min-font-family});
-      font-weight: var(--jsa-min-dt-font-weight, #{variables.$jsa-min-dt-font-weight});
-      color: var(--jsa-min-dt-anchor-color, #{variables.$jsa-min-dt-anchor-color});
-      text-decoration: var(--jsa-min-dt-anchor-decoration, #{variables.$jsa-min-dt-anchor-decoration});
+      font-family: var(--jsa-min-font-family, #{variables.$jsa-font-family});
+      font-weight: var(--jsa-min-dt-font-weight, #{variables.$jsa-dt-font-weight});
+      color: var(--jsa-min-dt-anchor-color, #{variables.$jsa-dt-anchor-color});
+      text-decoration: var(--jsa-min-dt-anchor-decoration, #{variables.$jsa-dt-anchor-decoration});
       width: 100%;
-      padding: var(--jsa-min-dt-padding, #{variables.$jsa-min-dt-padding});
+      padding: var(--jsa-min-dt-padding, #{variables.$jsa-dt-padding});
 
       @media (prefers-color-scheme: dark) {
-        color: var(--jsa-min-dt-anchor-color-darkmode, #{variables.$jsa-min-dt-anchor-color-darkmode});
+        color: var(--jsa-min-dt-anchor-color-darkmode, #{variables.$jsa-dt-anchor-color-darkmode});
       }
 
       &:hover {
-        color: var(--jsa-min-dt-anchor-hover-color, #{variables.$jsa-min-dt-anchor-hover-color});
-        text-decoration: var(--jsa-min-dt-anchor-decoration-hover, #{variables.$jsa-min-dt-anchor-decoration-hover});
+        color: var(--jsa-min-dt-anchor-hover-color, #{variables.$jsa-dt-anchor-hover-color});
+        text-decoration: var(--jsa-min-dt-anchor-decoration-hover, #{variables.$jsa-dt-anchor-decoration-hover});
 
         @media (prefers-color-scheme: dark) {
-          color: var(--jsa-min-dt-anchor-hover-color-darkmode, #{variables.$jsa-min-dt-anchor-hover-color-darkmode});
+          color: var(--jsa-min-dt-anchor-hover-color-darkmode, #{variables.$jsa-dt-anchor-hover-color-darkmode});
         }
       }
 
@@ -85,9 +85,9 @@
         content: "+";
         display: inline-block;
         position: absolute;
-        top: calc(50% * (var(--jsa-min-dt-expand-icon-size, #{variables.$jsa-min-dt-expand-icon-size})));
-        right: var(--jsa-min-dt-expand-icon-right, #{variables.$jsa-min-dt-expand-icon-right});
-        font-size: var(--jsa-min-dt-expand-icon-size, #{variables.$jsa-min-dt-expand-icon-size});
+        top: calc(50% * (var(--jsa-min-dt-expand-icon-size, #{variables.$jsa-dt-expand-icon-size})));
+        right: var(--jsa-min-dt-expand-icon-right, #{variables.$jsa-dt-expand-icon-right});
+        font-size: var(--jsa-min-dt-expand-icon-size, #{variables.$jsa-dt-expand-icon-size});
         color: currentColor;
       }
     }
@@ -96,7 +96,7 @@
 
   dd {
     max-height: 0;
-    font-family: var(--jsa-min-font-family, #{variables.$jsa-min-font-family});
+    font-family: var(--jsa-min-font-family, #{variables.$jsa-font-family});
     overflow: hidden;
     padding: 0;
     margin: 0;
@@ -104,10 +104,10 @@
 
 
     @media (prefers-color-scheme: dark) {
-      background-color: var(--jsa-min-dd-bgcolor-darkmode, #{variables.$jsa-min-dd-bgcolor-darkmode});
+      background-color: var(--jsa-min-dd-bgcolor-darkmode, #{variables.$jsa-dd-bgcolor-darkmode});
 
       >* {
-        color: var(--jsa-min-dd-text-color-darkmode, #{variables.$jsa-min-dd-text-color-darkmode});
+        color: var(--jsa-min-dd-text-color-darkmode, #{variables.$jsa-dd-text-color-darkmode});
       }
     }
 

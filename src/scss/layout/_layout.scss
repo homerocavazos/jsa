@@ -106,7 +106,6 @@ table {
 		}
 	}
 
-
 	th,
 	td {
 		text-align: left;
@@ -121,6 +120,8 @@ table {
 				background-color: #043a26;
 			}
 		}
+
+
 	}
 
 	th {
@@ -140,6 +141,11 @@ table {
 			color: #3ed3d5;
 			background-color: #03271f;
 		}
+	}
+
+	small {
+		padding: 0;
+		margin: 0;
 	}
 }
 
