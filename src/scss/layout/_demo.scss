@@ -20,3 +20,72 @@
 		}
 	}
 }
+
+// Custom overrides for dark mode
+.jsa-main {
+	dt h2 {
+		gap: .5em;
+
+		>* {
+			pointer-events: none;
+		}
+	}
+
+	svg {
+		@media (prefers-color-scheme: dark) {
+			path {
+				fill: var(--darkmode-color-text, #719456);
+			}
+		}
+	}
+
+	.main-collapse-icon {
+		svg {
+			@media (prefers-color-scheme: dark) {
+				path {
+					fill: none;
+					stroke: var(--darkmode-color-text, #719456);
+				}
+			}
+		}
+	}
+
+}
+
+.link {
+	color: inherit;
+	font-weight: bold;
+
+	@media (prefers-color-scheme: dark) {
+		color: var(--color-primary, #84cbdd);
+	}
+}
+
+.popup {
+	position: relative;
+	cursor: help;
+
+	&::after {
+		content: attr(data-text);
+		font-family: monospace;
+		position: absolute;
+		bottom: 125%;
+		left: 50%;
+		transform: translateX(-50%);
+		background-color: #333;
+		color: #fff;
+		padding: 5px 10px;
+		border-radius: 5px;
+		white-space: nowrap;
+		font-size: 0.8rem;
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity 0.3s;
+		z-index: 10;
+	}
+
+	&:hover::after {
+		opacity: 1;
+		pointer-events: auto;
+	}
+}

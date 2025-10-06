@@ -38,11 +38,11 @@ article {
 
 
 	@media screen and (min-width: 992px) {
-		padding: 2em;
+		padding: 2em 2em 1em 2em;
 		margin: 1em 1em 1em 0;
 
 		@media (prefers-color-scheme: dark) {
-			padding: 1.5em 1em;
+			padding: 1.5em 1.5em 0.5em 1.5em;
 
 		}
 	}
@@ -172,9 +172,6 @@ table {
 
 }
 
-.theme {
-	margin: 1rem 0;
-}
 
 .flex {
 	display: flex;
@@ -191,8 +188,21 @@ table {
 		align-items: flex-start;
 	}
 
+	&-align-center {
+		align-items: center;
+	}
+
+	&-align-end {
+		align-items: flex-end;
+	}
+
+
 	>* {
 		flex: 1;
+	}
+
+	&-grow-0 {
+		flex-grow: 0;
 	}
 }
 
@@ -200,10 +210,14 @@ table {
 	justify-content: space-between;
 }
 
-// .flex-align-start {
-// 	align-items: flex-start;
-// }
-
 .mt-md {
 	margin-top: 2rem;
+}
+
+.mr-auto {
+	margin-right: auto;
+}
+
+.ml-auto {
+	margin-left: auto;
 }

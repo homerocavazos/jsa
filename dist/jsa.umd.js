@@ -105,6 +105,7 @@ class jsa {
 			closeOthers: false,
 			animate: false,
 			prefix: opts.prefix ?? `${Math.random().toString(36).substring(2, 7)}-`,
+			hasNested: document.querySelector(opts.dl) ? document.querySelector(opts.dl).querySelectorAll(opts.dl).length > 0 : false,
 			icons: ['', ''],
 			iconClass: 'jsa-icon',
 			termPadding: '0.5em 1em 0.5em 0',
@@ -114,6 +115,7 @@ class jsa {
 			termBgActive: _.darkmode ? 'black' : '',
 			termColor: _.darkmode ? '#719456' : '',
 			termColorActive: _.darkmode ? '#fff' : '',
+			borders: true,
 			borderColor: _.darkmode ? '#719456' : '',
 			darkmode: false,
 			debug: false,
@@ -124,15 +126,27 @@ class jsa {
 			console.log('jsa settings = ', _.settings);
 		}
 
-		_.el = document.querySelector(_.settings.dl) || null;
-		_.terms = _.getObjs(document.querySelectorAll(`${_.settings.dl} ${_.settings.dt}`));
-		_.definitions = _.getObjs(document.querySelectorAll(`${_.settings.dl} ${_.settings.dd}`));
 
-		if (_.settings.theme) _.el.classList.add(`jsa-theme-${_.settings.theme}`);
+		_.parentDL = document.querySelector(_.settings.dl) || null;
+
+		// Get only direct children dt and dd of parentDL, excluding any nested dl elements
+		_.terms = Array.from(_.parentDL.querySelectorAll(`${_.settings.dt}`)).filter(dt => dt.closest(_.settings.dl) === _.parentDL);
+
+		_.definitions = Array.from(document.querySelectorAll(`${_.settings.dl} ${_.settings.dd}`)).filter(dd => {
+			// Only include dd if its closest .jsa is parentDL AND it is not inside a nested dl
+			const closestDL = dd.parentElement.closest(_.settings.dl);
+			const parentDL = _.parentDL;
+			// Exclude dd if it is inside a nested dl (other than parentDL)
+			return closestDL === parentDL && dd.parentElement.closest(_.settings.dl) === parentDL;
+
+		});
+
+		if (_.settings.theme) _.parentDL.classList.add(`jsa-theme-${_.settings.theme}`);
 
 		// Event Delegation for terms
-		_.el.addEventListener("click", e => {
+		_.parentDL.addEventListener("click", e => {
 			e.preventDefault();
+			e.stopPropagation();
 			_.toggle(e.target);
 		});
 
@@ -146,6 +160,7 @@ class jsa {
 			term.setAttribute("aria-controls", `${_.settings.prefix}definition${index}`);
 			term.setAttribute("aria-expanded", "false");
 			if (_.settings.openFirst && index === 0) term.setAttribute("aria-expanded", "true");
+			if (_.settings.openAll) term.setAttribute("aria-expanded", "true");
 			term.setAttribute("role", "button");
 			term.setAttribute("aria-label", !term.ariaLabel ? `Toggle definition for ${term.textContent.trim()}` : term.ariaLabel);
 
@@ -153,11 +168,11 @@ class jsa {
 				term.style.display = "flex";
 				term.style.position = "relative";
 				term.style.justifyContent = "space-between";
-				term.style.alignItems = "flex-start";
+				term.style.alignItems = "center";
 				term.style.gap = "1em";
 				term.style.textDecoration = "none";
 				term.style.padding = _.settings.termPadding;
-				term.style.borderTop = "1px solid " + (_.settings.darkmode ? _.settings.borderColor : "");
+				term.style.borderTop = _.settings.borders ? "1px solid " + (_.settings.darkmode ? _.settings.borderColor : "") : "none";
 				term.style.color = (_.settings.darkmode ? _.settings.termColor : "");
 
 				let icon = document.createElement('span');
@@ -167,6 +182,7 @@ class jsa {
 
 				// If open first is true, set the icon to the "open" icon
 				if (_.settings.openFirst && index === 0) icon.innerHTML = _.settings.icons[1];
+				if (_.settings.openAll === true) icon.innerHTML = _.settings.icons[1];
 
 				term.appendChild(icon);
 
@@ -174,6 +190,7 @@ class jsa {
 
 
 			if (_.settings.openFirst && index === 0) term.parentNode.classList.add("active");
+			if (_.settings.openAll === true) term.parentNode.classList.add("active");
 
 			// This covers accessibility for keyboard users
 			term.addEventListener("keydown", e => {
@@ -186,7 +203,6 @@ class jsa {
 		});
 
 		_.definitions.map((definition, index) => {
-
 			definition.setAttribute('id', `${_.settings.prefix}definition${index}`);
 			definition.setAttribute("aria-labelledby", `${_.settings.prefix}term${index}`);
 
@@ -197,14 +213,13 @@ class jsa {
 
 			if (_.settings.openFirst === true && index === 0) definition.classList.add("show");
 			if (_.settings.openFirst === true && index === 0) definition.style.maxHeight = definition.scrollHeight + "px";
-
 			if (_.settings.openAll === true) definition.classList.add("show");
+
 			if (_.settings.openAll === true) definition.style.maxHeight = definition.scrollHeight + "px";
 
 			if (_.settings.theme === 'core') {
 				definition.style.padding = "0";
 				definition.style.margin = "0";
-				definition.style.borderBottom = definition.classList.contains("show") ? `1px solid ${_.settings.borderColor}` : "none";
 				definition.style.borderTop = "none";
 				definition.style.transition = "max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s cubic-bezier(0.4, 0, 0.2, 1)";
 
@@ -218,6 +233,7 @@ class jsa {
 		if (_.settings.closeAll && document.querySelector(_.settings.closeAll)) {
 			document.querySelector(_.settings.closeAll).addEventListener('click', e => {
 				e.preventDefault();
+				e.stopPropagation();
 				_.reset();
 			});
 		};
@@ -232,16 +248,16 @@ class jsa {
 		window.addEventListener('resize', _.debounce((e) => {
 			_.updateDefinitionHeight();
 		}, 200));
+
 	}
 
 	toggle(term) {
 		const _ = this;
-
 		if (!term.dataset.target) return; // Prevent toggling if the clicked element is not a term
 
 		let target = term.dataset.target;
-		let def = document.getElementById(`${target}`);
 
+		let def = document.getElementById(`${target}`);
 		const isOpen = def.classList.contains("show");
 
 		if (_.settings.closeOthers && !isOpen) {
@@ -249,6 +265,7 @@ class jsa {
 		}
 
 		def.classList.toggle("show");
+
 		term.setAttribute("aria-expanded", !isOpen ? "true" : "false");
 		term.parentNode.classList.toggle("active");
 
@@ -297,12 +314,6 @@ class jsa {
 			if (_.settings.theme === 'core') definition.style.padding = "0";
 		});
 	}
-
-	getObjs(objs) {
-		return Object.keys(objs).map(function (e) {
-			return objs[e];
-		});
-	};
 
 	buildSchema() {
 

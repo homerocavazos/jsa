@@ -23,11 +23,11 @@
     &.active {
       border-bottom: none;
       border-top: 1px solid var(--jsa-min-dt-border-color, #{variables.$jsa-dt-border-color});
-      background-color: var(--jsa-min-dt-active-bgcolor, #{variables.$jsa-dt-active-bgcolor});
+      background-color: var(--jsa-min-dt-bgcolor-active, #{variables.$jsa-dt-bgcolor-active});
 
       @media (prefers-color-scheme: dark) {
         border-top: 1px solid var(--jsa-min-dt-border-color-darkmode, #{variables.$jsa-dt-border-color-darkmode});
-        background-color: var(--jsa-min-dt-active-bgcolor-darkmode, #{variables.$jsa-dt-active-bgcolor-darkmode});
+        background-color: var(--jsa-min-dt-bgcolor-active-darkmode, #{variables.$jsa-dt-bgcolor-active-darkmode});
       }
 
       a {

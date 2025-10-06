@@ -16,9 +16,12 @@ $jsa-dt-anchor-color-darkmode: rgba(186, 249, 247, 0.87) !default;
 
 $jsa-dt-anchor-decoration: none !default;
 $jsa-dt-anchor-decoration-hover: none !default;
-$jsa-dt-active-bgcolor: white !default;
+
 $jsa-dt-expand-icon-right: 0 !default;
 $jsa-dt-expand-icon-size: 18px !default;
+
+$jsa-dt-bgcolor-active: white !default;
+$jsa-dt-bgcolor-active-darkmode: black !default;
 
 $jsa-dt-border-color: #e3e3e3 !default;
 $jsa-dt-border-color-darkmode: rgba(74, 209, 205, 0.87) !default;
@@ -29,8 +32,5 @@ $jsa-dt-anchor-hover-color-darkmode: rgba(74, 209, 205, 0.87) !default;
 $jsa-dt-anchor-active-color: rgba(0, 150, 136, 0.87) !default;
 $jsa-dt-anchor-active-color-darkmode: rgba(74, 209, 205, 0.87) !default;
 
-
-
-$jsa-dt-active-bgcolor-darkmode: black !default;
 $jsa-dd-bgcolor-darkmode: rgb(23, 23, 23) !default;
 $jsa-dd-text-color-darkmode: rgba(186, 249, 247, 0.87) !default;

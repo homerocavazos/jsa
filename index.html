@@ -31,8 +31,6 @@
 			--jsa-min-dt-expand-icon-size: 2em;
 			--jsa-min-dt-expand-icon-right: .3em;
 			--jsa-min-dt-padding: 1em;
-			--jsa-min-dt-active-bgcolor-darkmode: #1a1a1a;
-			--jsa-min-dt-anchor-hover-color-darkmode: rgba(74, 209, 205, 0.87);
 
 			--jsa-acc-dt-expand-icon-right: 1em;
 			--jsa-acc-dt-border-color: #719456;
@@ -123,10 +121,10 @@
 						<code>jsa-themes.min.css</code> or
 						<code>_jsa.theme-minimal.scss</code>.
 					</li>
-					<!-- <li><strong>Accordion</strong> - Requires <code>jsa-themes.min.css</code>
+					<li><strong>Accordion</strong> - Requires <code>jsa-themes.min.css</code>
 						or
 						<code>_jsa.theme-accordion.scss</code>.
-					</li> -->
+					</li>
 				</ul>
 
 			</article>
@@ -135,30 +133,36 @@
 
 		<section>
 
-			<article id="usage">
-				<h2>Usage</h2>
-				<section>
-					<div>
+			<div>
+				<dl class="jsa-main">
 
-						<small class="bg-accent text-white text-xxbold">Bare Minimum <small
-								class="bg-secondary text-alert text-xxbold">HTML</small></small>
+					<article id="getstarted">
+						<dt>
+							<h2>Getting Started</h2>
+						</dt>
+						<dd>
+							<section>
+								<div>
 
-						<p>
-							The accordion's markup is based on definition list. The goal is to
-							keep the markup simple to maintain. The application will fill in
-							the necessary attributes.
-						</p>
-						<p>
-							A trigger element (usually an anchor, button or H1-H6) is required inside
-							the <code>&lt;dt&gt;</code> element. The content to be revealed
-							should be wrapped inside
-							the <code>&lt;dd&gt;</code> element.
-						</p>
+									<small class="bg-accent text-white text-xxbold">Bare Minimum <small
+											class="bg-secondary text-alert text-xxbold">HTML</small></small>
+
+									<p>
+										The accordion's markup is based on definition list. The goal is to
+										keep the markup simple to maintain. The application will fill in
+										the necessary attributes.
+									</p>
+									<p>
+										A trigger element (usually an anchor, button or H1-H6) is required inside
+										the <code>&lt;dt&gt;</code> element. The content to be revealed
+										should be wrapped inside
+										the <code>&lt;dd&gt;</code> element.
+									</p>
 
 
-					</div>
-					<div>
-						<pre>
+								</div>
+								<div>
+									<pre>
 &lt;<span class="h-el">dl</span> <span class="h-attr">class</span>=&quot;<span class="h-string">jsa</span>&quot;&gt;
 
   &lt;<span class="h-el">dt</span>&gt;&lt;<span class="h-el">a</span> <span class="h-attr">href</span>="<span class="h-string">#</span>"&gt;Title One&lt;/<span class="h-el">a</span>&gt;&lt;/<span class="h-el">dt</span>&gt;
@@ -171,24 +175,24 @@
   &lt;<span class="h-el">dd</span>&gt;Lorem ipsum dolor sit.&lt;/<span class="h-el">dd</span>&gt;
 
 &lt;/<span class="h-el">dl</span>&gt;</pre>
-					</div>
-				</section>
-				<section>
-					<div>
-						<small class="bg-accent text-white text-xxbold">Bare Minimum <small
-								class="bg-secondary text-alert text-xxbold">JavaScript</small></small>
+								</div>
+							</section>
+							<section>
+								<div>
+									<small class="bg-accent text-white text-xxbold">Bare Minimum <small
+											class="bg-secondary text-alert text-xxbold">JavaScript</small></small>
 
-						<p>To instantiate the accordion, you need to include the JavaScript file and create a new
-							instance of the
-							accordion class.</p>
+									<p>To instantiate the accordion, you need to include the JavaScript file and create a new
+										instance of the
+										accordion class.</p>
 
-						<p>The <code>&lt;dl&gt;</code> element should have the class <code>jsa</code> applied to it.</p>
-						<p>For multiple instances of the accordion on the same page, you need to declare a unique
-							selector to the instance. For example, <code>#jsa-menu</code>, <code>.jsa-accordion2</code>
-							class on each <code>&lt;dl&gt;</code> element.</p>
-					</div>
-					<div>
-						<pre>
+									<p>The <code>&lt;dl&gt;</code> element should have the class <code>jsa</code> applied to it.</p>
+									<p>For multiple instances of the accordion on the same page, you need to declare a unique
+										selector to the instance. For example, <code>#jsa-menu</code>, <code>.jsa-accordion2</code>
+										class on each <code>&lt;dl&gt;</code> element.</p>
+								</div>
+								<div>
+									<pre>
 <span class="h-js-new">import</span> <span class="h-yellow">{</span> <span class="h-lime">jsa</span> <span class="h-yellow">}</span> <span class="h-js-new">from</span> <span class="h-yellow">'@homiehomes/jsa'</span>;
 
 <span class="h-string">new</span> <span class="h-lime">jsa</span><span class="h-yellow">()</span>;
@@ -200,41 +204,46 @@
  <span class="h-yellow">}</span>
 )</span>;
 </pre>
-					</div>
-				</section>
+								</div>
+							</section>
+						</dd>
+					</article>
 
-			</article>
+					<article id="options" class="offset-anchor">
+						<dt>
+							<h2>
+								<span class="mr-auto">Options</span> <small>Customize the Accordion</small>
+							</h2>
+						</dt>
 
-			<article id="options">
-				<h2>Options</h2>
-
-				<section>
-					<div>
-						<small class="bg-primary text-white text-xxbold">JSA <small
-								class="bg-secondary text-black text-xxbold">2.0</small></small>
-						<p>By default the theme is set to <code>'core'</code>. <strong>Core</strong> is a minimalistic
-							theme that
-							provides basic customization without any additional CSS.</p>
-
-
-						<p> The <code>&lt;a&gt;</code> tag is recommended
-							because it is semantically
-							appropriate for links that open and close content and is widely recognized by users and
-							assistive
-							technologies.</p>
-						<p>However, if you prefer to use a different element (like a <code>&lt;button&gt;</code> or
-							heading tags),
-							you can specify that using the <code>dt</code> option.
-							<code>&lt;dt&gt;&lt;h2&gt;Title&lt;/h2&gt;&lt;/dt&gt;</code> {<code>dt: 'dt h2'</code>}
-						</p>
+						<dd>
+							<section>
+								<div>
+									<small class="bg-primary text-white text-xxbold">JSA <small
+											class="bg-secondary text-black text-xxbold">2.0</small></small>
+									<p>By default the theme is set to <code>'core'</code>. <strong>Core</strong> is a minimalistic
+										theme that
+										provides basic customization without any additional CSS.</p>
 
 
+									<p> The <code>&lt;a&gt;</code> tag is recommended
+										because it is semantically
+										appropriate for links that open and close content and is widely recognized by users and
+										assistive
+										technologies.</p>
+									<p>However, if you prefer to use a different element (like a <code>&lt;button&gt;</code> or
+										heading tags),
+										you can specify that using the <code>dt</code> option.
+										<code>&lt;dt&gt;&lt;h2&gt;Title&lt;/h2&gt;&lt;/dt&gt;</code> {<code>dt: 'dt h2'</code>}
+									</p>
 
-						<p>All options are optional. The defaults are shown below.</p>
 
-					</div>
-					<div>
-						<pre>
+
+									<p>All options are optional. The defaults are shown below.</p>
+
+								</div>
+								<div>
+									<pre>
 <span class="h-string">new</span> <span class="h-lime">jsa</span><span class="h-yellow">(
   <span class="h-yellow">{</span>
    <span class="h-js-new">dl:</span> ".jsa",
@@ -256,201 +265,217 @@
    <span class="h-js-new">termBgActive:</span> 'black',
    <span class="h-js-new">termColor:</span> '#719456',
    <span class="h-js-new">termColorActive:</span> '#fff',
+   <span class="h-js-new">borders:</span> true,
    <span class="h-js-new">borderColor:</span> '#719456',
    <span class="h-js-new">darkmode:</span> false,
    <span class="h-js-new">debug:</span> false,
   <span class="h-yellow">}</span>
 )</span>;
 </pre>
-					</div>
+								</div>
 
 
-				</section>
-				<div class="table-container">
-					<table>
-						<thead>
-							<tr>
-								<th>Option</th>
-								<th>Type</th>
-								<th>Default</th>
-								<th>Availability</th>
-								<th>Description</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td><code>dl</code></td>
-								<td>string</td>
-								<td><code>'.jsa'</code></td>
-								<td>✓</td>
-								<td>The selector for the accordion container. This should be a <code>&lt;dl&gt;</code>
-									element.</td>
-							</tr>
-							<tr>
-								<td><code>dt</code></td>
-								<td>string</td>
-								<td><code>'dt a'</code></td>
-								<td>✓</td>
-								<td>The trigger element for the accordion. This should be a <code>&lt;dt&gt;</code>
-									element.
-								</td>
-							</tr>
-							<tr>
-								<td><code>theme</code></td>
-								<td>string</td>
-								<td><code>'core'</code></td>
-								<td>✓</td>
-								<td>The theme to use for the accordion. Options are <code>'core'</code>,
-									<code>'minimal'</code>,
-									<code>'accordion'</code>, or <code>''</code> (no theme).
-								</td>
-							</tr>
-							<tr>
-								<td><code>openFirst</code></td>
-								<td>boolean</td>
-								<td><code>false</code></td>
-								<td>✓</td>
-								<td>If true, the first item will be opened by default.</td>
-							</tr>
-							<tr>
-								<td><code>openAll</code></td>
-								<td>boolean</td>
-								<td><code>false</code></td>
-								<td>✓</td>
-								<td>If true, all items will be opened by default.</td>
-							</tr>
-							<tr>
-								<td><code>closeAll</code></td>
-								<td>string</td>
-								<td><code>null</code></td>
-								<td>✓</td>
-								<td>The selector for a button or link that will close all items when clicked.</td>
-							</tr>
-							<tr>
-								<td><code>closeOthers</code></td>
-								<td>boolean</td>
-								<td><code>false</code></td>
-								<td>✓</td>
-								<td>If true, opening one item will close all others.</td>
-							</tr>
-							<tr>
-								<td><code>animate</code></td>
-								<td>boolean</td>
-								<td><code>false</code></td>
-								<td>✓</td>
-								<td>If true, animate the opening and closing of items.</td>
-							</tr>
-							<tr>
-								<td><code>icons</code></td>
-								<td>array</td>
-								<td><code>[]</code></td>
-								<td><strong><small>Core</small></strong></td>
-								<td>An array of two strings representing the icons for the closed and open states. Can
-									be
-									inline SVG,
-									an <code>&lt;img&gt;</code> element, or emojis.</td>
-							</tr>
-							<tr>
-								<td><code>iconClass</code></td>
-								<td>string</td>
-								<td><code>'jsa-icon'</code></td>
-								<td><strong><small>Core</small></strong></td>
-								<td>The class to apply to the icon element.</td>
-							</tr>
-							<tr>
-								<td><code>termPadding</code></td>
-								<td>string</td>
-								<td><code>'0.5em 1em'</code></td>
-								<td><strong><small>Core</small></strong></td>
-								<td>The padding to apply to the term element.</td>
-							</tr>
+							</section>
+							<div class="table-container">
+								<table>
+									<thead>
+										<tr>
+											<th>Option</th>
+											<th>Type</th>
+											<th>Default</th>
+											<th>Availability</th>
+											<th>Description</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td><code>dl</code></td>
+											<td>string</td>
+											<td><code>'.jsa'</code></td>
+											<td>✓</td>
+											<td>The selector for the accordion container. This should be a <code>&lt;dl&gt;</code>
+												element.</td>
+										</tr>
+										<tr>
+											<td><code>dt</code></td>
+											<td>string</td>
+											<td><code>'dt a'</code></td>
+											<td>✓</td>
+											<td>The trigger element for the accordion. This should be a <code>&lt;dt&gt;</code>
+												element.
+											</td>
+										</tr>
+										<tr>
+											<td><code>theme</code></td>
+											<td>string</td>
+											<td><code>'core'</code></td>
+											<td>✓</td>
+											<td>The theme to use for the accordion. Options are <code>'core'</code>,
+												<code>'minimal'</code>,
+												<code>'accordion'</code>, or <code>''</code> (no theme).
+											</td>
+										</tr>
+										<tr>
+											<td><code>openFirst</code></td>
+											<td>boolean</td>
+											<td><code>false</code></td>
+											<td>✓</td>
+											<td>If true, the first item will be opened by default.</td>
+										</tr>
+										<tr>
+											<td><code>openAll</code></td>
+											<td>boolean</td>
+											<td><code>false</code></td>
+											<td>✓</td>
+											<td>If true, all items will be opened by default.</td>
+										</tr>
+										<tr>
+											<td><code>closeAll</code></td>
+											<td>string</td>
+											<td><code>null</code></td>
+											<td>✓</td>
+											<td>The selector for a button or link that will close all items when clicked.</td>
+										</tr>
+										<tr>
+											<td><code>closeOthers</code></td>
+											<td>boolean</td>
+											<td><code>false</code></td>
+											<td>✓</td>
+											<td>If true, opening one item will close all others.</td>
+										</tr>
+										<tr>
+											<td><code>animate</code></td>
+											<td>boolean</td>
+											<td><code>false</code></td>
+											<td>✓</td>
+											<td>If true, animate the opening and closing of items.</td>
+										</tr>
+										<tr>
+											<td><code>icons</code></td>
+											<td>array</td>
+											<td><code>[]</code></td>
+											<td><strong><small>Core</small></strong></td>
+											<td>An array of two strings representing the icons for the closed and open states. Can
+												be
+												inline SVG,
+												an <code>&lt;img&gt;</code> element, or emojis.</td>
+										</tr>
+										<tr>
+											<td><code>iconClass</code></td>
+											<td>string</td>
+											<td><code>'jsa-icon'</code></td>
+											<td><strong><small>Core</small></strong></td>
+											<td>The class to apply to the icon element.</td>
+										</tr>
+										<tr>
+											<td><code>termPadding</code></td>
+											<td>string</td>
+											<td><code>'0.5em 1em'</code></td>
+											<td><strong><small>Core</small></strong></td>
+											<td>The padding to apply to the term element.</td>
+										</tr>
 
-							<tr>
-								<td><code>schema</code></td>
-								<td>boolean</td>
-								<td><code>false</code></td>
-								<td>✓</td>
-								<td>If true, JSON-LD schema will be generated for SEO.</td>
-							</tr>
-							<tr>
-								<td><code>schemaType</code></td>
-								<td>string</td>
-								<td><code>'FAQPage'</code></td>
-								<td>✓</td>
-								<td>The type of schema to generate. Options are <code>'FAQPage'</code> or
-									<code>'Article'</code>.
-								</td>
-							</tr>
-							<tr>
-								<td><code>termBg</code></td>
-								<td>string</td>
-								<td><code>'transparent'</code></td>
-								<td><strong><small>Core</small></strong><br><code>darkmode: true</code></td>
-								<td>The background color for the term element. Can be a color name, hex, or rgba value.</td>
-							</tr>
-							<tr>
-								<td><code>termBgActive</code></td>
-								<td>string</td>
-								<td><code>'black'</code></td>
-								<td><strong><small>Core</small></strong><br><code>darkmode: true</code></td>
-								<td>The background color for the "Active" term element. Can be a color name, hex, or rgba value.</td>
-							</tr>
-							<tr>
-								<td><code>termColor</code></td>
-								<td>string</td>
-								<td><code>'#719456'</code></td>
-								<td><strong><small>Core</small></strong><br><code>darkmode: true</code></td>
-								<td>The text color for the term element. Can be a color name, hex, or rgba value.</td>
-							</tr>
-							<tr>
-								<td><code>termColorActive</code></td>
-								<td>string</td>
-								<td><code>'#fff'</code></td>
-								<td><strong><small>Core</small></strong><br><code>darkmode: true</code></td>
-								<td>The text color for the "Active" term element. Can be a color name, hex, or rgba value.</td>
-							</tr>
-							<tr>
-								<td><code>borderColor</code></td>
-								<td>string</td>
-								<td><code>'#719456'</code></td>
-								<td><strong><small>Core</small></strong><br><code>darkmode: true</code></td>
-								<td>The border color between terms. Can be a color name, hex, or rgba value.</td>
-							</tr>
-							<tr>
-								<td><code>darkmode</code></td>
-								<td>boolean</td>
-								<td><code>false</code></td>
-								<td><strong><small>Core</small></strong><br> <code>darkmode: true</code></td>
-								<td>If true, dark mode styles will be applied.</td>
-							</tr>
-							<tr>
-								<td><code>debug</code></td>
-								<td>boolean</td>
-								<td><code>false</code></td>
-								<td>✓</td>
-								<td>If true, logs the accordion configuration.</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</article>
+										<tr>
+											<td><code>schema</code></td>
+											<td>boolean</td>
+											<td><code>false</code></td>
+											<td>✓</td>
+											<td>If true, JSON-LD schema will be generated for SEO.</td>
+										</tr>
+										<tr>
+											<td><code>schemaType</code></td>
+											<td>string</td>
+											<td><code>'FAQPage'</code></td>
+											<td>✓</td>
+											<td>The type of schema to generate. Options are <code>'FAQPage'</code> or
+												<code>'Article'</code>.
+											</td>
+										</tr>
+										<tr>
+											<td><code>termBg</code></td>
+											<td>string</td>
+											<td><code>'transparent'</code></td>
+											<td><strong><small>Core</small></strong><br><code>darkmode: true</code></td>
+											<td>The background color for the term element. Can be a color name, hex, or rgba value.</td>
+										</tr>
+										<tr>
+											<td><code>termBgActive</code></td>
+											<td>string</td>
+											<td><code>'black'</code></td>
+											<td><strong><small>Core</small></strong><br><code>darkmode: true</code></td>
+											<td>The background color for the "Active" term element. Can be a color name, hex, or rgba value.
+											</td>
+										</tr>
+										<tr>
+											<td><code>termColor</code></td>
+											<td>string</td>
+											<td><code>'#719456'</code></td>
+											<td><strong><small>Core</small></strong><br><code>darkmode: true</code></td>
+											<td>The text color for the term element. Can be a color name, hex, or rgba value.</td>
+										</tr>
+										<tr>
+											<td><code>termColorActive</code></td>
+											<td>string</td>
+											<td><code>'#fff'</code></td>
+											<td><strong><small>Core</small></strong><br><code>darkmode: true</code></td>
+											<td>The text color for the "Active" term element. Can be a color name, hex, or rgba value.</td>
+										</tr>
+										<tr>
+											<td><code>borders</code></td>
+											<td>boolean</td>
+											<td><code>true</code></td>
+											<td><strong><small>Core</small></strong></td>
+											<td>If true, borders will be added between terms.</td>
+										</tr>
+										<tr>
+											<td><code>borderColor</code></td>
+											<td>string</td>
+											<td><code>'#719456'</code></td>
+											<td><strong><small>Core</small></strong><br><code>darkmode: true</code></td>
+											<td>The border color between terms. Can be a color name, hex, or rgba value.</td>
+										</tr>
+										<tr>
+											<td><code>darkmode</code></td>
+											<td>boolean</td>
+											<td><code>false</code></td>
+											<td><strong><small>Core</small></strong><br> <code>darkmode: true</code></td>
+											<td>If true, dark mode styles will be applied.</td>
+										</tr>
+										<tr>
+											<td><code>debug</code></td>
+											<td>boolean</td>
+											<td><code>false</code></td>
+											<td>✓</td>
+											<td>If true, logs the accordion configuration.</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</dd>
+
+					</article>
+
+			</div><!-- end of accordion wrapper -->
 
 			<article id="theme-none">
-				<div class="theme">
-					<h2>Default</h2>
 
+				<h2>Default Accordion</h2>
+
+
+				<div class="theme">
 					<p>JSA by default applies no styles. This is ideal if you want to
 						apply your own custom styles from scratch. The collapse functionality is handled within the instance.
 					</p>
 
 					<div class="flex mt-md">
 						<div>
-							<dl class="jsa-none">
+							<dl class="jsa-default">
 								<dt><a href="#">What is the capital of France?</a></dt>
 								<dd>
 									<div>
 										<p>The capital of France is Paris.</p>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe voluptatem rerum et temporibus.
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe voluptatem rerum et
+											temporibus.
 											Ullam, vero tenetur quasi laudantium aut illum.</p>
 									</div>
 								</dd>
@@ -480,10 +505,14 @@
 					</div>
 
 				</div>
+
+
 			</article>
+
 			<article id="theme-core">
 				<div class="theme">
-					<h2>Theme Core - <span class="h-pink"><sup>1</sup>Dark mode included</span></h2>
+					<h2 class="flex justify-space-between"><span>Theme Core</span> <span class="popup flex-grow-0"
+							data-text="Dark mode">🌑</span>
 					</h2>
 
 					<p><strong>Core</strong> delivers the essential accordion layout with inline styles only—no external
@@ -536,15 +565,18 @@
 					</div>
 
 				</div>
-				<ol>
-					<li>Dark mode support but must activate <Core code>darkmode: true</Core> in options.</li>
-				</ol>
+				<span class="note">🌑 Dark mode support but must activate <code>darkmode: true</code> in options. See <a
+						href="#options" class="link" data-target="main-definition1">Options</a></span>
+
 			</article>
 
 
 			<article id="theme-minimal">
 				<div class="theme">
-					<h2>Theme Minimal - <span class="h-pink"><sup>1</sup>Dark mode included</span></h2>
+
+					<h2 class="flex justify-space-between"><span>Theme Minimal</span> <span class="popup flex-grow-0"
+							data-text="Dark mode">🌑</span>
+					</h2>
 
 					<p>Setting theme to minimal provides a basic styling for the accordion. It requires
 						<code>jsa-themes.min.css</code> or adding <code>_jsa.theme-minimal.scss</code> to your project.
@@ -646,11 +678,11 @@
 						</div>
 					</div>
 				</div>
-				<ol>
-					<li>Dark mode is part of the theme and you may override the styles with <code>:root</code> variables or
-						<code>scss</code> variables.
-					</li>
-				</ol>
+
+				<span class="note">🌑 Dark mode is part of the theme and you may override the styles with <code>:root</code>
+					variables or
+					<code>scss</code> variables.</span>
+
 			</article>
 
 			<article id="theme-accordion">
@@ -701,6 +733,59 @@
 						</div>
 					</div>
 
+					<div class="flex flex-align-start mt-md">
+						<div>
+							<h3>Basic Control ( <span class="h-js-new"><strong><code>:root</code> Variables</strong></span> )</h3>
+							<p>These variables allow you to customize the appearance without diving into the SCSS code or writing
+								custom styles.</p>
+							<ul>
+								<li><code>--jsa-acc-font-family</code></li>
+								<li><code>--jsa-acc-font-family-darkmode</code></li>
+								<li><code>--jsa-acc-dt-font-weight</code></li>
+								<li><code>--jsa-acc-dt-border-color</code></li>
+								<li><code>--jsa-acc-dt-border-color-darkmode</code></li>
+								<li><code>--jsa-acc-dt-anchor-color</code></li>
+								<li><code>--jsa-acc-dt-anchor-color-darkmode</code></li>
+								<li><code>--jsa-acc-dt-anchor-active-color</code></li>
+								<li><code>--jsa-acc-dt-anchor-active-color-darkmode</code></li>
+								<li><code>--jsa-acc-dt-anchor-decoration</code></li>
+								<li><code>--jsa-acc-dt-anchor-decoration-hover</code></li>
+								<li><code>--jsa-acc-dt-expand-icon-size</code></li>
+								<li><code>--jsa-acc-dt-expand-icon-right</code></li>
+								<li><code>--jsa-acc-dt-padding</code></li>
+								<li><code>--jsa-acc-dt-active-bgcolor</code></li>
+								<li><code>--jsa-acc-dt-active-bgcolor-darkmode</code></li>
+								<li><code>--jsa-acc-dl-bg-darkmode</code></li>
+								<li><code>--jsa-acc-dt-anchor-hover-color-darkmode</code></li>
+							</ul>
+
+						</div>
+						<div>
+							<h3>Full Control ( <span class="h-js-new"><strong>SCSS Variables</strong></span> )</h3>
+							<p></p>
+							<p>If you're using SCSS, you can override these variables before importing the theme to customize
+								the
+								appearance of the minimal theme.</p>
+							<pre>
+
+@<span class="h-pink">use</span> <span class="h-lime">../themes/variables</span> <span class="h-js-new">with</span> <span class="h-yellow">(</span>
+
+ <span class="h-js-comment">// See variables.scss for more variables</span>
+ <span class="h-attr">$jsa-dt-border-color:</span> #121212,
+
+<span class="h-yellow">)</span>;
+
+
+@<span class="h-pink">use</span> <span class="h-lime">../themes/jsa.theme-accordion</span>;
+
+<span class="h-js-new">.jsa-theme-accordion</span> <span class="h-pink">dt</span> <span class="h-yellow">{</span>
+
+<span class="h-js-var">border-top:</span> 1px solid <span class="h-blue">#{variables.$jsa-dt-border-color}</span> <span class="h-js-new">!important</span>;
+
+								
+</pre>
+						</div>
+					</div>
 				</div>
 			</article>
 
@@ -711,12 +796,33 @@
 	<script type="module">
 		import { jsa } from '/dist/jsa.js';
 
-
-		// Optional to define "dl" as long as you use '.jsa' as class name for the accordion container
 		new jsa({
-			dl: '.jsa-none',
+			dl: '.jsa-main',
+			dt: 'h2',
+			theme: 'core',
+			icons: [
+				`<svg  width="18" height="9" viewBox="0 0 18 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1 1L9 7L17 1" stroke="black" stroke-width="2" stroke-linecap="round"/>
+</svg>`,
+				`<svg width="18" height="9" viewBox="0 0 18 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17 8L9 2L1 8" stroke="black" stroke-width="2" stroke-linecap="round"/>
+</svg>`,
+			],
+			iconClass: 'main-collapse-icon',
+			borders: false,
+			prefix: 'main-',
+			openFirst: true,
 			animate: true,
 		});
+		// Optional to define "dl" as long as you use '.jsa' as class name for the accordion container
+		new jsa({
+			dl: '.jsa-default',
+			dt: 'dt a',
+			openAll: false,
+			prefix: 'default-',
+			animate: true,
+		});
+
 		new jsa({
 			dl: '.jsa-core',
 			theme: 'core',
@@ -732,6 +838,14 @@
 			theme: 'accordion',
 		});
 
+		// Open panel when clicking on the link
+		// this is not part of jsa but a way to access click event on the body
+		document.querySelector('body').addEventListener('click', e => {
+			e.stopPropagation();
+			const targetId = e.target.dataset.target;
+			const targetElement = document.querySelector(`[data-target="${targetId}"]`);
+			if (targetElement) targetElement.click();
+		});
 
 
 
