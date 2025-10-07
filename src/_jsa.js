@@ -106,6 +106,8 @@ class jsa {
 			term.style.cursor = "pointer";
 			term.setAttribute("aria-controls", `${_.settings.prefix}definition${index}`);
 			term.setAttribute("aria-expanded", "false");
+			if (index === 0) term.classList.add("first-term");
+			if (_.terms.length === index + 1) term.classList.add("last-term");
 			if (_.settings.openFirst && index === 0) term.setAttribute("aria-expanded", "true");
 			if (_.settings.openAll) term.setAttribute("aria-expanded", "true");
 			term.setAttribute("role", "button");
@@ -163,6 +165,9 @@ class jsa {
 			if (_.settings.openAll === true) definition.classList.add("show");
 
 			if (_.settings.openAll === true) definition.style.maxHeight = definition.scrollHeight + "px";
+
+			if (index === 0) definition.classList.add("first-term");
+			if (_.definitions.length === index + 1) definition.classList.add("last-term");
 
 			if (_.settings.theme === 'core') {
 				definition.style.padding = "0";

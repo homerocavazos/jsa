@@ -20,3 +20,9 @@ body {
 .offset-anchor {
     scroll-margin-top: 5em;
 }
+
+.is-safari header,
+.is-safari .header__body,
+.is-safari article {
+    filter: none !important;
+}
