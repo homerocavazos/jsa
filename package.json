@@ -1,7 +1,7 @@
 {
   "name": "@homiehomes/jsa",
   "version": "2.0.1",
-  "description": "Javascript Accordion",
+  "description": "Accessible, responsive, and customizable JavaScript accordion component with vanilla JS and SCSS support. Automatically generates FAQ schema using JSON-LD for enhanced SEO.",
   "main": "dist/jsa.min.js",
   "repository": {
     "type": "git",
@@ -13,6 +13,17 @@
     "url": "https://github.com/homerocavazos/jsa/issues"
   },
   "homepage": "https://github.com/homerocavazos/jsa#readme",
+  "keywords": [
+    "accordion",
+    "javascript",
+    "js",
+    "vanilla",
+    "css",
+    "scss",
+    "responsive",
+    "accessible",
+    "a11y"
+  ],
   "scripts": {
     "dev": "npx webpack --watch --mode development --config webpack.config.js",
     "build": "npx webpack --mode production --config webpack.config.js",

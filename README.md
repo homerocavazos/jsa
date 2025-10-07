@@ -1,10 +1,10 @@
-# JSA | JavaScript Accordion
+# JSA 2.0 | JavaScript Accordion Utility
 
-This Accordion is based on The Description List Element.
+Accessible, responsive, and customizable JavaScript accordion component with vanilla JS and SCSS support. Automatically generates FAQ schema using JSON-LD for enhanced SEO.
 
 ### Demo
 
-https://jsa.homerocavazos.com/
+[jsa.homiehomes.dev](https://jsa.homiehomes.dev/)
 
 ### NPM
 
@@ -14,7 +14,9 @@ npm i @homiehomes/jsa
 
 ### Usage
 
-To activate the accordion add .jsa class to the `<dl>` tag. The `<dt><a>...` needs to have an anchor tag for best accessibility experience. The app takes care of all of the necessary attributes for activating the target elements. Your markup only needs to contain the following:
+The accordion's markup is based on definition list. The goal is to keep the markup simple to maintain. The application will fill in the necessary attributes.
+
+A trigger element (usually an anchor, button or H1-H6) is required inside the `<dt>` element. The content to be revealed should be wrapped inside the `<dd>` element.
 
 #### HTML markup
 
@@ -35,37 +37,85 @@ To activate the accordion add .jsa class to the `<dl>` tag. The `<dt><a>...` nee
 
 #### JavaScript
 
-In order to activate the accordion you must create an instance of the `jsa` app. This will automatically look for an element with the class `.jsa` to recognize the accordion.
+To instantiate the accordion, you need to include the JavaScript file and create a new instance of the accordion class.
 
-```
-// Instantiate
-var example = new jsa();
+The `<dl>` element should have the class `.jsa` applied to it.
 
-// Default with .jsa class
-example.init();
 
 ```
 
+import { jsa } from '@homiehomes/jsa';
+
+new jsa();
+
+```
+
+#### Custom trigger
+You may prefer using `<dt><h2>Title One</h2></dt>`, then you will have to assign the trigger element in the instance.
+
+```
+
+new jsa({
+  dt: 'dt h2'
+});
+
+```
+
+#### Additional accordions
+For multiple instances of the accordion on the same page, you need to declare a unique selector to the instance. For example,  `#jsa-menu,` `.jsa-accordion2` class on each `<dl>` element.
+
+
+> **CAUTION:** Nested accordions is not supported.
+
+
+**Nested accordions is not supported**
+```
+
+new jsa(
+ {
+  dl: '.jsa-menu',
+ }
+);
+
+```
 ### Options
 
-#### Parent Selector
+By default the theme is set to 'core'. Core is a minimalistic theme that provides basic customization without any additional CSS.
 
-The default required selector name is `<dl class="jsa">`. You may choose a different selector name as long as you specify it in the `.init()` function as the first argument. This is useful when creating multiple accordions on a page. Each instance must be unique.
+The `<a>` tag is recommended because it is semantically appropriate for links that open and close content and is widely recognized by users and assistive technologies.
 
-```
-// Custom selector
-example.init('#myAccordion');
-example2.init('.accordion2');
-```
 
-By default the selector for opening each drawer is the anchor tag in the `<dt>` tag. You can change this by updating the dt option.
+All options are optional. The defaults are shown below.
 
 ```
-// Custom question selector
-example.init( '#myAccordion',
-  { dt: "dt a" // Trigger selector
-    openFirst: false, // Open first drawer on load
-    openAll: false, // Open all on load
-    toggle: false // Toggle open/close drawer
-  } );
+new jsa(
+  {
+   dl: ".jsa",
+   dt: "dt a",
+   dd: "dd",
+   theme: '', 
+   openFirst: false,
+   openAll: false,
+   closeAll: null, 
+   closeOthers: false,
+   animate: false,
+   prefix: "" 
+   icons: ['', ''], 
+   iconClass: 'jsa-icon', 
+   termPadding: '0.5em 1em 0.5em 0', 
+   schema: false,
+   schemaType: 'FAQPage',
+   termBg: 'transparent' : '',
+   termBgActive: 'black',
+   termColor: '#719456',
+   termColorActive: '#fff',
+   borders: true,
+   borderColor: '#719456',
+   darkmode: false,
+   debug: false,
+  }
+);
 ```
+
+
+#### Visit the [demo site](https://jsa.homiehomes.dev/) for more examples and details.
