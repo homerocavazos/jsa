@@ -80,7 +80,7 @@ new jsa(
 ```
 ### Options
 
-By default the theme is set to 'core'. Core is a minimalistic theme that provides basic customization without any additional CSS.
+JSA by default has no styles but inline styles for expand/collapse functionality. This is ideal if you want to apply your own custom styles from scratch. The collapse functionality is handled within the instance.
 
 The `<a>` tag is recommended because it is semantically appropriate for links that open and close content and is widely recognized by users and assistive technologies.
 
