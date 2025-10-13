@@ -33,6 +33,7 @@
       border-bottom: none;
       border-top: none;
 
+      h2,
       a {
         color: var(--jsa-acc-dt-anchor-active-color, #{variables.$jsa-dt-anchor-active-color});
 
@@ -58,7 +59,7 @@
     }
 
 
-
+    h2,
     a {
       display: flex;
       align-items: center;

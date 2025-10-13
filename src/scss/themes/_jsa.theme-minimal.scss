@@ -30,6 +30,7 @@
         background-color: var(--jsa-min-dt-bgcolor-active-darkmode, #{variables.$jsa-dt-bgcolor-active-darkmode});
       }
 
+      h2,
       a {
         color: var(--jsa-min-dt-anchor-active-color, #{variables.$jsa-dt-anchor-active-color});
 
@@ -53,6 +54,7 @@
       }
     }
 
+    h2,
     a {
       display: flex;
       align-items: center;
@@ -63,6 +65,7 @@
       text-decoration: var(--jsa-min-dt-anchor-decoration, #{variables.$jsa-dt-anchor-decoration});
       width: 100%;
       padding: var(--jsa-min-dt-padding, #{variables.$jsa-dt-padding});
+      cursor: pointer;
 
       @media (prefers-color-scheme: dark) {
         color: var(--jsa-min-dt-anchor-color-darkmode, #{variables.$jsa-dt-anchor-color-darkmode});

@@ -1,6 +1,6 @@
 /*!
  * jsa.js – JavaScript Accordion Utility
- * Version: 2.0.1
+ * Version: 2.0.2
  * Author: Homero Cavazos
  * GitHub: https://github.com/homiehomes
  * License: MIT
@@ -292,7 +292,7 @@ class jsa {
 			schema.mainEntity.push(question);
 		});
 
-		_.el.insertAdjacentHTML("beforeend", `<script type="application/ld+json">${JSON.stringify(schema)}</script>`);
+		_.parentDL.insertAdjacentHTML("beforeend", `<script type="application/ld+json">${JSON.stringify(schema)}</script>`);
 	}
 
 	debounce(fn, time) {
