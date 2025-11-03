@@ -1,6 +1,6 @@
 /*!
  * jsa.js – JavaScript Accordion Utility
- * Version: 2.0.2
+ * Version: 2.0.3
  * Author: Homero Cavazos
  * GitHub: https://github.com/homiehomes
  * License: MIT
@@ -92,9 +92,11 @@ class jsa {
 
 		// Event Delegation for terms
 		_.parentDL.addEventListener("click", e => {
-			e.preventDefault();
-			e.stopPropagation();
-			_.toggle(e.target);
+			if (e.target.dataset.target) {
+				e.preventDefault();
+				e.stopPropagation();
+				_.toggle(e.target);
+			}
 		});
 
 		// Set the IDs and data-target attributes for terms
