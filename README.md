@@ -61,6 +61,21 @@ new jsa({
 
 ```
 
+#### Custom icons - XSS safety
+
+
+```angular2html
+new jsa({
+   icons: ['./plus.svg', './minus.svg']
+});
+
+icons: [
+ '+',                       // text
+ myImgElement,              // DOM node
+ '/images/chevron.svg'      // URL
+]
+```
+
 #### Additional accordions
 For multiple instances of the accordion on the same page, you need to declare a unique selector to the instance. For example,  `#jsa-menu,` `.jsa-accordion2` class on each `<dl>` element.
 

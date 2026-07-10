@@ -1,0 +1,42 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tabs</title>
+    <link rel="stylesheet" href="./dist/jsa-tabs.min.css" />
+  </head>
+  <body>
+    <dl class="jsa">
+      <div>
+        <dt><a href="#">title one</a></dt>
+        <dt><a href="#">title two</a></dt>
+        <dt><a href="#">title three</a></dt>
+      </div>
+      <div>
+        <dd>
+          One Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+          Temporibus repellendus deserunt eligendi!
+        </dd>
+
+        <dd>
+          Two Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+          Temporibus repellendus deserunt eligendi!
+        </dd>
+
+        <dd>
+          Three Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+          Temporibus repellendus deserunt eligendi!
+        </dd>
+      </div>
+    </dl>
+    <script type="module">
+      import { jsa } from "/dist/jsa.js";
+
+      new jsa({
+        theme: "core",
+        debug: true,
+        closeOthers: true,
+      });
+    </script>
+  </body>
+</html>
