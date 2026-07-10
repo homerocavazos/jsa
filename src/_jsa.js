@@ -1,6 +1,6 @@
 /*!
  * jsa.js – JavaScript Accordion Utility
- * Version: 2.0.3
+ * Version: 2.0.4
  * Author: Homero Cavazos
  * GitHub: https://github.com/homiehomes
  * License: MIT
@@ -18,7 +18,11 @@
  *  closeOthers: false,    // Whether to close other items when one is opened
  *  animate: false,        // Whether to animate the opening and closing of items
  *  prefix: '',            // Prefix for IDs and data attributes (optional)
- *  icons: ['', ''],       // options: ['+', '-'], [] for no icons
+ *  icons: [
+ *    '+',                       // text
+ *    myImgElement,              // DOM node
+ *    '/images/chevron.svg'      // URL
+ *  ], [] for no icons
  *  iconClass: 'jsa-icon', // Class for the icon span
  *  termPadding: '1em', 	 // Padding for dt elements when theme is 'custom'
  *  schema: false,         // Whether to include FAQ schema
@@ -38,6 +42,7 @@ class jsa {
 
 	constructor(opts = {}) {
 		const _ = this;
+
 
 		_.darkmode = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? true : false;
 
@@ -127,13 +132,13 @@ class jsa {
 				term.style.color = (_.settings.darkmode ? _.settings.termColor : "");
 
 				let icon = document.createElement('span');
-				icon.innerHTML = _.settings.icons[0];
+				_.renderIcon(_.settings.icons[0], icon);
 				icon.classList.add(_.settings.iconClass);
 				icon.style.pointerEvents = "none";
 
 				// If open first is true, set the icon to the "open" icon
-				if (_.settings.openFirst && index === 0) icon.innerHTML = _.settings.icons[1];
-				if (_.settings.openAll === true) icon.innerHTML = _.settings.icons[1];
+				if (_.settings.openFirst && index === 0) _.renderIcon(_.settings.icons[1], icon);
+				if (_.settings.openAll === true) _.renderIcon(_.settings.icons[1], icon);
 
 				term.appendChild(icon);
 
@@ -180,6 +185,8 @@ class jsa {
 			}
 		});
 
+
+
 		_.init();
 		_.schema = [];
 		_.buildSchema();
@@ -203,6 +210,28 @@ class jsa {
 			_.updateDefinitionHeight();
 		}, 200));
 
+	}
+
+	renderIcon(icon, container) {
+
+		if (icon instanceof Node) {
+			container.replaceChildren(icon.cloneNode(true));
+			return;
+		}
+
+		if (typeof icon === 'string') {
+
+			// Looks like an image URL?
+			if (/\.(svg|png|jpg|jpeg|gif|webp)$/i.test(icon)) {
+				const img = new Image();
+				img.src = icon;
+				img.alt = '';
+				container.replaceChildren(img);
+				return;
+			}
+
+			container.textContent = icon;
+		}
 	}
 
 	toggle(term) {
@@ -237,7 +266,7 @@ class jsa {
 		// Swap icon if applicable
 		let icon = term.querySelector(`.${_.settings.iconClass}`);
 		if (icon) {
-			icon.innerHTML = !isOpen ? _.settings.icons[1] : _.settings.icons[0];
+			_.renderIcon(!isOpen ? _.settings.icons[1] : _.settings.icons[0], icon);
 		}
 
 		// Apply transition for inline elements for smooth open/close
@@ -258,7 +287,7 @@ class jsa {
 
 			let icon = term.querySelector(`.${_.settings.iconClass}`);
 			if (icon) {
-				icon.innerHTML = _.settings.icons[0];
+				_.renderIcon(_.settings.icons[0], icon);
 			}
 
 		});
@@ -288,13 +317,16 @@ class jsa {
 				"name": term.textContent.trim(),
 				"acceptedAnswer": {
 					"@type": "Answer",
-					"text": _.definitions[index].innerHTML.trim()
+					"text": _.definitions[index].textContent.trim()
 				}
 			};
 			schema.mainEntity.push(question);
 		});
 
-		_.parentDL.insertAdjacentHTML("beforeend", `<script type="application/ld+json">${JSON.stringify(schema)}</script>`);
+		const script = document.createElement('script');
+		script.type = 'application/ld+json';
+		script.textContent = JSON.stringify(schema);
+		_.parentDL.appendChild(script);
 	}
 
 	debounce(fn, time) {
