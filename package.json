@@ -1,6 +1,6 @@
 {
   "name": "@homiehomes/jsa",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "Accessible, responsive, and customizable JavaScript accordion component with vanilla JS and SCSS support. Automatically generates FAQ schema using JSON-LD for enhanced SEO.",
   "main": "dist/jsa.min.js",
   "repository": {
