@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.6] - 2026-07-10
+
+### Hot fix
+
+- Renamed package license to MIT for consistency with the source code license.
+
+
 ## [2.0.5] - 2026-07-10
 
 ### Hot fix

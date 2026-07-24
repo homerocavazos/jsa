@@ -1,6 +1,6 @@
 {
   "name": "@homiehomes/jsa",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "Accessible, responsive, and customizable JavaScript accordion component with vanilla JS and SCSS support. Automatically generates FAQ schema using JSON-LD for enhanced SEO.",
   "main": "dist/jsa.min.js",
   "repository": {
@@ -8,7 +8,7 @@
     "url": "git+https://github.com/homerocavazos/jsa.git"
   },
   "author": "Homero Cavazos",
-  "license": "ISC",
+  "license": "MIT",
   "engines": {
     "node": ">=26.5.0"
   },

@@ -1,6 +1,6 @@
 /*!
  * jsa.js – JavaScript Accordion Utility
- * Version: 2.0.4
+ * Version: 2.0.6
  * Author: Homero Cavazos
  * GitHub: https://github.com/homiehomes
  * License: MIT
