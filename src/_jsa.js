@@ -68,7 +68,8 @@ class jsa {
 			termColor: _.darkmode ? '#719456' : '',
 			termColorActive: _.darkmode ? '#fff' : '',
 			borders: true,
-			borderColor: _.darkmode ? '#719456' : '',
+			borderColor: '#d0d5d6',
+			darkmodeBorderColor: '#719456',
 			darkmode: false,
 			debug: false,
 		}, opts);
@@ -128,7 +129,7 @@ class jsa {
 				term.style.gap = "1em";
 				term.style.textDecoration = "none";
 				term.style.padding = _.settings.termPadding;
-				term.style.borderTop = _.settings.borders ? "1px solid " + (_.settings.darkmode ? _.settings.borderColor : "") : "none";
+				term.style.borderTop = _.settings.borders ? "1px solid " + (_.settings.darkmode ? _.settings.darkmodeBorderColor : _.settings.borderColor) : "none";
 				term.style.color = (_.settings.darkmode ? _.settings.termColor : "");
 
 				let icon = document.createElement('span');
@@ -219,19 +220,10 @@ class jsa {
 			return;
 		}
 
-		if (typeof icon === 'string') {
-
-			// Looks like an image URL?
-			if (/\.(svg|png|jpg|jpeg|gif|webp)$/i.test(icon)) {
-				const img = new Image();
-				img.src = icon;
-				img.alt = '';
-				container.replaceChildren(img);
-				return;
-			}
-
-			container.textContent = icon;
+		if (typeof icon !== 'string') {
+			return;
 		}
+		container.textContent = icon;
 	}
 
 	toggle(term) {
@@ -254,7 +246,7 @@ class jsa {
 
 		if (_.settings.theme === 'core') {
 			if (term.parentNode.classList.contains("active") && _.settings.darkmode === true) {
-				term.style.color = (_.settings.darkmode ? _.settings.termColorActive : _settings.termColor);
+				term.style.color = (_.settings.darkmode ? _.settings.termColorActive : _.settings.termColor);
 				term.parentNode.style.backgroundColor = (_.settings.darkmode ? _.settings.termBgActive : "");
 			} else {
 				term.style.color = (_.settings.darkmode ? _.settings.termColor : '');

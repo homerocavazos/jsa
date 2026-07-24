@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.5] - 2026-07-10
+
+### Hot fix
+
+- Removed image rendering for XSS safety in the README.md file.
+
 ## [2.0.4] - 2026-07-10
 
 ### Hot fix
