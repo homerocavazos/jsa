@@ -61,19 +61,32 @@ new jsa({
 
 ```
 
-#### Custom icons - XSS safety
+#### Custom icons - Text only
+You may override with CSS or use text characters for the icons.
 
 
 ```angular2html
 new jsa({
-   icons: ['./plus.svg', './minus.svg']
+   icons: ['+', '-']
 });
 
-icons: [
- '+',                       // text
- myImgElement,              // DOM node
- '/images/chevron.svg'      // URL
-]
+```
+### Custom CSS
+```
+.jsa-icon::after {
+  content: attr(data-icon);
+}
+
+/* or */
+
+.jsa-icon[aria-expanded="true"]::after {
+ content: "-";
+}
+
+.jsa-icon::after {
+ content: "+";
+}
+
 ```
 
 #### Additional accordions
