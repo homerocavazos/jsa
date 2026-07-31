@@ -1,5 +1,5 @@
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-K1GH88PB3P"></script>
@@ -29,7 +29,7 @@
 		content="Accessible, responsive, and customizable JavaScript accordion component with vanilla JS and SCSS support. Automatically generates FAQ schema using JSON-LD for enhanced SEO." />
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>JavaScript Accordion 2.0.7</title>
+	<title>JavaScript Accordion 2.0.8</title>
 
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -284,7 +284,6 @@
    <span class="h-js-new">borders:</span> true,
    <span class="h-js-new">borderColor:</span> '#719456',
    <span class="h-js-new">darkmode:</span> false,
-   <span class="h-js-new">debug:</span> false,
   <span class="h-yellow">}</span>
 )</span>;
 </pre>
@@ -454,13 +453,7 @@
 											<td><strong><small>Core</small></strong><br> <code>darkmode: true</code></td>
 											<td>If true, dark mode styles will be applied.</td>
 										</tr>
-										<tr>
-											<td><code>debug</code></td>
-											<td>boolean</td>
-											<td><code>false</code></td>
-											<td>✓</td>
-											<td>If true, logs the accordion configuration.</td>
-										</tr>
+
 									</tbody>
 								</table>
 							</div>
@@ -810,6 +803,10 @@
 	<script type="module">
 		import { jsa } from '/dist/jsa.min.js';
 
+		document.querySelector('.jsa-main').addEventListener('jsa:onLoad', (e) => {
+			console.log('Event fired!', e.detail);
+		});
+
 		new jsa({
 			dl: '.jsa-main',
 			dt: 'h2',
@@ -820,6 +817,9 @@
 			openFirst: true,
 			animate: true,
 		});
+
+
+
 		// Optional to define "dl" as long as you use '.jsa' as class name for the accordion container
 		new jsa({
 			dl: '.jsa-default',
@@ -858,6 +858,9 @@
 			document.body.classList.add('is-safari');
 		}
 
+		document.querySelector('.jsa-main').addEventListener('jsa:onToggle', (e) => {
+			console.log('Event fired!', e.detail);
+		});
 	</script>
 
 

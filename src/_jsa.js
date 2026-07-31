@@ -1,6 +1,6 @@
 /*!
  * jsa.js – JavaScript Accordion Utility
- * Version: 2.0.7
+ * Version: 2.0.8
  * Author: Homero Cavazos
  * GitHub: https://github.com/homiehomes
  * License: MIT
@@ -33,7 +33,6 @@
  *  termColorActive: '',  // Text color for active term elements ('core' theme)
  *  borderColor: '',      // Border color for term elements ('core' theme)
  *  darkmode: false,
- *  debug: false,
  * */
 
 "use strict";
@@ -71,14 +70,11 @@ class jsa {
 			borderColor: '#d0d5d6',
 			darkmodeBorderColor: '#719456',
 			darkmode: false,
-			debug: false,
+			onLoad: true,
+			onToggle: true,
 		}, opts);
 
-
-		if (_.settings.debug) {
-			console.log('jsa settings = ', _.settings);
-		}
-
+		_.container = document.querySelector(_.settings.dl);
 
 		_.parentDL = document.querySelector(_.settings.dl) || null;
 
@@ -156,6 +152,7 @@ class jsa {
 					_.toggle(e.target);
 				}
 			});
+			// Dispatch custom event onLoad if enabled
 
 		});
 
@@ -186,8 +183,6 @@ class jsa {
 			}
 		});
 
-
-
 		_.init();
 		_.schema = [];
 		_.buildSchema();
@@ -202,7 +197,6 @@ class jsa {
 
 
 
-
 	}// constructor
 
 	init() {
@@ -210,6 +204,17 @@ class jsa {
 		window.addEventListener('resize', _.debounce((e) => {
 			_.updateDefinitionHeight();
 		}, 200));
+
+		setTimeout(() => {
+			_.container.dispatchEvent(new CustomEvent('jsa:onLoad', {
+				bubbles: true,
+				detail: {
+					instance: _,  // Reference to the jsa instance
+					totalTerms: _.terms.length,
+					settings: { theme: _.settings.theme, animate: _.settings.animate } // Subset of relevant settings
+				}
+			}));
+		}, 0);
 
 	}
 
@@ -268,6 +273,27 @@ class jsa {
 		} else {
 			def.style.maxHeight = "0";
 		}
+
+		// Dispatch custom event onToggle if enabled
+
+		setTimeout(() => {
+			_.container.dispatchEvent(new CustomEvent('jsa:onToggle', {
+				bubbles: true,
+				detail: {
+					jsa: _.settings.dl,
+					index: _.terms.indexOf(term),
+					active: !isOpen,
+					term: term.id,
+					definition: term.dataset.target,
+					termElement: term,           // Actual DOM node (for manipulation)
+					definitionElement: document.querySelector(term.dataset.target), // The content
+					termText: term.textContent,  // What the user sees
+					totalTerms: _.terms.length,  // Context about the accordion
+					hasAnimation: _.settings.animate, // Behavior context
+					closesOthers: _.settings.closeOthers, // Behavior context
+				}
+			}));
+		}, 0);
 
 	}
 
