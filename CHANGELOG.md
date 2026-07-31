@@ -2,7 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
-## [2.0.8] - 2026-07-10
+## [2.0.9] - 2026-07-31
+
+### Feature added
+
+- Added more details to the return events
+
+## [2.0.8] - 2026-07-31
 
 ### Feature added
 

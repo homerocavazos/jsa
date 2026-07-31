@@ -1,6 +1,6 @@
 /*!
  * jsa.js – JavaScript Accordion Utility
- * Version: 2.0.8
+ * Version: 2.0.9
  * Author: Homero Cavazos
  * GitHub: https://github.com/homiehomes
  * License: MIT
@@ -211,7 +211,22 @@ class jsa {
 				detail: {
 					instance: _,  // Reference to the jsa instance
 					totalTerms: _.terms.length,
-					settings: { theme: _.settings.theme, animate: _.settings.animate } // Subset of relevant settings
+					settings: {
+						dl: _.settings.dl,
+						dt: _.settings.dt,
+						dd: _.settings.dd,
+						theme: _.settings.theme,
+						openFirst: _.settings.openFirst,
+						openAll: _.settings.openAll,
+						closeAll: _.settings.closeAll,
+						closeOthers: _.settings.closeOthers,
+						icons: _.settings.icons,
+						iconClass: _.settings.iconClass,
+						schema: _.settings.schema,
+						schemaType: _.settings.schemaType,
+						onLoad: _.settings.onLoad,
+						onToggle: _.settings.onToggle,
+					}
 				}
 			}));
 		}, 0);
@@ -289,7 +304,6 @@ class jsa {
 					definitionElement: document.querySelector(term.dataset.target), // The content
 					termText: term.textContent,  // What the user sees
 					totalTerms: _.terms.length,  // Context about the accordion
-					hasAnimation: _.settings.animate, // Behavior context
 					closesOthers: _.settings.closeOthers, // Behavior context
 				}
 			}));
