@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.8] - 2026-07-10
+
+### Feature added
+
+- Added `onLoad` and `onToggle` events
+- Removed `debug` option
+- Updated to Node 26.5.0
+
+
+
+
 ## [2.0.6] - 2026-07-10
 
 ### Hot fix

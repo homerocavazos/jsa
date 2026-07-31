@@ -1,4 +1,4 @@
-# JSA 2.0 | JavaScript Accordion Utility
+# JSA 2.0.8 | JavaScript Accordion Utility
 
 Accessible, responsive, and customizable JavaScript accordion component with vanilla JS and SCSS support. Automatically generates FAQ schema using JSON-LD for enhanced SEO.
 
@@ -145,5 +145,18 @@ new jsa(
 );
 ```
 
+### Events
+
+```angular2html
+
+document.querySelector('.jsa-main').addEventListener('jsa:onLoad', (e) => {
+  console.log('Event fired!', e.detail);
+});
+
+document.querySelector('.jsa-main').addEventListener('jsa:onToggle', (e) => {
+  console.log('Event fired!', e.detail);
+});
+
+```
 
 #### Visit the [demo site](https://jsa.homiehomes.dev/) for more examples and details.
