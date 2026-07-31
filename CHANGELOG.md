@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.1.0] - 2026-07-31
+
+### Feature added
+
+- Updated the dist files to get the latest build
+- Being a new feature this is the correct version bump
+
 ## [2.0.9] - 2026-07-31
 
 ### Feature added
