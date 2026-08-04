@@ -1,6 +1,6 @@
 /*!
  * jsa.js – JavaScript Accordion Utility
- * Version: 2.1.0
+ * Version: 2.1.1
  * Author: Homero Cavazos
  * GitHub: https://github.com/homiehomes
  * License: MIT
@@ -97,7 +97,7 @@ class jsa {
 			if (e.target.dataset.target) {
 				e.preventDefault();
 				e.stopPropagation();
-				_.toggle(e.target);
+				_.toggle(e.target, e);
 			}
 		});
 
@@ -149,7 +149,7 @@ class jsa {
 			term.addEventListener("keydown", e => {
 				if (e.key === "Enter" || e.key === " ") {
 					e.preventDefault();
-					_.toggle(e.target);
+					_.toggle(e.target, e);
 				}
 			});
 			// Dispatch custom event onLoad if enabled
@@ -246,9 +246,12 @@ class jsa {
 		container.textContent = icon;
 	}
 
-	toggle(term) {
+	toggle(term, nativeEvent) {
 		const _ = this;
 		if (!term.dataset.target) return; // Prevent toggling if the clicked element is not a term
+
+		// Determine if the user clicked or auto-clicked
+		const isTrusted = nativeEvent ? nativeEvent.isTrusted : false;
 
 		let target = term.dataset.target;
 
@@ -299,12 +302,13 @@ class jsa {
 					index: _.terms.indexOf(term),
 					active: !isOpen,
 					term: term.id,
+					termElement: term,  // Actual DOM node (for manipulation)
 					definition: term.dataset.target,
-					termElement: term,           // Actual DOM node (for manipulation)
-					definitionElement: document.querySelector(term.dataset.target), // The content
+					definitionElement: document.querySelector(`#${term.dataset.target}`), // The content
 					termText: term.textContent,  // What the user sees
 					totalTerms: _.terms.length,  // Context about the accordion
 					closesOthers: _.settings.closeOthers, // Behavior context
+					isOriginalTrusted: isTrusted
 				}
 			}));
 		}, 0);

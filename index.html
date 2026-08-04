@@ -29,7 +29,7 @@
 		content="Accessible, responsive, and customizable JavaScript accordion component with vanilla JS and SCSS support. Automatically generates FAQ schema using JSON-LD for enhanced SEO." />
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>JavaScript Accordion 2.1.0</title>
+	<title>JavaScript Accordion 2.1.1</title>
 
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -63,7 +63,7 @@
 				<span class="chip bg-primary text-white">J</span>
 				<span class="chip bg-secondary text-white">S</span>
 				<span class="chip bg-accent text-white">A</span>
-				<code>2.1.0</code>
+				<code>2.1.1</code>
 			</div>
 			<div class="byline">
 
@@ -237,7 +237,7 @@
 							<section>
 								<div>
 									<small class="bg-primary text-white text-xxbold">JSA <small
-											class="bg-secondary text-black text-xxbold">2.1.0</small></small>
+											class="bg-secondary text-black text-xxbold">2.1.1</small></small>
 									<p>JSA by default only has inline CSS for expand/collapse functionality. See <strong>Default
 											Accordion</strong> section</p>
 
@@ -796,16 +796,46 @@
 				</div>
 			</article>
 
+			<div class="article">
+				<h2>Events</h2>
+
+					<h3><code>jsa:onToggle</code></h3>
+
+<pre>
+
+detail: {
+ jsa: '.jsa', <span class="h-js-comment">// The selector of 'dl'</span>
+ index: 0, <span class="h-js-comment">// Index of item clicked</span>
+ active: true, <span class="h-js-comment">// Clicked but is it active</span>
+ term: 'vyjl7-term0', <span class="h-js-comment">// Trigger ID</span>
+ termElement: h2#main-term0.first-term, <span class="h-js-comment">// Actual DOM node </span>
+ definition: 'vyjl7-definition0', <span class="h-js-comment">// Target ID</span>
+ definitionElement: dd#main-definition0.first-term, <span class="h-js-comment">// Actual DOM node </span>
+ termText: 'Getting Started', 
+ totalTerms: 2,  <span class="h-js-comment">// Total count</span>
+ closesOthers: false, <span class="h-js-comment">// Behavior context</span>
+ isOriginalTrusted: true <span class="h-js-comment">// True if user click, false if script initiated</span>
+}
+</pre>
+
+				<h3>Example</h3>
+				<div>
+					<pre><span class="h-string">document.querySelector(</span><span class="h-lime">'.jsa'</span><span class="h-string">).addEventListener(</span> <span class="h-yellow">'jsa:onToggle'</span><span class="h-string">, (e) => {</span>
+   <span class="h-js-new">console.log( <span class="h-yellow">e.detail</span> );</span>
+<span class="h-string">})</span>;
+</pre>
+				</div>
+			</div>
 		</section>
+
+
 	</main>
 
 
 	<script type="module">
-		import { jsa } from '/dist/jsa.min.js';
+		import { jsa } from '/dist/jsa.js';
 
-		document.querySelector('.jsa-main').addEventListener('jsa:onLoad', (e) => {
-			console.log('Event fired!', e.detail);
-		});
+
 
 		new jsa({
 			dl: '.jsa-main',
@@ -858,9 +888,14 @@
 			document.body.classList.add('is-safari');
 		}
 
+		document.querySelector('.jsa-main').addEventListener('jsa:onLoad', (e) => {
+			console.log('Event fired!', e.detail);
+		});
 		document.querySelector('.jsa-main').addEventListener('jsa:onToggle', (e) => {
 			console.log('Event fired!', e.detail);
 		});
+
+
 	</script>
 
 
